@@ -1,8 +1,8 @@
 <!-- create 2nd -->
 <?php
 	
-	$link = mysql_connect('localhost','root','123');
-	$db= mysql_select_db('techkids');
+	$link = mysql_connect('localhost','root','root');
+	$db= mysql_select_db('kids');
 
 	if (!$link) {
 	die ('Failed to connect to server: ' . mysql_error () );
