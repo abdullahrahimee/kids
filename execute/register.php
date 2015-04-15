@@ -64,6 +64,16 @@
 						else if(isset($_GET['role']) && $_GET['role']=='student'){ 
 						mysql_query("INSERT INTO users VALUES('','$username','$password','$email','3','a')");
 						mysql_query("INSERT INTO students(s_id, firstname, email, password) VALUES('', '$username', '$email', '$password')");
+						 if($_POST['parent']=='yes'){
+						 	header('location:register.php?role=parents');
+						 }else{
+						header('location: ../login/form.php?reg=done'); 	
+						 }
+						// echo "<p>Succssfully Registered!</p>";
+						
+						}else if(isset($_GET['role']) && $_GET['role']=='parents'){ 
+						mysql_query("INSERT INTO users VALUES('','$username','$password','$email','4','a')");
+						mysql_query("INSERT INTO parent(p_id, firstname, email, password) VALUES('', '$username', '$email', '$password')");
 						 
 						// echo "<p>Succssfully Registered!</p>";
 						header('location: ../login/form.php?reg=done');
@@ -96,11 +106,21 @@
 										data-parsley-required="true" data-parsley-equalto-message="Password does not match">
 									</div>
 								</div>
+								<br />
+								<?php
+								if ($_GET['role']=='student') {
+									echo '<div class="row"><div class="col-md-6">have your parent registed yet?</div>
+								<div class="col-md-3"><input type="radio" value="yes" name="parent"/>Yes</div>
+								<div class="col-md-3"><input type="radio" value="no" name="parent"/>No</div>
+								</div>';
+								}
+								?>
+								<div class="row">
 
-										<div class="col-md-6">
+										<div class="col-md-6 pull-left">
 										<br /> <button type="submit" class="btn btn-action pull-right" name="submit">Register</button>
 										</div>
-								  	</div> 
+								</div> 
 						</form>
 				
 			</article>

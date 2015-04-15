@@ -45,6 +45,8 @@
 															else if($run['user_level'] == '2'){
 																// echo "teacher dashboard is not present!";
 																 header('location: ../users/teacher/index.php');
+															}else if($run['user_level'] == '4'){
+																 header('location: ../users/parents/index.php');
 															}			
 															
 														}

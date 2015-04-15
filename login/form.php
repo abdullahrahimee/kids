@@ -88,7 +88,7 @@
 
 								<a href="control/forget.php" class="green">Forget your Password?</a> <br />
 								
-								<i class="text-primary"> Register </i> as a <i class="text-primary"><a href="../execute/register.php?role=teacher"> Teacher </a></i> or <i class="text-primary"><a href="../execute/register.php?role=student">Student</a></i>
+								Register as a <i class="text-primary"><a href="../execute/register.php?role=teacher"> Teacher </a></i>, <i class="text-primary"><a href="../execute/register.php?role=student">Student</a></i> or <i class="text-primary"><a href="../execute/register.php?role=parents">Parents</a></i>
 								 
 				</div>
 						
