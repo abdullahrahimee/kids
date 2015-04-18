@@ -11,7 +11,7 @@
         $userrow = mysql_fetch_array($selectuser);
         $users_id=$userrow['id']; //id no of users in users table
 
-        $sql=mysql_query("select * from students where email = '".$userrow['email']."'");
+        $sql=mysql_query("select * from parent where email = '".$userrow['email']."'");
         $row=mysql_fetch_array($sql);
         $stu_id=$row['s_id'];
 
@@ -226,9 +226,8 @@ transition: all 0.2s;
                             <li class="active">
                                 <i class="fa fa-file"></i> Profile Page
                             </li>
-                        </ol>
-
-                        <div class="text-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['username']); ?> </b> [<?php echo $level_name; ?>]</p></div>
+                            <span class="pull-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['username']); ?> </b> [<?php echo $level_name; ?>]</p></span>
+                        </ol>                        
                     </div>
 
 <!--  //start All the text for body -->
@@ -335,7 +334,7 @@ transition: all 0.2s;
     <div class="col-md-12">
       <div class="row">
       
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 toppad" >
    
    
           <div class="panel panel-info">
@@ -376,7 +375,7 @@ transition: all 0.2s;
 
         <!-- //start Form -->
           
-                  <table class="table table-user-information">
+                  <table class="table table-striped table-user-information">
                     <tbody>
                       <tr>
                         <td>FirstName:</td>
@@ -449,13 +448,8 @@ transition: all 0.2s;
               </div>
             </div>
                  <div class="panel-footer">
-                        <a href="../../../contact.php" data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="fa fa-envelope-o"></i></a>
-                        <span class="pull-right">
-                            <a href="profile_pass.php" class="btn btn-sm btn-success" > <b> Chanage Password </b></a>
-
-                            <button data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-warning"><i class="fa fa-edit" style=""></i></button>
-                            <a href="../index.php" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="fa fa-close"></i></a>
-                        </span>
+                            <a href="profile_pass.php" class="btn btn-sm btn-success" > <b><i class="fa fa-lock" style=""></i>	Chanage Password </b></a>
+                            <button data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-warning"><i class="fa fa-edit" style=""></i>	Edit Profile</button>
                     </div>
 
                    
