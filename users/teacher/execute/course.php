@@ -4,21 +4,19 @@ include 'auth.php';
 
 // include '../../users/student/execute/functions.php';
 $my_id = $_SESSION['user_id']; 
-$user_query1=mysql_query("SELECT * FROM users WHERE id=$my_id");
+$user_query1=mysql_query("SELECT * FROM users WHERE u_id=$my_id");
 $run_user1 = mysql_fetch_array($user_query1);
 
-$uname=$run_user1['username']; 
-$uid=$run_user1['id'];
+$uname=$run_user1['firstname']." ".$run_user1['firstname']; 
+$uid=$run_user1['u_id'];
 $upass=$run_user1['password'];
 $uemail=$run_user1['email'];
-$user_level=$run_user1['user_level'];
+$user_level=$run_user1['type'];
 $query=mysql_query("SELECT * FROM course");
 
 
-$user_query=mysql_query("SELECT * FROM teachers WHERE firstname='".$uname."' AND email='".$uemail."'");
-$run_user = mysql_fetch_array($user_query);
-$username=$run_user['firstname']; 
-$t_id=$run_user['t_id'];
+$username=$run_user1['firstname']." ".$run_user1['firstname'];
+$t_id=$run_user1['u_id'];
 
 
 
@@ -186,15 +184,7 @@ if(!isset($_SESSION['user_id'])){
      <td><?php echo $result['end_date'] ?></td>
      <td><?php echo $result['start_time'] ?></td>
      <td><?php echo $result['end_time'] ?></td>
-     <td><p data-placement="top" data-toggle="tooltip" title="Upload Matarial"><?php
-     $que=mysql_query("SELECT * FROM join_course WHERE c_id=".$result['c_id']." AND t_id=".$t_id);
-     $num=mysql_num_rows($que);
-if ($num!=1) {
-  echo '<button onclick="join('.$result['c_id'].')"  class="btn btn-success btn-sm" style="width:75px"><span>  <b> + Join </b></span></button>';
-}else{
-  echo '<button onclick="unjoin('.$result['c_id'].')"  class="btn btn-danger btn-sm"><span>  <b> + Un Join </b></span></button>';
-}
-     ?></p></td>
+     <td><?php echo $result['catagory'] ?></td>
     </tr>
 
         <input type="hidden" id="c_id" value="<?php echo $result['c_id']; ?>">

@@ -69,7 +69,7 @@ if(isset($_GET['fid'])) {
         echo "The file ". basename( $_FILES["js-upload-files"]["name"]). " has been uploaded.";
             @$courseid=$row['c_id'];
 
-            $addqry="INSERT INTO `techkids`.`materials` (`id`, `subject`, `desc`, `file_name`, `course_id`, `path`) VALUES ('', '$subject', '$tdesc', '$fileName', '$id', '$fileName')";
+            $addqry="INSERT INTO `newkids`.`materials` (`m_id`, `subject`, `desc`, `file_name`, `c_id`, `path`) VALUES ('', '$subject', '$tdesc', '$fileName', '$id', '$fileName')";
             $add= mysql_query($addqry);
             if($add){
                 echo "success";

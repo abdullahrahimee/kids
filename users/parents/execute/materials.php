@@ -126,25 +126,30 @@ $lastname=$row['lastname'];
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+
                     <li>
-                        <a href="../index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="execute/profile_edit.php"><i class="fa fa-fw fa-users"></i> Kids</a>
+                    </li>
+				    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-book"></i> Courses <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="#">Joined Courses</a>
+                            </li>
+                            <li>
+                                <a href="#">Other Courses</a>
+                            </li>
+                        </ul>
                     </li>
 
-                     <li>
-                        <a href="profile_edit.php"><i class="fa fa-fw fa-user"></i> Profile</a>
+                     <li> 
+                        <a href="execute/course.php"><i class="fa fa-user"></i> Profile</a>
                     </li>
-
-                    <li> 
-                        <a href="course.php"><i class="fa fa-book"></i> Courses</a>
-                    </li>
-                    
-                    <li> 
-                        <a href="../assets/blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="#../assets/index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
-                    </li>
-
+                  
+                  
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

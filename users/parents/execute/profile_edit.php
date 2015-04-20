@@ -7,13 +7,13 @@
         session_destroy();
         }
 
-        $selectuser = mysql_query("SELECT * FROM users WHERE id = '".$_SESSION['user_id']."'");
+        $selectuser = mysql_query("SELECT * FROM users WHERE u_id = '".$_SESSION['user_id']."'");
         $userrow = mysql_fetch_array($selectuser);
-        $users_id=$userrow['id']; //id no of users in users table
+        $users_id=$userrow['u_id']; //id no of users in users table
 
-        $sql=mysql_query("select * from parent where email = '".$userrow['email']."'");
+        $sql=mysql_query("select * from users where email = '".$userrow['email']."'");
         $row=mysql_fetch_array($sql);
-        $stu_id=$row['s_id'];
+        $stu_id=$row['u_id'];
 
 // if(isset($update) AND $padding=='ok'){
 //   echo '<div class="alert alert-success"> You have successfully update </div>';
@@ -31,7 +31,7 @@ $email=$row['email'];
 $password=$row['password'];
 $gender=$row['gender'];
 $province=$row['province'];
-$birth_date=$row['birth_date'];
+$birth_date=$row['b_date'];
 $profile=$row['profile'];
 
 ?>
@@ -171,7 +171,7 @@ transition: all 0.2s;
             <ul class="nav navbar-right top-nav">
                
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo @$userrow['username']; ?> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo @$userrow['firstname']." ".$userrow['firstname']; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                        
                       
@@ -185,20 +185,30 @@ transition: all 0.2s;
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
+                    <li >
+                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+
                     <li>
-                        <a href="../index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="execute/kid.php"><i class="fa fa-fw fa-users"></i> Kids</a>
+                    </li>
+				    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-book"></i> Courses <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="#">Joined Courses</a>
+                            </li>
+                            <li>
+                                <a href="#">Other Courses</a>
+                            </li>
+                        </ul>
                     </li>
 
-                     <li>
-                        <a href="profile_edit.php"><i class="fa fa-fw fa-user"></i> Profile</a>
+                     <li class="active"> 
+                        <a href="execute/profile_edit.php"><i class="fa fa-user"></i> Profile</a>
                     </li>
-
-                    <li> 
-                        <a href="course.php"><i class="fa fa-book"></i> Courses</a>
-                    </li>
-                    
-                   
-
+                  
+                  
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -213,7 +223,7 @@ transition: all 0.2s;
                     <div class="col-lg-12">
 
                         <h1 class="page-header">
-                             <?php echo ucwords($userrow['username']); ?>
+                             <?php echo ucwords($userrow['firstname']." ".$userrow['firstname']); ?>
                             <small>Profile</small>
                            
                         </h1>
@@ -226,7 +236,7 @@ transition: all 0.2s;
                             <li class="active">
                                 <i class="fa fa-file"></i> Profile Page
                             </li>
-                            <span class="pull-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['username']); ?> </b> [<?php echo $level_name; ?>]</p></span>
+                            <span class="pull-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['firstname']." ".$userrow['firstname']); ?> </b> [<?php echo $level_name; ?>]</p></span>
                         </ol>                        
                     </div>
 

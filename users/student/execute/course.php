@@ -7,16 +7,16 @@
         session_destroy();
         }
 
-        $selectuser = mysql_query("SELECT * FROM users WHERE id = '".$_SESSION['user_id']."'");
+        $selectuser = mysql_query("SELECT * FROM users WHERE u_id = '".$_SESSION['user_id']."'");
         $userrow = mysql_fetch_array($selectuser);
-        $users_id=$userrow['id']; //id no of users in users table
-        $uname=$userrow['username'];
-        $uemail=$userrow['email'];
+        $users_id=$userrow['u_id']; //id no of users in users table
+        $uname=$userrow['firstname']." ".$userrow['lastname'];
+        $uemail=$userrow['email']; 
 
-        $user_query=mysql_query("SELECT * FROM students WHERE firstname='".$uname."' AND email='".$uemail."'");
+        $user_query=mysql_query("SELECT * FROM users WHERE firstname='".$uname."' AND email='".$uemail."'");
         $run_user = mysql_fetch_array($user_query);
-        $username=$run_user['firstname']; 
-        $s_id=$run_user['s_id'];
+        $username=$userrow['firstname']." ".$userrow['lastname']; 
+        $s_id=$userrow['u_id'];
 
         $query=mysql_query("SELECT * FROM course");
 
@@ -112,7 +112,7 @@ $lastname=$run_user['lastname'];
             <ul class="nav navbar-right top-nav">
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userrow['username']; ?> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userrow['firstname']." ".$userrow['lastname']; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="profile_edit.php"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -218,8 +218,7 @@ $lastname=$run_user['lastname'];
      <td><?php echo $result['c_id'] ?></td>
      <td><?php echo $result['name'] ?></td>
      
-     <td><?php $course_name=mysql_fetch_array(mysql_query("SELECT * FROM course_category WHERE id=".$result['category_id']));
-     echo $course_name['name']; ?></td>
+     <td><?php  echo $result['catagory']; ?></td>
 
      <td><?php echo $result['des'] ?></td>
      <td><?php echo $result['fee'] ?></td>
@@ -229,7 +228,7 @@ $lastname=$run_user['lastname'];
      <td><?php echo $result['end_time'] ?></td>
         
 <td><p><?php
-     $que=mysql_query("SELECT * FROM stu_join WHERE c_id=".$result['c_id']." AND s_id=".$s_id);
+     $que=mysql_query("SELECT * FROM stu_join WHERE c_id=".$result['c_id']." AND u_id=".$s_id);
      @$num=mysql_num_rows($que);
 if ($num!=1) {
   echo '<button onclick="join('.$result['c_id'].')"  class="btn btn-success btn-sm" style="width:75px"><span>  <b> + Join </b></span></button>';

@@ -2,7 +2,7 @@
 <?php
 	
 	$link = mysql_connect('localhost','root','root');
-	$db= mysql_select_db('kids');
+	$db= mysql_select_db('newkids');
 
 	if (!$link) {
 	die ('Failed to connect to server: ' . mysql_error () );

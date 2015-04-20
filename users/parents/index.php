@@ -4,12 +4,12 @@ include 'execute/connect.php';
 include 'execute/functions.php';
 include 'execute/auth.php';
 
-mysql_connect('localhost', 'root', '123');
-mysql_select_db('techkids');
+mysql_connect('localhost', 'root', 'root');
+mysql_select_db('newkids');
 
 //echo $_SESSION['user_id']; //show the user which currently login
 
-$userselect = mysql_query("SELECT * FROM users WHERE id = '" . $_SESSION['user_id'] . "'");
+$userselect = mysql_query("SELECT * FROM users WHERE u_id = '" . $_SESSION['user_id'] . "'");
 $userrow = mysql_fetch_array($userselect);
 ?>
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ $userrow = mysql_fetch_array($userselect);
 
 </head>
 
-<body>
+<body onload="all();">
 
     <div id="wrapper">
 
@@ -65,7 +65,7 @@ $userrow = mysql_fetch_array($userselect);
 
         <!-- //Edit Profile Options -->
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userrow['username']; ?> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userrow['firstname']." ".$userrow['lastname']; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="execute/profile_edit.php"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -86,11 +86,22 @@ $userrow = mysql_fetch_array($userselect);
                     </li>
 
                     <li>
-                        <a href="execute/profile_edit.php"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        <a href="execute/kid.php"><i class="fa fa-fw fa-users"></i> Kids</a>
+                    </li>
+				    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-book"></i> Courses <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="#">Joined Courses</a>
+                            </li>
+                            <li>
+                                <a href="#">Other Courses</a>
+                            </li>
+                        </ul>
                     </li>
 
                      <li> 
-                        <a href="execute/course.php"><i class="fa fa-book"></i> Courses</a>
+                        <a href="execute/profile_edit.php"><i class="fa fa-user"></i> Profile</a>
                     </li>
                   
                   
@@ -107,16 +118,108 @@ $userrow = mysql_fetch_array($userselect);
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            <?php echo ucwords($userrow['username']); ?> <small>Dashboard</small>
+                            <?php echo ucwords($userrow['firstname']." ".$userrow['lastname']); ?> <small>Dashboard</small>
                        
                                  
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i>  Dear <b> <?php echo $userrow['username']; ?></b>, Welcome to your Dashboard!
+                                <i class="fa fa-dashboard"></i>  Dear <b> <?php echo $userrow['firstname']." ".$userrow['lastname']; ?></b>, Welcome to your Dashboard!
                             </li>
 
                         </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+                
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-users fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge" id="kid_count"></div>
+                                        <div>Your Kids!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-book fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge" id="course_count"></div>
+                                        <div>Courses!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-newspaper-o fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge" id="ass_count"></div>
+                                        <div>Assignment!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-comments fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge" id="com_count"></div>
+                                        <div>Teachers Comments!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -135,7 +238,83 @@ $userrow = mysql_fetch_array($userselect);
 
     </div>
     <!-- /#wrapper -->
-
+	<script>
+		function all(){
+			count_kid();
+			count_course();
+			count_ass();
+			count_com();
+		}
+	</script>
+	
+	<script>
+		function count_kid(){
+			var xmlhttp;
+			if(window.XMLHttpRequest){
+				xmlhttp=new XMLHttpRequest();
+			}else{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById("kid_count").innerHTML = xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open("GET", "setting.php?kid=yes&id="+<?php echo $_SESSION['user_id']; ?>, true);
+        	xmlhttp.send();
+		}
+	</script>
+	<script>
+		function count_course(){
+			var xmlhttp;
+			if(window.XMLHttpRequest){
+				xmlhttp=new XMLHttpRequest();
+			}else{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById("course_count").innerHTML = xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open("GET", "setting.php?course=yes&id="+<?php echo $_SESSION['user_id']; ?>, true);
+        	xmlhttp.send();
+		}
+	</script>
+	<script>
+		function count_ass(){
+			var xmlhttp;
+			if(window.XMLHttpRequest){
+				xmlhttp=new XMLHttpRequest();
+			}else{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById("ass_count").innerHTML = xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open("GET", "setting.php?ass=yes&id="+<?php echo $_SESSION['user_id']; ?>, true);
+        	xmlhttp.send();
+		}
+	</script>
+	<script>
+		function count_com(){
+			var xmlhttp;
+			if(window.XMLHttpRequest){
+				xmlhttp=new XMLHttpRequest();
+			}else{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById("com_count").innerHTML = xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open("GET", "setting.php?com=yes&id="+<?php echo $_SESSION['user_id']; ?>, true);
+        	xmlhttp.send();
+		}
+	</script>
     <!-- jQuery -->
     <script src="assets/js/jquery.js"></script>
 

@@ -1,15 +1,16 @@
+<!-- create 2nd -->
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "kids";
+	
+	$link = mysql_connect('localhost','root','root');
+	$db= mysql_select_db('newkids');
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+	if (!$link) {
+	die ('Failed to connect to server: ' . mysql_error () );
+	}
+// Select database
 
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+	if (!$db) {
+	die ("Unable to select database" );
+	}
 
-?> 
+?>
