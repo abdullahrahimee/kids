@@ -19,10 +19,10 @@ $confpass= md5($_POST['confpass']);
 
 
 
-     $sql=mysql_num_rows(mysql_query("SELECT * FROM students where password = '".$cpass."' AND email='".$email."'"));
+     $sql=mysql_num_rows(mysql_query("SELECT * FROM users where password = '".$cpass."' AND email='".$email."'"));
 
 if($sql==1){
-        if(mysql_query("UPDATE students SET password='".$pass."' WHERE s_id=".$id) && mysql_query("UPDATE users SET password='".$pass."' WHERE id=".$uid)){
+        if(mysql_query("UPDATE users SET password='".$pass."' WHERE u_id=".$id)){
         header("location: profile_pass.php?pass=update_done");   
               }
 

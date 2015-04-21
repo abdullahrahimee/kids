@@ -55,5 +55,11 @@ if($co<1){
 		echo $co;
 	}
 
+}elseif ($_GET['ac_kid']!="") {
+	echo "<table>";
+	while ($count=mysql_fetch_array(mysql_query("SELECT * FROM users WHERE u_id IN (SELECT s_id FROM st_pa WHERE p_id=".$_GET['id']." AND rel='yes')"))) {
+		echo tr
+	}
+	echo "</table>";
 }
 ?>

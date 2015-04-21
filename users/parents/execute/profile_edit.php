@@ -186,7 +186,7 @@ transition: all 0.2s;
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li >
-                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="../index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
 
                     <li>
@@ -196,10 +196,10 @@ transition: all 0.2s;
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-book"></i> Courses <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Joined Courses</a>
+                                <a href="execute/join.php">Joined Courses</a>
                             </li>
                             <li>
-                                <a href="#">Other Courses</a>
+                                <a href="execute/course.php">Other Courses</a>
                             </li>
                         </ul>
                     </li>
@@ -223,7 +223,7 @@ transition: all 0.2s;
                     <div class="col-lg-12">
 
                         <h1 class="page-header">
-                             <?php echo ucwords($userrow['firstname']." ".$userrow['firstname']); ?>
+                             <?php echo ucwords($userrow['firstname']." ".$userrow['lastname']); ?>
                             <small>Profile</small>
                            
                         </h1>
@@ -236,7 +236,7 @@ transition: all 0.2s;
                             <li class="active">
                                 <i class="fa fa-file"></i> Profile Page
                             </li>
-                            <span class="pull-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['firstname']." ".$userrow['firstname']); ?> </b> [<?php echo $level_name; ?>]</p></span>
+                            <span class="pull-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['firstname']." ".$userrow['lastname']); ?> </b> [<?php echo $userrow['type']; ?>]</p></span>
                         </ol>                        
                     </div>
 

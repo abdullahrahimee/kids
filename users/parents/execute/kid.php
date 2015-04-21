@@ -1,4 +1,5 @@
 <?php 
+session_start();
     include 'connect.php';
     include 'functions.php';
         
@@ -226,13 +227,15 @@ transition: all 0.2s;
                                 <i class="fa fa-file"></i> Change Password
                             </li>
                         </ol>
-                        <div class="text-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['firstname']." ".$userrow['firstname']); ?> </b> [<?php echo $level_name; ?>]</p></div> <br />
+                        <div class="text-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['firstname']." ".$userrow['firstname']); ?> </b> [<?php echo $userrow['type']; ?>]</p></div> <br />
 
                     </div>
 
 
                     <!--  start body -->
 <?php 
+
+				
 
 // echo "user id: ".$uid ."<br />";
 
@@ -242,126 +245,7 @@ transition: all 0.2s;
 
 ?>
   <!-- New form -->
-  <div class="container col-md-10" style="align:center">
-   <form action="update_pass.php" method="POST" data-parsley-validate> 
-            <div class="col-md-8">
-
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title"><?php echo ucwords($firstname)." ".ucwords($lastname); ?></h3>
-            </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center"> 
-
-            <div class="card wizard-card ct-wizard-orange" id="wizard">
-                <div class="picture-container">
-                    <div class="picture">
-
-                         
-                    <img alt="User Pic"  src="<?php 
-
-                        if($profile == ''){echo "../../../images/default-avatar.png";}
-                        else{echo $profile;}
-
-
-                    ?>" class="img-responsive">
-                     </div>
-                    
-                </div>
-                    <h6>Profile Picture</h6>
-
-            </div>
-               
-                </div>
-                
-            
-                <div class=" col-md-9 col-lg-9 "> 
-                <?php    
-                    
-                // if(isset($_GET['cpass']) && $_GET['cpass'] != '' && $_GET['cpass']=='correct'){
-                //     echo '<div class="alert alert-success"><b> Success! </b> Recognize current password!</div>';
-
-                // }
-                
-                if(isset($_GET['cpass']) && $_GET['cpass'] != '' && $_GET['cpass']=='fail'){
-                echo '<div class="alert alert-danger"><b> Faild </b> Can`t recognize your current password!</div>';
-
-                }
-
-                if(isset($_GET['pass']) && $_GET['pass'] != '' && $_GET['pass']=='update_done'){
-                    echo '<div class="alert alert-success"><b> Success! </b>Successfully Update your password!</div>';
-
-                }
-
-                if(isset($_GET['pass']) && $_GET['pass'] != '' && $_GET['pass']=='update_faild'){
-                    echo '<div class="alert alert-danger"><b> Faild! </b>Cant  Update your password!</div>';
-
-                }
-
-
-
-
-                ?>
-
-                <div  id='mess'></div>
-                  <table class="table table-user-information">
-
-                    <tbody>
-                 
-                      <br />
-                        <input name="uid" type="hidden" value="<?php echo $uid; ?>">
-                         <input name="sid" type="hidden" value="<?php echo $sid; ?>">
-                         <input name="email" type="hidden" value="<?php echo $email; ?>">
-                      <tr>
-                        <td>Current Password:</td>
-                        <td>
-                            <input type="password" class="form-control border" name="cpass" placeholder="Current password" data-parsley-required="true" data-parsley-length="[6, 14]">
-                       
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>New Password:</td>
-                        <td>
-                            <input type="password" class="form-control border" name="pass" placeholder="New password" data-parsley-required="true" id="anotherfield" data-parsley-length="[6, 14]">
-                       
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>Confirm Password:</td>
-                        <td>
-                            <input type="password" class="form-control border" name="confpass" placeholder="Confirm Password" data-parsley-required="true" data-parsley-equalto="#anotherfield" 
-                                        data-parsley-required="true" data-parsley-equalto-message="Password Not match!">
-                       
-                        </td>
-                      </tr>
-
-                      
-                    </tbody>
-                  </table>
-                
-                </div>
-                
-              </div>
-            </div>
-                     <div class="panel-footer">
-                        <a href="../../../contact.php" data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="fa fa-envelope-o"></i></a>
-                        <span class="pull-right">
-
-                            <button type="submit" class="btn btn-sm btn-success" name="submit" value="submit">Submit</button>
-                 
-                       
-
-                        </span>
-                    </div>
-                <!-- </form> -->
-            
-          </div>               
-    </div>
-    </form>
-    </div>
+  
         <!-- End Form -->
 <!-- ENd body -->
 
@@ -378,6 +262,25 @@ transition: all 0.2s;
         <!-- /#page-wrapper -->
 
     </div>
+    
+    <script>
+		function ac-kid(){
+			var xmlhttp;
+			if(window.XMLHttpRequest){
+				xmlhttp=new XMLHttpRequest();
+			}else{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById("com_count").innerHTML = xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open("GET", "../setting.php?ac_kid=yes&id="+<?php echo $_SESSION['user_id']; ?>, true);
+        	xmlhttp.send();
+		}
+	</script>
+    
     <!-- /#wrapper -->
 <script src="../../student/assets/js/jquery.js"></script>
 
