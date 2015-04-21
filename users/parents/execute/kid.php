@@ -115,6 +115,17 @@ transition: all 0.2s;
     height: 20%;
 
   }
+  .custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    }
 
   .parsley-required{color:red;}
     .parsley-equalto{color:red;}
@@ -148,7 +159,7 @@ transition: all 0.2s;
     <script src="../../../assets/js/parsley.js"></script>
 </head>
 
-<body>
+<body onload="all();">
 
     <div id="wrapper">
 
@@ -226,8 +237,9 @@ transition: all 0.2s;
                             <li class="active">
                                 <i class="fa fa-file"></i> Change Password
                             </li>
+                            <div class="pull-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['firstname']." ".$userrow['firstname']); ?> </b> [<?php echo $userrow['type']; ?>]</p></div>
                         </ol>
-                        <div class="text-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['firstname']." ".$userrow['firstname']); ?> </b> [<?php echo $userrow['type']; ?>]</p></div> <br />
+                        
 
                     </div>
 
@@ -250,6 +262,13 @@ transition: all 0.2s;
 <!-- ENd body -->
 
                 </div>
+                <div class="acc"></div>
+                <div class="row">
+                	<div class="col-md-12 custyle" id="ac_kid"></div>
+                </div>
+                <div class="row">
+                	<div class="col-md-12 custyle" id="no_kid"></div>
+                </div>
 
                 <!-- /.row -->
 
@@ -262,9 +281,14 @@ transition: all 0.2s;
         <!-- /#page-wrapper -->
 
     </div>
-    
     <script>
-		function ac-kid(){
+    	function all(){
+    		ac_kid();
+    		no_kid();
+    	}
+    </script>
+    <script>
+		function ac_kid(){
 			var xmlhttp;
 			if(window.XMLHttpRequest){
 				xmlhttp=new XMLHttpRequest();
@@ -273,14 +297,72 @@ transition: all 0.2s;
 			}
 			xmlhttp.onreadystatechange=function(){
 				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-					document.getElementById("com_count").innerHTML = xmlhttp.responseText;
+					document.getElementById("ac_kid").innerHTML = xmlhttp.responseText;
 				}
 			}
 			xmlhttp.open("GET", "../setting.php?ac_kid=yes&id="+<?php echo $_SESSION['user_id']; ?>, true);
         	xmlhttp.send();
 		}
 	</script>
-    
+	<script>
+		function no_kid(){
+			var xmlhttp;
+			if(window.XMLHttpRequest){
+				xmlhttp=new XMLHttpRequest();
+			}else{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById("no_kid").innerHTML = xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open("GET", "../setting.php?no_kid=yes&id="+<?php echo $_SESSION['user_id']; ?>, true);
+        	xmlhttp.send();
+		}
+	</script>
+	<script>
+		function acc(id){
+			var x=confirm("do you really wana accept this kid");
+			if(x==true){
+			var xmlhttp;
+			if(window.XMLHttpRequest){
+				xmlhttp=new XMLHttpRequest();
+			}else{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById("acc").innerHTML = xmlhttp.responseText;
+					all();
+				}
+			}
+			xmlhttp.open("GET", "../setting.php?acc=yes&id="+id, true);
+        	xmlhttp.send();
+        }
+		}
+	</script>
+    <script>
+		function rej(id){
+			var x=confirm("do you really wana reject this kid");
+			if(x==true){
+			var xmlhttp;
+			if(window.XMLHttpRequest){
+				xmlhttp=new XMLHttpRequest();
+			}else{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById("acc").innerHTML = xmlhttp.responseText;
+					all();
+				}
+			}
+			xmlhttp.open("GET", "../setting.php?rej=yes&id="+id, true);
+        	xmlhttp.send();
+        }
+		}
+	</script>
     <!-- /#wrapper -->
 <script src="../../student/assets/js/jquery.js"></script>
 

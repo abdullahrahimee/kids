@@ -56,10 +56,75 @@ if($co<1){
 	}
 
 }elseif ($_GET['ac_kid']!="") {
-	echo "<table>";
-	while ($count=mysql_fetch_array(mysql_query("SELECT * FROM users WHERE u_id IN (SELECT s_id FROM st_pa WHERE p_id=".$_GET['id']." AND rel='yes')"))) {
-		echo tr
+	$sql=mysql_query("SELECT * FROM users WHERE u_id IN (SELECT s_id FROM st_pa WHERE p_id=".$_GET['id']." AND rel='yes')");
+	echo "<div class='page-header'><h1>Accepted Kids</h1></div>";
+	echo "<table class='table table-striped custab'>";
+	echo "<thead>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Province</th>
+            <th class='text-center'>Action</th>
+        </tr>
+    </thead>";
+    $nu=1;
+	while ($count=mysql_fetch_array($sql)) {
+		echo "<tr>
+				<td>".$nu."</td>
+                <td>".$count['firstname']." ".$count['lastname']."</td>
+                <td>".$count['email']."</td>
+                <td>".$count['phone']."</td>
+                <td>".$count['address']."</td>
+                <td>".$count['province']."</td>
+                <td class='text-center'><a class='btn btn-warning btn-xs' href='' onclick='rej(".$count['u_id'].");'><span class='glyphicon glyphicon-edit'></span> Rej</a>	<a class='btn btn-info btn-xs' href='#'><span class='glyphicon glyphicon-edit'></span> Edit</a> <a href='#' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-remove'></span> Del</a></td>
+            </tr>";
+			$nu++;
 	}
 	echo "</table>";
+}elseif ($_GET['no_kid']!="") {
+	$sql=mysql_query("SELECT * FROM users WHERE u_id IN (SELECT s_id FROM st_pa WHERE p_id=".$_GET['id']." AND rel='no')");
+	echo "<div class='page-header'><h1>Requested Kids</h1></div>";
+	echo "<table class='table table-striped custab'>";
+	echo "<thead>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Province</th>
+            <th class='text-center'>Action</th>
+        </tr>
+    </thead>";
+    $nu=1;
+	while ($count=mysql_fetch_array($sql)) {
+		echo "<tr>
+				<td>".$nu."</td>
+                <td>".$count['firstname']." ".$count['lastname']."</td>
+                <td>".$count['email']."</td>
+                <td>".$count['phone']."</td>
+                <td>".$count['address']."</td>
+                <td>".$count['province']."</td>
+                <td class='text-center'><a class='btn btn-success btn-xs' href='' onclick='acc(".$count['u_id'].");'><span class='glyphicon glyphicon-edit'></span> Acc</a>	<a class='btn btn-info btn-xs' href='#'><span class='glyphicon glyphicon-edit'></span> Edit</a> <a href='#' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-remove'></span> Del</a></td>
+            </tr>";
+			$nu++;
+	}
+	echo "</table>";
+}elseif ($_GET['acc']!='') {
+	if(mysql_query("UPDATE st_pa SET rel='yes' WHERE s_id=".$_GET['id'])){
+		echo "yes";
+	}else{
+		echo "no";
+	}
+}
+elseif ($_GET['rej']!='') {
+	if(mysql_query("UPDATE st_pa SET rel='no' WHERE s_id=".$_GET['id'])){
+		echo "yes";
+	}else{
+		echo "no";
+	}
 }
 ?>
