@@ -18,8 +18,6 @@
         $username=$run_user['firstname']; 
         $s_id=$run_user['s_id'];
 
-        $query=mysql_query("SELECT * FROM course");
-
 
       
 
@@ -92,7 +90,7 @@ $lastname=$run_user['lastname'];
 
 </head>
 
-<body>
+<body onload="allof();">
 
     <div id="wrapper">
 
@@ -204,56 +202,34 @@ $lastname=$run_user['lastname'];
             </div>
 
             <div id="mess"> </div>
-            <table class="table table-hover">
-                <thead>
-                    <tr class="filters" align="center">
-                         <th> <input type="text" class="form-control" placeholder="ID" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Course Name" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Categorie" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Description" disabled></th>
-                         <th><input type="text" class="form-control" placeholder="Fee" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Start Date" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="End Date" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Start Time" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="End Time" disabled></th>
-                        <th> + Join </th>
- </tr>
-                   
-                </thead>
-                <tbody>
-                   
-    <?php while($result=mysql_fetch_assoc($query)){ ?>
-            <tr>
-     <td><?php echo $result['c_id'] ?></td>
-     <td><?php echo $result['name'] ?></td>
-     
-     <td><?php $course_name=mysql_fetch_array(mysql_query("SELECT * FROM course_category WHERE id=".$result['category_id']));
-     echo $course_name['name']; ?></td>
+            <div id="course"> </div>
 
-     <td><?php echo $result['des'] ?></td>
-     <td><?php echo $result['fee'] ?></td>
-     <td><?php echo $result['start_date'] ?></td>
-     <td><?php echo $result['end_date'] ?></td>
-     <td><?php echo $result['start_time'] ?></td>
-     <td><?php echo $result['end_time'] ?></td>
-        
-<td><p><?php
-     $que=mysql_query("SELECT * FROM stu_join WHERE c_id=".$result['c_id']." AND s_id=".$s_id);
-     @$num=mysql_num_rows($que);
-if ($num!=1) {
-  echo '<button onclick="join('.$result['c_id'].')"  class="btn btn-success btn-sm" style="width:75px"><span>  <b> + Join </b></span></button>';
-}else{
-  echo '<button onclick="unjoin('.$result['c_id'].')"  class="btn btn-danger btn-sm"><span>  <b> + Un Join </b></span></button>';
-}
-     ?></p></td>
 
-        </tr>
-             <input type="hidden" id="c_id" value="<?php echo $result['c_id']; ?>">
-        <?php } ?>
-    
-    
-                </tbody>
-            </table>
+
+
+		<script>
+    	function allof (){
+    		course();
+    	}
+    </script>
+    <script>
+		function course(){
+			var xmlhttp;
+			if(window.XMLHttpRequest){
+				xmlhttp=new XMLHttpRequest();
+			}else{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById("course").innerHTML = xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open("GET", "../setting.php?cou=yes&id="+<?php echo $_SESSION['user_id']; ?>, true);
+        	xmlhttp.send();
+		}
+	</script>
+
 
              <!-- Start- ajax for join course -->
         <script type="text/javascript">

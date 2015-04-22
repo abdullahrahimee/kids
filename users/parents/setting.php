@@ -172,6 +172,44 @@ elseif ($_GET['rej']!='') {
 	}else{
 		echo "<div class='alert alert-warning'>Failed to delete this request</div>";
 	}
+}elseif ($_GET['cou']!='') {
+			echo '<table class="table table-hover">
+                <thead>
+                    <tr class="filters" align="center">
+                         <th> <input type="text" class="form-control" placeholder="ID" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Course Name" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Categorie" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Description" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="Fee" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Start Date" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="End Date" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Start Time" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="End Time" disabled></th>
+                        <th> + Join </th>
+ </tr>
+                   
+                </thead>
+                <tbody>';
+	$query=mysql_query("SELECT * FROM course WHERE c_id IN (SELECT c_id FROM stu_join WHERE u_id IN (SELECT s_id FROM st_pa WHERE p_id=".$_GET['id']." AND rel='yes' ))");
+	while($result=mysql_fetch_array($query)){
+echo '<tr>
+     <td>'. $result['c_id'].'</td>
+     <td>'. $result['name'].'</td>
+     
+     <td>'.$result['catagory'].'</td>
+
+     <td>'.$result['des'].' </td>
+     <td>'.$result['fee'] .'</td>
+     <td>'.$result['start_date'].'</td>
+     <td>'.$result['end_date'].'</td>
+     <td>'. $result['start_time'] .'</td>
+     <td>'.$result['end_time'].' </td>
+     <td></td>
+     </tr>
+    <input type="hidden" id="c_id" value="'.$result['c_id'].'">';
+	}
+echo '</tbody>
+            </table>';
 }else{
 	echo "noo";
 }
