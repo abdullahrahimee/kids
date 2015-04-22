@@ -10,7 +10,7 @@
 // Select database
 
 	if (!$db) {
-	die ("Unable to select database" );
+	die ("Unable to select database");
 	}
 
 ?>
