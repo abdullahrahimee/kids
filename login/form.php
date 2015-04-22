@@ -1,5 +1,5 @@
 <?php 
-include("../languages/en.php");
+include("../languages/language.php");
 	include 'header.php'; 
 	@$action=$_GET['action'];
 	@$login=$_GET['login']; //passed from auth.php

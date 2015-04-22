@@ -1,7 +1,8 @@
-<?php 	include("../login/header.php");
+<?php 	
+        include("../languages/language.php");
  	 	include '../users/student/execute/connect.php';
  		include '../users/student/execute/functions.php'; 
-
+        include("../login/header.php");
 			// if(!loggedin()){ //if the user does not loggedin
 			// header('location: ../login/form.php?login=invalid');
 			// 	}
@@ -91,7 +92,7 @@
 										<input type="password" name="pass"  class="form-control" id="anotherfield" data-parsley-required="true" data-parsley-length="[6, 14]"> 
 									</div>
 									<div class="col-sm-6">
-										<label><?= $index_register_confirm_password ?><span class="text-danger"/>*</span></label>
+										<label><?= $index_register_confrim_password ?><span class="text-danger"/>*</span></label>
 										<input type="password" name="confpass" class="form-control"   data-parsley-equalto="#anotherfield" 
 										data-parsley-required="true" data-parsley-equalto-message="<?= $index_register_not_match_p ?>">
 									</div>

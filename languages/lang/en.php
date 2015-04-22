@@ -1,7 +1,7 @@
 <?php
     
     $pre_school_msg = "Preshool and primary education for kids";
-    $h4_1_msg = "TechKids is a technology education lab for children, aged 3-12, to learn Coding, Design and Making. It offers pre-school, primary school classes.";
+    $index_h4_msg = "TechKids is a technology education lab for children, aged 3-12, to learn Coding, Design and Making. It offers pre-school, primary school classes.";
     $index_1_msg= "TechKids Highlights";
     $index_2_msg="Technology education lab for children";
     $index_3_msg="We teach kids coding, designing, and making";

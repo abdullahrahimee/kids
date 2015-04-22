@@ -59,7 +59,7 @@
 			});
 		</script>
 		<!-- //Owl Carousel Assets -->
-		<!-----768px-menu----->
+		<!---768px-menu-->
 		<link type="text/css" rel="stylesheet" href="assets/css/jquery.mmenu.all.css" />
 		<script type="text/javascript" src="assets/js/jquery.mmenu.js"></script>
 			<script type="text/javascript">

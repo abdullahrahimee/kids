@@ -1,5 +1,5 @@
 <?php
-include("../../languages/en.php");
+include("../../languages/language.php");
 session_start();
 ?>
 <!DOCTYPE >
