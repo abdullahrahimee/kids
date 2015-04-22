@@ -1,8 +1,11 @@
+	<?php 
+         include("languages/language.php");
+	?>
 	<div class="footer">
 				<div class="wrap">
 					<div class="footer-left">
-						<h3>About TechKids</h3>
-						<p>TechKids is a technology education lab for children teaching Coding, Design and Making. We offer full time and part time pre-school, primary school classes, and after school workshops for children aged 3-12.</p>
+						<h3><?= $index_footer_1 ?></h3>
+						<p><?= $index_footer_content_msg ?></p>
 						
 					<div class="soc_icons soc_icons1">
 							<ul>
@@ -15,22 +18,22 @@
 					</div>
 					</div>
 					<div class="footer-right">
-						<h3>Countact US</h3>
+						<h3><?= $index_footer_2_title ?></h3>
 						<div class="comments1">
 							<address class="add">
-							<strong>TechKids, TechNation Compound</strong>
+							<strong><?= $index_footer_3_title ?></strong>
 							<br>
-								Next to Amarkhel Clinic
+								<?= $index_footer_4_title ?>
 								<br>
-								5th Street Seelo
+								<?= $index_footer_5_title ?>
 								<br>
-								Deh Naw-e-Dehboori
+								<?= $index_footer_6_title ?>
 								<br>
-								Kabul, Afghanistan
+								<?= $index_footer_7_title ?>
 								<br>
-								Phone: (+93) (0) 788 161 862
+								<?= $index_footer_8_title ?>
 								<br>
-								Email: kids@technation.af
+								<?= $index_footer_9_email ?>: kids@technation.af
 							</address>
 						</div>
 						

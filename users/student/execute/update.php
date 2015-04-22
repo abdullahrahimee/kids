@@ -15,7 +15,8 @@ $email= $_GET['email'];
 $phone= $_GET['phone'];
 
 if($id != '' && $firstname != '' && $email != ''){
-	if(mysql_query("UPDATE users SET firstname='".$firstname."',lastname='".$lastname."',fname='".$fname."',address='".$address."',province='".$province."',gender='".$gender."',b_date='".$birth."',email='".$email."',phone='".$phone."' WHERE u_id=".$id) ){	
+	if(mysql_query("UPDATE students SET firstname='".$firstname."',lastname='".$lastname."',fname='".$fname."',address='".$address."',province='".$province."',gender='".$gender."',birth_date='".$birth."',email='".$email."',phone='".$phone."' WHERE s_id=".$id) 
+		&& mysql_query("UPDATE users SET username='".$firstname."',email='".$email."' WHERE id=".$uid)){	
 		
 		
 		 echo '<div class="alert alert-success"> You have successfully update </div>';

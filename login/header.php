@@ -1,3 +1,6 @@
+<?php 
+   include("languages/en.php");
+?>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -6,7 +9,7 @@
       type="image/png" 
       href="../images/tkfav.png">
 
-<title>TechKids</title>
+<title><?= $index_header_main_title ?></title>
 	
 	
 	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
@@ -56,12 +59,12 @@ ga('create', 'UA-30027142-1', '.com');
 			<div class="navbar-collapse collapse">
 			
 				<ul class="nav navbar-nav pull-right">
-				<li><a href="../index.php">Home</a></li>
-					<li><a href="../about.php">About us</a></li>
-						<li><a href="../curriculum.php">Curriculum </a></li>
-						<li><a href="../methodology.php">Methodology</a></li>
-						<li><a href="../gallery/examples/gallery.html">Gallrey</a></li>
-						<li><a href="../contact.php">Contact Us</a></li>
+				<li><a href="../index.php"><?= $index_header_1_msg ?></a></li>
+					<li><a href="../about.php"><?= $index_header_2_msg ?></a></li>
+						<li><a href="../curriculum.php"><?= $index_header_2_msg ?></a></li>
+						<li><a href="../methodology.php"><?= $index_header_2_msg ?></a></li>
+						<li><a href="../gallery/examples/gallery.html"><?= $index_header_2_msg ?></a></li>
+						<li><a href="../contact.php"><?= $index_header_2_msg ?></a></li>
 			
 				</ul>
 			</div><!--/.nav-collapse -->

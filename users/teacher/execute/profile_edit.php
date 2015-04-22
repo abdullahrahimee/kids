@@ -3,23 +3,23 @@
     include 'auth.php';
     // include '../../student/execute/functions.php';
 
-        $selectuser = mysql_query("SELECT * FROM users WHERE u_id = '".$_SESSION['user_id']."'");
+        $selectuser = mysql_query("SELECT * FROM users WHERE id = '".$_SESSION['user_id']."'");
         $userrow = mysql_fetch_array($selectuser);
-        $user_level=$userrow['type'];
+        $user_level=$userrow['user_level'];
 
-        $sql=mysql_query("select * from users where email = '".$userrow['email']."'");
+        $sql=mysql_query("select * from teachers where email = '".$userrow['email']."'");
         $row=mysql_fetch_array($sql);
         
-        $query_level = mysql_query("SELECT name FROM users where u_id='$user_level'");
+        $query_level = mysql_query("SELECT name FROM user_level where id='$user_level'");
         $run_level=mysql_fetch_array($query_level);
-        $level_name=$run_level['type']; 
+        $level_name=$run_level['name']; 
         
 
 
 //Read and Store teachers informations
 
-$tea_id=$userrow['u_id'];
-$user_id=$userrow['u_id'];
+$tea_id=$row['t_id'];
+$user_id=$userrow['id'];
 
 $firstname=$row['firstname'];  
 $lastname=$row['lastname'];
@@ -29,8 +29,9 @@ $email=$row['email'];
 $password=$row['password'];
 $gender=$row['gender'];
 $province=$row['province'];
-$birth_date=$row['b_date'];
+$birth_date=$row['birth_date'];
 $profile=$row['profile'];
+
 
 ?>
 
@@ -165,7 +166,7 @@ transition: all 0.2s;
             <ul class="nav navbar-right top-nav">
                
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userrow['firstname']." ".$userrow['lastname']; ?> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo @$userrow['username']; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         
                         
@@ -207,7 +208,7 @@ transition: all 0.2s;
                     <div class="col-lg-12">
 
                         <h1 class="page-header">
-                             <?php echo ucwords($userrow['firstname']." ".$userrow['lastname']); ?>
+                             <?php echo ucwords($userrow['username']); ?>
                             <small>Profile</small>
                            
                         </h1>
@@ -222,7 +223,7 @@ transition: all 0.2s;
                             </li>
                         </ol>
 
-                        <div class="text-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['firstname']." ".$userrow['lastname']); ?> </b> [<?php echo $userrow['type']; ?>]</p></div>
+                        <div class="text-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['username']); ?> </b> [<?php echo $level_name; ?>]</p></div>
                     </div>
 
 <!--  //start All the text for body -->
@@ -266,7 +267,7 @@ transition: all 0.2s;
         // echo $file_path;
         move_uploaded_file($file_temp, $file_path);
 
-        mysql_query("UPDATE users SET `profile` = '" .mysql_real_escape_string($file_path) . "' WHERE `u_id` = " . $tea_id); //int: prvent sql injunction //$tea_id should be int
+        mysql_query("UPDATE `teachers` SET `profile` = '" .mysql_real_escape_string($file_path) . "' WHERE `t_id` = " . $tea_id); //int: prvent sql injunction //$tea_id should be int
         }
 
         if(isset($_FILES['profile']) === true){
@@ -335,7 +336,7 @@ transition: all 0.2s;
             <div class="panel-heading">
             
 
-              <h3 class="panel-title"><?php echo ucwords($userrow['firstname']." ".$userrow['lastname']); ?></h3>
+              <h3 class="panel-title"><?php echo ucwords($firstname)." ".ucwords($lastname); ?></h3>
             </div>
 
 

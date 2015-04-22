@@ -12,7 +12,7 @@ $cid=$_GET['c_id'];
 
 
 
-	$query ="INSERT INTO stu_join VALUES($sid,$cid)";
+	$query ="INSERT INTO stu_join VALUES($cid,$sid)";
 	$run_query = mysql_query($query);
 	if($run_query)
 	{
@@ -43,7 +43,7 @@ $cid=$_GET['c_id'];
 // echo $sid;
 // echo $cid;
 
-	$query ="DELETE FROM stu_join WHERE c_id=$cid AND u_id=$sid";
+	$query ="DELETE FROM stu_join WHERE c_id=$cid AND s_id=$sid";
 	$run_query = mysql_query($query);
 	if($run_query)
 	{

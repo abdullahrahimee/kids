@@ -7,26 +7,26 @@ $nu=mysql_num_rows(mysql_query("SELECT * FROM forgot WHERE email='".$email."'"))
 	if($nu!=1){
 $em=$email.rand();
 $key=md5($em);
-$link="<a href='http://localhost/kids/admin/control/change.php?activate=".$key."&email=".$email."'>Yes I want to change my password!!</a>";
+$link="<a href='http://localhost/kids/admin/control/change.php?activate=".$key."&email=".$email."'><?= $index_email_msg ?></a>";
 define('line', '\n\t');
 $subject="Password recovery-change";
-$message="dear sir".line."You can change your TechKids account password by clickin the bellow link:".line.$link;
+$message="<?= $index_email_0_msg ?>".line."<?= $index_email_1_msg ?>".line.$link;
 if(mysql_query("INSERT INTO forgot VALUES(NULL,'".$email."','".$key."')")){
 
 	if(mail($email, $subject, $message,"From:Kids@Technation.af")){
-	$err='<div class="alert alert-success">An email hass been sent to " '.$email.' " please check your email and confirm it.</div>';	
+	$err='<div class="alert alert-success"><?= $index_email_2_msg ?> " '.$email.' " <?= $index_email_3_msg ?></div>';	
 	}else{
-		$err='<div class="alert alert-warning">Failed to sent email Please try again</div>';
+		$err='<div class="alert alert-warning"><?= $index_email_4_msg ?></div>';
 	}
 	
 }else{
-	$err='<div class="alert alert-danger">Failed to change your password please try again later.</div>';
+	$err='<div class="alert alert-danger"><?= $index_email_5_msg ?></div>';
 }
 	}else{
-		$err='<div class="alert alert-danger">We have sent an email to '.$email.' please check your email .</div>';
+		$err='<div class="alert alert-danger"><?= $index_email_6_msg ?>'.$email.' <?= $index_email_7_msg ?></div>';
 	}
 }else{
-	$err='<div class="alert alert-danger">there is no account with this email please <a href="../../login/form.php">Register</a> Your self.</div>';
+	$err='<div class="alert alert-danger"><?= $index_email_8_msg ?><a href="../../login/form.php">Register</a> <?= $index_email_9_msg ?></div>';
 }
  ?>
 <!DOCTYPE >

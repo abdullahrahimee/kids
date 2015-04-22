@@ -11,7 +11,7 @@ include 'connect.php';
 
 		if($_GET['c_id']!=''){
 
-    $result=mysql_query("SELECT * FROM materials WHERE c_id=".$_GET['c_id']);
+    $result=mysql_query("SELECT * FROM materials WHERE course_id=".$_GET['c_id']);
     
 if(mysql_num_rows($result)<1){echo "<div class='alert alert-danger text-center'><b> Sorry! </b> <br /> No Materials Found </div>";}
 else{ while ($rows = mysql_fetch_assoc($result)) {   

@@ -1,6 +1,26 @@
+<?php 
+   include("languages/language.php");
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
+<style type="text/css">
+	ol{
+		list-style-type: none;
+	   
+        position: relative;
+        top: 20px;
+        color: #fff;
+	}
+	ol li
+	{
+		display: inline;
+		float: left;
+		padding-right: 3px;
+	    
+	}
+	ol li a{color: #fff;}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="icon" type="image/png" href="images/tkfav.png">
@@ -78,19 +98,25 @@ ga('create', 'UA-30027142-1', '.com');
 		</div>
 			</div>
 			<div class="navbar-collapse collapse">
-			
+			    <ol class="pull-left">
+			    <li><a href="index.php?lang=en">English|</a> </li>
+				<li><a href="index.php?lang=da">Dari|</a> </li>
+				<li><a href="index.php?lang=ps">Pahto</a> </li>
+			    </ol>
 				<ul class="nav navbar-nav pull-right">
-				<li><a href="index.php">Home</a></li>
-					<li><a href="about.php">About Us</a></li>
-						<li><a href="curriculum.php">Curriculum </a></li>
-						<li><a href="methodology.php">Methodology</a></li>
+				<li><a href="index.php"><?= $index_header_1_msg ?></a></li>
+					<li><a href="about.php"><?= $index_header_2_msg ?></a></li>
+						<li><a href="curriculum.php"><?= $index_header_3_msg ?></a></li>
+						<li><a href="methodology.php"><?= $index_header_4_msg ?></a></li>
 						<!--<li><a href="resources.php">Resources</a></li>-->
-						<li><a href="gallery/examples/gallery.html">Gallery</a></li>
-						<li><a href="contact.php">Contact Us</a></li>
+						<li><a href="gallery/examples/gallery.html"><?= $index_header_5_msg ?></a></li>
+						<li><a href="contact.php"><?= $index_header_6_msg ?></a></li>
 					<li><a  href="login/form.php">Log In</a></li>
+
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
 	</div> 
 	<!-- /.navbar -->
 	</html>
+	 

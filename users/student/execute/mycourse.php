@@ -7,20 +7,22 @@
         session_destroy();
         }
 
-        $selectuser = mysql_query("SELECT * FROM users WHERE u_id = '".$_SESSION['user_id']."'");
+        $selectuser = mysql_query("SELECT * FROM users WHERE id = '".$_SESSION['user_id']."'");
         $userrow = mysql_fetch_array($selectuser);
-        $users_id=$userrow['u_id']; //id no of users in users table
-        $uname=$userrow['firstname']." ".$userrow['lastname'];
+        $users_id=$userrow['id']; //id no of users in users table
+        $uname=$userrow['username'];
         $uemail=$userrow['email'];
 
-        $username=$userrow['firstname']." ".$userrow['lastname']; 
-        $s_id=$userrow['u_id'];
+        $user_query=mysql_query("SELECT * FROM students WHERE firstname='".$uname."' AND email='".$uemail."'");
+        $run_user = mysql_fetch_array($user_query);
+        $username=$run_user['firstname']; 
+        $s_id=$run_user['s_id'];
 
         // $query=mysql_query("SELECT * FROM course");
 
 
         
-$user_query2=mysql_query("SELECT * FROM stu_join WHERE u_id=$s_id");
+$user_query2=mysql_query("SELECT * FROM stu_join WHERE s_id=$s_id");
 $co="";
 while($run_user2= mysql_fetch_array($user_query2)){
 $co.=$run_user2['c_id'].",";
@@ -32,8 +34,8 @@ $query=mysql_query("SELECT * FROM course WHERE c_id IN (".$co.")");
 
 //Read and Store students informations
 
-$firstname=$userrow['firstname'];  
-$lastname=$userrow['lastname'];
+$firstname=$run_user['firstname'];  
+$lastname=$run_user['lastname'];
 
 ?>
 
@@ -118,7 +120,7 @@ $lastname=$userrow['lastname'];
             <ul class="nav navbar-right top-nav">
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userrow['firstname']." ".$userrow['lastname']; ?> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userrow['username']; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#..//execute/profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -247,8 +249,8 @@ $lastname=$userrow['lastname'];
      <td><?php echo $result['c_id'] ?></td>
      <td><?php echo $result['name'] ?></td>
 
-     <td><?php 
-     echo $result['catagory']; ?></td>
+     <td><?php $course_name=mysql_fetch_array(mysql_query("SELECT * FROM course_category WHERE id=".$result['category_id']));
+     echo $course_name['name']; ?></td>
 
      <td><?php echo $result['des'] ?></td>
      <td><?php echo $result['fee'] ?></td>
@@ -258,7 +260,7 @@ $lastname=$userrow['lastname'];
      <td><?php echo $result['end_time'] ?></td>
         
 <td><p><?php
-     $que=mysql_query("SELECT * FROM materials WHERE c_id=".$result['c_id']."");
+     $que=mysql_query("SELECT * FROM materials WHERE course_id=".$result['c_id']."");
   
 
   echo '<button onclick="download('.$result['c_id'].')"  class="btn btn-success btn-sm fa fa-download" style="width:75px" data-toggle="modal" data-target="#myModal"></button>';

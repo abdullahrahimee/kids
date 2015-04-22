@@ -1,4 +1,5 @@
 <?php
+include("../../languages/en.php");
 session_start();
 ?>
 <!DOCTYPE >
@@ -33,16 +34,16 @@ session_start();
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 		<form role="form" method="post" action="email.php">
 			<fieldset>
-				<h2>Forget your password?</h2>
-				<p>Please Enter your email for changeing your password</p>
+				<h2><?= $index_forget_h2 ?></h2>
+				<p><?= $index_forget_msg ?></p>
 				<hr class="colorgraph">
 				<div class="form-group">
-                    <input type="text" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
+                    <input type="text" name="email" id="email" class="form-control input-lg" placeholder="<?= $index_forget_btn ?>">
 				</div>
 				<hr class="colorgraph">
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6">
-                        <input type="submit" class="btn btn-lg btn-success btn-block" value="Submit">
+                        <input type="submit" class="btn btn-lg btn-success btn-block" value="<?= $index_forget_0_btn ?>">
 					</div>
 				</div>
 			</fieldset>

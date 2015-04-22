@@ -1,4 +1,4 @@
-<?php 	require '../login/header.php';
+<?php 	include("../login/header.php");
  	 	include '../users/student/execute/connect.php';
  		include '../users/student/execute/functions.php'; 
 
@@ -27,12 +27,12 @@
 				<div class="wrap">
 					<div class="about">
 					<div class="photo">
-					<h3 class="heading">Registeration</h3>
+					<h3 class="heading"><?= $index_register_h3 ?></h3>
 					
 				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 					<div class="panel panel-default">
 						<div class="panel-body">
-						<h3 class="thin text-center">Register a new account</h3>
+						<h3 class="thin text-center"><?= $index_register_0_h3 ?></h3>
 						<hr> 
 <style type="text/css">
 	.parsley-required{color:red;}
@@ -50,7 +50,7 @@
 			$email=$_POST['email'];
 
 				if(empty($username) || empty($password) || empty($email)){ 
-					echo "<p style='color:red'>Error: Feild Empty!</p>"; 
+					echo "<p style='color:red'><?= $index_register_1_h3 ?></p>"; 
 				}
 				else{ 	
 																	// id firstname lastname phone address email gender password, rooll	
@@ -59,68 +59,48 @@
 						mysql_query("INSERT INTO users VALUES('', '$username','$password','$email','2','a')");
 						mysql_query("INSERT INTO teachers(t_id, firstname, email, password) VALUES ('', '$username', '$email', '$password')");
 						// echo "<p>Succssfully Registered!</p>";
-						header('location: ../login/form.php?reg=done');
+						header('location:../login/form.php?reg=done');
 						}
 						else if(isset($_GET['role']) && $_GET['role']=='student'){ 
 						mysql_query("INSERT INTO users VALUES('','$username','$password','$email','3','a')");
 						mysql_query("INSERT INTO students(s_id, firstname, email, password) VALUES('', '$username', '$email', '$password')");
-						 if($_POST['parent']=='yes'){
-						 	header('location:register.php?role=parents');
-						 }else{
-						header('location: ../login/form.php?reg=done'); 	
-						 }
-						// echo "<p>Succssfully Registered!</p>";
-						
-						}else if(isset($_GET['role']) && $_GET['role']=='parents'){ 
-						mysql_query("INSERT INTO users VALUES('','$username','$password','$email','4','a')");
-						mysql_query("INSERT INTO parent(p_id, firstname, email, password) VALUES('', '$username', '$email', '$password')");
 						 
 						// echo "<p>Succssfully Registered!</p>";
 						header('location: ../login/form.php?reg=done');
 						}
 
-						else { echo "<p style='color:red'> Registeration Faild!, Try Again Later!!!</p>"; 
+						else { echo "<p style='color:red'> <?= $index_register_msg ?></p>"; 
 								header('location: ../login/form.php?reg=fail');
 							}
 				}
 			}
 	?>
 								<div class="top-margin">
-									<label>username</label>
+									<label><?= $index_register_username ?></label>
 									<input type="text" class="form-control" name="username" data-parsley-required="true" />
 								</div>
 								
 								<div class="top-margin">
-									<label>Email</label>
+									<label><?= $index_register_email ?></label>
 									<input type="text" name="email" class="form-control" data-parsley-required="true" />
 								</div>
 
 								<div class="row top-margin">
 									<div class="col-sm-6">
-										<label>Password <span class="text-danger"/>*</span></label>
+										<label><?= $index_register_0_msg ?><span class="text-danger"/>*</span></label>
 										<input type="password" name="pass"  class="form-control" id="anotherfield" data-parsley-required="true" data-parsley-length="[6, 14]"> 
 									</div>
 									<div class="col-sm-6">
-										<label>Confirm Password <span class="text-danger"/>*</span></label>
+										<label><?= $index_register_confirm_password ?><span class="text-danger"/>*</span></label>
 										<input type="password" name="confpass" class="form-control"   data-parsley-equalto="#anotherfield" 
-										data-parsley-required="true" data-parsley-equalto-message="Password does not match">
+										data-parsley-required="true" data-parsley-equalto-message="<?= $index_register_not_match_p ?>">
 									</div>
 								</div>
-								<br />
-								<?php
-								if ($_GET['role']=='student') {
-									echo '<div class="row"><div class="col-md-6">have your parent registed yet?</div>
-								<div class="col-md-3"><input type="radio" value="yes" name="parent"/>Yes</div>
-								<div class="col-md-3"><input type="radio" value="no" name="parent"/>No</div>
-								</div>';
-								}
-								?>
-								<div class="row">
 
-										<div class="col-md-6 pull-left">
-										<br /> <button type="submit" class="btn btn-action pull-right" name="submit">Register</button>
+										<div class="col-md-6">
+										<br /> <button type="submit" class="btn btn-action pull-right" name="submit"><?= $index_register_btn ?></button>
 										</div>
-								</div> 
+								  	</div> 
 						</form>
 				
 			</article>

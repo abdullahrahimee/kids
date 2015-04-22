@@ -4,21 +4,24 @@ include 'auth.php';
 
 // include '../../users/student/execute/functions.php';
 $my_id = $_SESSION['user_id']; 
-$user_query1=mysql_query("SELECT * FROM users WHERE u_id=$my_id");
+$user_query1=mysql_query("SELECT * FROM users WHERE id=$my_id");
 $run_user1 = mysql_fetch_array($user_query1);
 
-$uname=$run_user1['firstname']." ".$run_user1['lastname']; 
-$uid=$run_user1['u_id'];
+$uname=$run_user1['username']; 
+$uid=$run_user1['id'];
 $upass=$run_user1['password'];
 $uemail=$run_user1['email'];
-$user_level=$run_user1['type'];
+$user_level=$run_user1['user_level'];
 
 
-$username=$run_user1['firstname']." ".$run_user1['lastname'];
-$t_id=$run_user1['u_id'];
+
+$user_query=mysql_query("SELECT * FROM teachers WHERE firstname='".$uname."' AND email='".$uemail."'");
+$run_user = mysql_fetch_array($user_query);
+$username=$run_user['firstname']; 
+$t_id=$run_user['t_id'];
 
 
-$user_query2=mysql_query("SELECT * FROM join_course WHERE u_id=$t_id");
+$user_query2=mysql_query("SELECT * FROM join_course WHERE t_id=$t_id");
 
 $co="0";
 while($run_user2= mysql_fetch_array($user_query2)){

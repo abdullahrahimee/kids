@@ -4,12 +4,12 @@ include 'execute/connect.php';
 include 'execute/functions.php';
 include 'execute/auth.php';
 
-mysql_connect('localhost', 'root', 'root');
-mysql_select_db('newkids');
+mysql_connect('localhost', 'root', '123');
+mysql_select_db('techkids');
 
 //echo $_SESSION['user_id']; //show the user which currently login
 
-$userselect = mysql_query("SELECT * FROM users WHERE u_id = '" . $_SESSION['user_id'] . "'");
+$userselect = mysql_query("SELECT * FROM users WHERE id = '" . $_SESSION['user_id'] . "'");
 $userrow = mysql_fetch_array($userselect);
 ?>
 <!DOCTYPE html>
@@ -65,7 +65,7 @@ $userrow = mysql_fetch_array($userselect);
 
         <!-- //Edit Profile Options -->
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userrow['firstname']." ".$userrow['lastname']; ?> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userrow['username']; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="execute/profile_edit.php"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -107,7 +107,7 @@ $userrow = mysql_fetch_array($userselect);
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            <?php echo ucwords($userrow['firstname']." ".$userrow['lastname']); ?> <small>Dashboard</small>
+                            <?php echo ucwords($userrow['username']); ?> <small>Dashboard</small>
                        
                                  
                         </h1>

@@ -14,8 +14,8 @@ if ($num == 1) {
     <div id="alert"></div>
 			<fieldset>
 			<hr class="colorgraph">
-				<h2>WHO ARE YOU!!</h2>
-				<p>you are Not a member of this site please <a href"register/">Register</a></p>
+				<h2><?= $index_chang_h2 ?></h2>
+				<p><?= $index_chang_msg ?><a href"register/"><?= $index_chang_0_msg ?></a></p>
 				<hr class="colorgraph">
 				</div>
 			</fieldset>
@@ -29,7 +29,7 @@ if ($num == 1) {
 			<fieldset>
 			<hr class="colorgraph">
 				<h2>Expired!!</h2>
-				<p>This link has been Expired</p>
+				<p><?= $index_chang_1_msg ?></p>
 				<hr class="colorgraph">
 				</div>
 			</fieldset>
@@ -42,14 +42,14 @@ if ($num == 1) {
     <div id="alert"></div>
 		<form role="form" method="post" action="change.php" onsubmit="return check();">
 			<fieldset>
-				<h2>Change your password</h2>
-				<p>Please enter your new password to change it</p>
+				<h2><?= $index_chang_2_msg ?></h2>
+				<p><?= $index_chang_3_msg ?></p>
 				<hr class="colorgraph">
 				<div class="form-group">
-                    <input type="password" name="pass" id="pass" class="form-control input-lg" placeholder="Enter new password">
+                    <input type="password" name="pass" id="pass" class="form-control input-lg" placeholder="<?= $index_chang_placeholder ?>">
 				</div>
 				<div class="form-group">
-                    <input type="password"  onkeyup="same();" name="re_pass" id="re_pass" class="form-control input-lg" placeholder="Confirm your password">
+                    <input type="password"  onkeyup="same();" name="re_pass" id="re_pass" class="form-control input-lg" placeholder="<?= $index_chang_0_placeholder ?>">
                     <span id="err"></span>
 				</div>
 				<hr class="colorgraph">
@@ -57,7 +57,7 @@ if ($num == 1) {
 					<div class="col-xs-6 col-sm-6 col-md-6">
 						<input type="hidden" name="email" value="' . $_SESSION['email'] . '">
 						<input type="hidden" name="activate" value="' . $_SESSION['activate'] . '">
-                        <input type="submit" name="submit" class="btn btn-lg btn-success btn-block" value="Submit">
+                        <input type="submit" name="submit" class="btn btn-lg btn-success btn-block" value="<?= $index_chang_btn ?>">
 					</div>
 				</div>
 			</fieldset>
@@ -115,8 +115,8 @@ if ($num == 1) {
     <div id="alert"></div>
 			<fieldset>
 			<hr class="colorgraph">
-				<h2>WHO ARE YOU!!</h2>
-				<p>you are no a member of this site please <a href"register/">Register</a></p>
+				<h2><?= $index_chang_0_h2 ?></h2>
+				<p><?= $index_chang_4_msg ?> <a href"register/">Register</a></p>
 				<hr class="colorgraph">
 				</div>
 			</fieldset>
@@ -129,8 +129,8 @@ if ($num == 1) {
     <div id="alert"></div>
 			<fieldset>
 			<hr class="colorgraph">
-				<h2>Expired!!</h2>
-				<p>This link has been Expired</p>
+				<h2><?= $index_chang_5_msg ?></h2>
+				<p><?= $index_chang_6_msg ?></p>
 				<hr class="colorgraph">
 				</div>
 			</fieldset>
@@ -143,8 +143,8 @@ if ($num == 1) {
     <div id="alert"></div>
 			<fieldset>
 			<hr class="colorgraph">
-				<h2>Success!!</h2>
-				<p>You have successfully changed your password. Please <a href="../../login/form.php">Login</a></p>
+				<h2><?=$index_chang_1_h2 ?></h2>
+				<p><?= $index_chang_7_msg ?><a href="../../login/form.php">Login</a></p>
 				<hr class="colorgraph">
 				</div>
 			</fieldset>
@@ -209,9 +209,9 @@ session_destroy();
 				var pass = document.getElementById("pass").value;
 				var re_pass = document.getElementById("re_pass").value;
 				if (pass == re_pass) {
-					document.getElementById("err").innerHTML = "<p style='color:green'>Your password match</p>";
+					document.getElementById("err").innerHTML = "<p style='color:green'><?= $index_chang_passoword_match ?></p>";
 				} else {
-					document.getElementById("err").innerHTML = "<p style='color:red'>Your password dose not match</p>";
+					document.getElementById("err").innerHTML = "<p style='color:red'><?= $index_chang_password_not_match ?></p>";
 				}
 			}
 		</script>

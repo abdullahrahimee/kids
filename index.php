@@ -1,4 +1,6 @@
-<?php require 'header.php'; ?>
+<?php require 'header.php';	
+   include("languages/language.php");
+ ?>
 <br>
 
 <!---start-banner---->
@@ -7,6 +9,7 @@
 				<script src="assets/js/scripts-f0e4e0c2.js" type="text/javascript"></script>
 			<div class="banner" id="move-top">
 				<!----start-image-slider---->
+
 					<div data-scroll-reveal="enter bottom but wait 0.7s" class="img-slider" id="home">
 						<div class="wrap">
 							<div class="slider">
@@ -14,8 +17,8 @@
 								  <li>
 								    <a href="#slide1">
 								    </a>
-								    <div data-scroll-reveal="enter bottom but wait 0.7s" class="slider-detils">
-								    	<h3> Preshool and primary education for kids</h3>
+								    <div data-scro l-reveal="enter bottom but wait 0.7s" class="slider-detils">
+								    	<h3> <?php $index_school_msg;?></h3>
 								    	<!--<span>consectetur adipisc ing elit</span>-->
 								    </div>
 								  </li>
@@ -23,7 +26,7 @@
 								    <a href="#slide2">
 								    </a>
 								      <div data-scroll-reveal="enter bottom but wait 1s" class="slider-detils">
-								    	<h3>Technology education lab for children</h3>
+								    	<h3><?= $index_2_msg ?></h3>
 								    	<!--<span>Aliquam viverra consectetur nibh a blan dit.</span>-->
 								    	</div>
 								  </li>
@@ -31,7 +34,7 @@
 								    <a href="#slide3">
 								    </a>
 								      <div data-scroll-reveal="enter bottom but wait 1.5s" class="slider-detils">
-								      	<h3>We teach kids coding, designing, and making</h3>
+								      	<h3><?= $index_3_msg ?></h3>
 								    	<!--<span>Proin at amet consectetur adipisc lacinia.</span>-->
 								    </div>
 								  </li>
@@ -58,8 +61,9 @@
 					<!----//End-image-slider---->
 					<div class="simple-text">
 						<div class="wrap">
-<h4>TechKids is a technology education lab for children, aged 3-12, to learn Coding, Design and Making. It offers pre-school, primary school classes.</h4>
+<h4><?= $index_h4_msg?></h4>
 								<p>TechKids inspires and empowers kids through educational technology, tools and methodologies. We stimulate mind, develop leadership, and critical thinking of your children. Our goal is to help your kids realize their potential and become exceptional individuals.</p>
+					
 						</div>
 					</div>
 				<!-- start services -->	
@@ -67,7 +71,7 @@
 			<div class="Recent-wroks">
 				<div class="wrap">
 				<div class="Recent-wrok">
-					<h5 class="heading">TechKids Highlights</h5>
+					<h5 class="heading"><?= $index_1_msg ?></h5>
 					<!----start-img-cursual---->
 
   <div class="container1" align="center">
@@ -81,68 +85,46 @@
         <div class="item active">
           <img src="images/1a.png" alt="...">
           <div class="carousel-caption">
-            <h2>What We Teach?</h2>
-									We focus on
-								Teaching children
-								Practical topics such as
-								Coding, Designing & Making.
-							
+            <h2><?= $index_slider_msg ?></h2>
+		      <?= $index_slider_content_msg ?>				
           </div>
         </div>
         <div class="item">
           <img src="images/2a.png" alt="...">
           <div class="carousel-caption">
-            <h2>How We Teach?</h2>
-			
-								Focusing on STEM curricula and
-								a play & learn approach,
-								we foster collaboration and communication,
-								develops creativity, leadership and critical thinking.	
-							
+            <h2><?= $index_slider_title_2_msg ?></h2>
+
+		      <?= $index_slider_content_2_msg ?>
+
           </div>
         </div>
         <div class="item">
           <img src="images/3a.png" alt="...">
           <div class="carousel-caption">
-            <h2>TechKids Program</h2>
-			
-									Includes pre-school,
-									primary school, and after school
-									classes for children aged 3-13.
+            <h2><?= $index_slider_title_3_msg ?></h2>
+			<?= $index_slider_content_3_msg ?>
           </div>
         </div>
 		<div class="item">
           <img src="images/4a.png" alt="...">
           <div class="carousel-caption">
-            <h2>TechKids Aged 5-8</h2>
-			
-									Our upcoming workshop
-									for this age category is aimed at
-									teaching coding and designing
-									through a hands-on experience.
+            <h2><?= $index_slider_title_4_msg ?></h2>
+			<?= $index_slider_content_4_msg ?>
           </div>
         </div>
 		<div class="item">
           <img src="images/5a.png" alt="...">
           <div class="carousel-caption">
-            <h2>TechKids Aged 9-12</h2>
-			
-										Kids in this age category can now
-										Join our workshop to
-										learn coding & designing from
-										teachers and their peers.
+            <h2><?= $index_slider_title_5_msg ?></h2>
+			  <?= $index_slider_content_5_msg ?>
           </div>
         </div>
 		
 		<div class="item">
           <img src="images/6a.png" alt="...">
           <div class="carousel-caption">
-            <h2>Who’s the Team?</h2>
-		
-									TechKids team includes
-									Technologies, educationists, entrepreneurs,
-									Having decades of experience in
-									industry, education and tech.
+            <h2><?= $index_slider_title_6_msg ?></h2>
+		     <?= $index_slider_content_6_msg ?>
           </div>
         </div>
       </div>
@@ -172,7 +154,7 @@
 			<!-- start last_posts -->
 			<div class=" last_posts">
 				<div class="wrap">
-					<h5 class="heading">Curriculum</h5>
+					<h5 class="heading"><?= $index_cur_title_msg ?></h5>
 					<div class="container">
             <div class="row row-margin-bottom">
             <div class="col-md-5 no-padding lib-item" data-category="view">
@@ -183,11 +165,11 @@
                         </div>
                         <div class="col-md-6">
                             <div class="lib-row lib-header">
-                                Coding
+                               <?= $index_cur_title_1_msg ?>
                                 <div class="lib-header-seperator"></div>
                             </div>
                             <div class="lib-row lib-desc">
-                            By including coding as a core subject in our school we teach kids 21st century skills such as application and games development.
+                             <?= $index_cur_content_1_msg ?>
                             </div>
                         </div>
                     </div>
@@ -202,11 +184,11 @@
                         </div>
                         <div class="col-md-6">
                             <div class="lib-row lib-header">
-                               Designing
+                               <?= $index_cur_title_2_msg ?>
                                 <div class="lib-header-seperator"></div>
                             </div>
                             <div class="lib-row lib-desc">
-                             Our designing track includes teaching children graphic designing, illustration and video and sound editing in an engaging and fun a way.
+                             <?= $index_cur_content_2_msg ?>
                             </div>
                         </div>
                     </div>
@@ -221,12 +203,11 @@
                         </div>
                         <div class="col-md-6">
                             <div class="lib-row lib-header">
-                               Making
+                               <?= $index_cur_title_3_msg ?>
                                 <div class="lib-header-seperator"></div>
                             </div>
                             <div class="lib-row lib-desc">
-                             By including real-world activities into classroom we inspire kids to launch products,
-								such as making electronic devices and small robots.
+                             <?= $index_cur_content_3_msg ?>
                             </div>
                         </div>
                     </div>
@@ -241,11 +222,11 @@
                         </div>
                         <div class="col-md-6">
                             <div class="lib-row lib-header">
-                               Animation
+                               <?= $index_cur_title_4_msg ?>
                                 <div class="lib-header-seperator"></div>
                             </div>
                             <div class="lib-row lib-desc">
-                             TechKids provide young children with tools and applications that allow them to create their own animation film. Following topics are covered in our animation sessions.
+                             <?= $index_cur_content_4_msg ?>
                             </div>
                         </div>
                     </div>
@@ -267,9 +248,8 @@
 					<div class="test-grids">
 
 						<div class="test-desc">
-							<div><h5 class="heading">Teaching Methodology</h5></div>
-							<p>Our approach to teaching your kids includes Play And Learn. Utilizing state-of-the-art technologies, we empower kids to succeed. Our methodology is unique, we include in our curriculum more than the traditional 3 Rs (reading, writing, and arithmetic). Our focus is to bring collaborative, hands-on, real-world problem-solving activities into the classroom. Kids enrolled at our classes work together with their teachers and other children to learn and share experiences in a fun way.
-It is important to provide a good foundation at an early age by exposing young children to many of new concepts. TechKids was established to achieve this goal. We integrate key 21st century skills into the classroom. On top of the TechKids core subjects and traditional schools subjects TechKids adds the 4 Cs: Collaboration, Creativity, Communication, and Critical Thinking.</p>
+							<div><h5 class="heading"><?= $index_tech_title_msg ?></h5></div>
+							<p><?= $index_tech_content_msg ?></p>
 							 
 						</div>
 						<div class="img_1">

@@ -1,4 +1,5 @@
 <?php 
+include("../languages/en.php");
 	include 'header.php'; 
 	@$action=$_GET['action'];
 	@$login=$_GET['login']; //passed from auth.php
@@ -9,7 +10,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
-	<title>Login - Admin Panel</title>
+	<title><?= $index_form_title ?></title>
 	
     <style type="text/css">
 	.parsley-required{color:red;}
@@ -31,30 +32,29 @@
 					<div class="wrap">
 						<div class="about">
 							<div class="photo">
-								<h3 class="heading">Login OR Register Here!</h3>
+								<h3 class="heading"><?= $index_form_1_title ?></h3>
 					
 				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 					<div class="panel panel-default">
 						<div class="panel-body">
-								<h3 class="thin text-center">Login With  Your Own Account</h3>
-								<p class="text-center text-muted"> <i class="text-primary"> Please Login! </i> </p>
+								<h3 class="thin text-center"><?= $index_form_2_title ?></h3>
+								<p class="text-center text-muted"> <i class="text-primary"><?= $index_form_3_title ?></i> </p>
 							<hr> 
 
 						<?php if(isset($_GET['reset']) && $_GET['reset']=='success') { ?><div
 						class="alert alert-success">
-						<strong>SUCCESS: </strong> Password Reset Successful. <br>A new
-						password has been sent to your email.
+						<strong>SUCCESS: </strong><?= $index_form_4_title ?><br><?= $index_form_5_title ?>
 					    </div> <?php } ?>
 
 								<?php
 								if(isset($_GET['action']) && $_GET['action']=='d'){
-								echo "<div class='alert alert-danger'> Your account is deactivated by the site Admin! </div>";}
+								echo "<div class='alert alert-danger'><?= $index_form_1_message ?></div>";}
 
 								if(isset($_GET['login']) && $_GET['login']=='fail'){
-								echo "<div class='alert alert-danger'> Wrong combination of Password or Email <br /> Please Try Again!</div>";}
+								echo "<div class='alert alert-danger'><?= $index_form_2_message ?><br /><?= $index_form_3_message ?></div>";}
 
 								if(isset($_GET['login']) && $_GET['login']=='invalid'){
-								echo "<p style='color:red'> Access Denied <br /> Please Login First! </p>";}
+								echo "<p style='color:red'> Access Denied <br /> <?= $index_form_4_message ?></p>";}
 
 								// if(isset($_GET['login']) && $_GET['login']=='fail'){
 								// echo "<p style='color:red'>Wrong combination of Password/Email... <br /> PleaseTry Again!</p> <br />";}
@@ -79,16 +79,16 @@
 								</div>
 								&nbsp;
 								<div class="col-md-offset-6">
-									<button type="submit" class="btn btn-action pull-right" name="submit">Login </button>										
+									<button type="submit" class="btn btn-action pull-right" name="submit"><?= $index_form_5_message ?></button>										
 								</div> </div> <br />
 
 
 								<br /> 
 								</form>
 
-								<a href="control/forget.php" class="green">Forget your Password?</a> <br />
+								<a href="control/forget.php" class="green"><?= $index_form_6_message ?></a> <br />
 								
-								Register as a <i class="text-primary"><a href="../execute/register.php?role=teacher"> Teacher </a></i>, <i class="text-primary"><a href="../execute/register.php?role=student">Student</a></i> or <i class="text-primary"><a href="../execute/register.php?role=parents">Parents</a></i>
+								<i class="text-primary"><?= $index_form_7_message ?></i><?= $index_form_8_message ?><i class="text-primary"><a href="../execute/register.php?role=teacher"><?= $index_form_9_message ?></a></i> or <i class="text-primary"><a href="../execute/register.php?role=student"><?= $index_form_10_message ?></a></i>
 								 
 				</div>
 						
