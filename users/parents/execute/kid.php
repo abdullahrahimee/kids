@@ -159,7 +159,7 @@ transition: all 0.2s;
     <script src="../../../assets/js/parsley.js"></script>
 </head>
 
-<body onload="all();">
+<body onload="allof();">
 
     <div id="wrapper">
 
@@ -191,11 +191,11 @@ transition: all 0.2s;
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="../"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
 
                     <li>
-                        <a href="execute/profile_edit.php"><i class="fa fa-fw fa-users"></i> Kids</a>
+                        <a href="#"><i class="fa fa-fw fa-users"></i> Kids</a>
                     </li>
 				    <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-book"></i> Courses <i class="fa fa-fw fa-caret-down"></i></a>
@@ -262,7 +262,7 @@ transition: all 0.2s;
 <!-- ENd body -->
 
                 </div>
-                <div class="acc"></div>
+                <div class="row" id="acc"></div>
                 <div class="row">
                 	<div class="col-md-12 custyle" id="ac_kid"></div>
                 </div>
@@ -281,8 +281,39 @@ transition: all 0.2s;
         <!-- /#page-wrapper -->
 
     </div>
+    
+<div class="modal fade bs-example-modal-lg" id="model" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h2 class="modal-title text-center" id="myModalLabel"><b id="hea">
+</b></h2>
+        
+      </div>
+      <div class="modal-body">
+      	<div class="col-md-12" style="margin: 10px;">
+      		<div class="row" id="show_k"></div>
+      	</div>
+        
+        
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"><i class="fa fa-angle-left"></i>		Back </button> -->
+        
+      </div>
+      
+    </div>
+  </div>
+ </div>
+<!-- /model-->
+    
+    
+    
+    
+    
+    
     <script>
-    	function all(){
+    	function allof (){
     		ac_kid();
     		no_kid();
     	}
@@ -334,7 +365,7 @@ transition: all 0.2s;
 			xmlhttp.onreadystatechange=function(){
 				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
 					document.getElementById("acc").innerHTML = xmlhttp.responseText;
-					all();
+					allof();
 				}
 			}
 			xmlhttp.open("GET", "../setting.php?acc=yes&id="+id, true);
@@ -355,10 +386,48 @@ transition: all 0.2s;
 			xmlhttp.onreadystatechange=function(){
 				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
 					document.getElementById("acc").innerHTML = xmlhttp.responseText;
-					all();
+					allof();
 				}
 			}
 			xmlhttp.open("GET", "../setting.php?rej=yes&id="+id, true);
+        	xmlhttp.send();
+        }
+		}
+	</script>
+	<script>
+		function show_kid(id){
+			var xmlhttp;
+			if(window.XMLHttpRequest){
+				xmlhttp=new XMLHttpRequest();
+			}else{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById("show_k").innerHTML = xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open("GET", "../setting.php?show_kid=yes&id="+id, true);
+        	xmlhttp.send();
+        }
+	</script>
+	<script>
+		function del_kid(id){
+			var x=confirm("do you really wana delete this kid");
+			if(x==true){
+			var xmlhttp;
+			if(window.XMLHttpRequest){
+				xmlhttp=new XMLHttpRequest();
+			}else{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById("acc").innerHTML = xmlhttp.responseText;
+					allof();
+				}
+			}
+			xmlhttp.open("GET", "../setting.php?del_kid=yes&id="+id, true);
         	xmlhttp.send();
         }
 		}
