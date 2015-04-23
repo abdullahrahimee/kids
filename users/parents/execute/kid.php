@@ -190,27 +190,27 @@ transition: all 0.2s;
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
+                    <li>
                         <a href="../"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
 
-                    <li>
+                    <li class="active">
                         <a href="#"><i class="fa fa-fw fa-users"></i> Kids</a>
                     </li>
 				    <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-book"></i> Courses <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Joined Courses</a>
+                                <a href="course.php">Joined Courses</a>
                             </li>
                             <li>
-                                <a href="#">Other Courses</a>
+                                <a href="mycourse.php">Other Courses</a>
                             </li>
                         </ul>
                     </li>
 
                      <li> 
-                        <a href="execute/course.php"><i class="fa fa-user"></i> Profile</a>
+                        <a href="profile_edit.php"><i class="fa fa-user"></i> Profile</a>
                     </li>
                   
                   

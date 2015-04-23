@@ -7,36 +7,8 @@
         session_destroy();
         }
 
-        $selectuser = mysql_query("SELECT * FROM users WHERE id = '".$_SESSION['user_id']."'");
+        $selectuser = mysql_query("SELECT * FROM users WHERE u_id = '".$_SESSION['user_id']."'");
         $userrow = mysql_fetch_array($selectuser);
-        $users_id=$userrow['id']; //id no of users in users table
-        $uname=$userrow['username'];
-        $uemail=$userrow['email'];
-
-        $user_query=mysql_query("SELECT * FROM students WHERE firstname='".$uname."' AND email='".$uemail."'");
-        $run_user = mysql_fetch_array($user_query);
-        $username=$run_user['firstname']; 
-        $s_id=$run_user['s_id'];
-
-        // $query=mysql_query("SELECT * FROM course");
-
-
-        
-$user_query2=mysql_query("SELECT * FROM stu_join WHERE s_id=$s_id");
-$co="";
-while($run_user2= mysql_fetch_array($user_query2)){
-$co.=$run_user2['c_id'].",";
-}
-$co.=substr($co,0, strlen($co)-1);
-
-$query=mysql_query("SELECT * FROM course WHERE c_id IN (".$co.")");      
-
-
-//Read and Store students informations
-
-$firstname=$run_user['firstname'];  
-$lastname=$run_user['lastname'];
-
 ?>
 
 <!DOCTYPE html>
@@ -120,7 +92,7 @@ $lastname=$run_user['lastname'];
             <ul class="nav navbar-right top-nav">
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userrow['username']; ?> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userrow['firstname']." ".$userrow['lastname']; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#..//execute/profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -136,18 +108,18 @@ $lastname=$run_user['lastname'];
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    <li>
+                        <a href="../index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
 
                     <li>
-                        <a href="execute/profile_edit.php"><i class="fa fa-fw fa-users"></i> Kids</a>
+                        <a href="kid.php"><i class="fa fa-fw fa-users"></i> Kids</a>
                     </li>
-				    <li>
+				    <li class="active">
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-book"></i> Courses <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Joined Courses</a>
+                                <a href="course.php">Joined Courses</a>
                             </li>
                             <li>
                                 <a href="#">Other Courses</a>
@@ -156,7 +128,7 @@ $lastname=$run_user['lastname'];
                     </li>
 
                      <li> 
-                        <a href="execute/course.php"><i class="fa fa-user"></i> Profile</a>
+                        <a href="profile_edit.php"><i class="fa fa-user"></i> Profile</a>
                     </li>
                   
                   
@@ -188,15 +160,6 @@ $lastname=$run_user['lastname'];
                     </div>
 
                 </div>
-
-<?php
-
-// echo "users id: ".$users_id."<br />";
-// echo "stu id: ".$s_id;
-
-
-
-?>
 <div class="modal fade" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -225,7 +188,7 @@ $lastname=$run_user['lastname'];
                 <!-- /.row -->
 <!-- Start The Main Body -->
                     <div class="col-md-12">
-    <h3>Please Download Your Course Materials Here!</h3>
+    <h3>These are avialable course!</h3>
     <hr>
     <div class="row">
         <div class="panel panel-primary filterable">
@@ -248,31 +211,28 @@ $lastname=$run_user['lastname'];
                         <th><input type="text" class="form-control" placeholder="End Date" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Start Time" disabled></th>
                         <th><input type="text" class="form-control" placeholder="End Time" disabled></th>
-                        <th> Download </th>
  </tr>
                 </thead>
                 <tbody>
                    
-    <?php while($result=mysql_fetch_assoc($query)){ ?>
+    <?php
+    $num++;
+    $query=mysql_query("SELECT * FROM course");
+     while($result=mysql_fetch_assoc($query)){ ?>
             <tr>
-     <td><?php echo $result['c_id'] ?></td>
-     <td><?php echo $result['name'] ?></td>
+     <td><?php echo $num; $num++; ?></td>
+     <td><?php echo $result['name']; ?></td>
+     <td><?php echo $result['catagory']; ?></td>
 
-     <td><?php $course_name=mysql_fetch_array(mysql_query("SELECT * FROM course_category WHERE id=".$result['category_id']));
-     echo $course_name['name']; ?></td>
-
-     <td><?php echo $result['des'] ?></td>
-     <td><?php echo $result['fee'] ?></td>
-     <td><?php echo $result['start_date'] ?></td>
-     <td><?php echo $result['end_date'] ?></td>
-     <td><?php echo $result['start_time'] ?></td>
-     <td><?php echo $result['end_time'] ?></td>
+     <td><?php echo $result['des']; ?></td>
+     <td><?php echo $result['fee']; ?></td>
+     <td><?php echo $result['start_date']; ?></td>
+     <td><?php echo $result['end_date']; ?></td>
+     <td><?php echo $result['start_time']; ?></td>
+     <td><?php echo $result['end_time']; ?></td>
         
 <td><p><?php
      $que=mysql_query("SELECT * FROM materials WHERE course_id=".$result['c_id']."");
-  
-
-  echo '<button onclick="download('.$result['c_id'].')"  class="btn btn-success btn-sm fa fa-download" style="width:75px" data-toggle="modal" data-target="#myModal"></button>';
 
      ?></p></td>
 
