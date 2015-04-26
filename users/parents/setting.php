@@ -210,6 +210,33 @@ echo '<tr>
 	}
 echo '</tbody>
             </table>';
+}elseif ($_GET['assign']!='') {
+	$query=mysql_query("SELECT * FROM assignment WHERE c_id IN (SELECT c_id FROM join_course WHERE u_id=".$_GET['id'].")");
+	echo "<table class='table table-striped custab'>";
+	echo "<thead>
+        <tr>
+            <th>ID</th>
+            <th>Subject</th>
+            <th>Description</th>
+            <th>File Name</th>
+            <th>Course Name</th>
+            <th>Download</th>
+        </tr>
+    </thead>";
+    $nu=1;
+	while ($count=mysql_fetch_array($query)) {
+		$cor=mysql_fetch_array(mysql_query("SELECT * FROM course WHERE c_id=".$count['c_id']));
+		echo "<tr>
+				<td>".$nu."</td>
+                <td>".$count['subject']."</td>
+                <td>".$count['des']."</td>
+                <td>".$count['file_name']."</td>
+                <td>".$cor['name']."</td>
+                <td><a href='".$count['path']."' class='btn btn-success'><i class='fa fa-download'></i></a></td>
+            </tr>";
+			$nu++;
+	}
+	echo "</table>";
 }else{
 	echo "noo";
 }

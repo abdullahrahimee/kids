@@ -44,7 +44,17 @@ $profile=$row['profile'];
     width: 100%;
 }
 
-
+.custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    }
 
 .wizard-card .picture-container{
     position: relative;
@@ -147,7 +157,7 @@ transition: all 0.2s;
     <script src="../../../assets/js/parsley.js"></script>
 </head>
 
-<body>
+<body onload="all();">
 
     <div id="wrapper">
 
@@ -178,21 +188,21 @@ transition: all 0.2s;
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    <li>
+                        <a href="../index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
 
                     <li>
-                        <a href="execute/profile_edit.php"><i class="fa fa-fw fa-users"></i> Kids</a>
+                        <a href="kid.php"><i class="fa fa-fw fa-users"></i> Kids</a>
                     </li>
-				    <li>
+				    <li class="active">
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-book"></i> Courses <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Joined Courses</a>
+                                <a href="course.php">Joined Courses</a>
                             </li>
                             <li>
-                                <a href="#">Other Courses</a>
+                                <a href="mycourse.php">Other Courses</a>
                             </li>
                             <li>
                                 <a href="assign.php">Kids' Assignments</a>
@@ -201,7 +211,7 @@ transition: all 0.2s;
                     </li>
 
                      <li> 
-                        <a href="execute/course.php"><i class="fa fa-user"></i> Profile</a>
+                        <a href="profile_edit.php"><i class="fa fa-user"></i> Profile</a>
                     </li>
                   
                   
@@ -218,7 +228,7 @@ transition: all 0.2s;
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Change Your Password 
+                            Assignments
                             <small>Here!</small>
                         </h1>
                         <ol class="breadcrumb">
@@ -226,7 +236,7 @@ transition: all 0.2s;
                                 <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-file"></i> Change Password
+                                <i class="fa fa-file"></i> Assignments
                             </li>
                             <div class="pull-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['firstname']." ".$userrow['firstname']); ?> </b> [<?php echo $userrow['type']; ?>]</p></div> <br />
                         </ol>
@@ -240,7 +250,7 @@ transition: all 0.2s;
 
                 <!-- /.row -->
 
-
+				<div class="row" id="assign"></div>
 
             </div>
             <!-- /.container-fluid -->
@@ -250,6 +260,33 @@ transition: all 0.2s;
 
     </div>
     <!-- /#wrapper -->
+    
+    <script>
+    	function all (){
+    		assign();
+    	}
+    </script>
+    <script>
+		function assign(){
+			var xmlhttp;
+			if(window.XMLHttpRequest){
+				xmlhttp=new XMLHttpRequest();
+			}else{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById("assign").innerHTML = xmlhttp.responseText;
+					
+				}
+			}
+			xmlhttp.open("GET", "../setting.php?assign=yes&id="+<?php echo $_SESSION['user_id']; ?>, true);
+        	xmlhttp.send();
+		}
+	</script>
+    
+    
+    
 <script src="../../student/assets/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->

@@ -230,7 +230,7 @@ transition: all 0.2s;
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Change Your Password 
+                            Your Kids
                             <small>Here!</small>
                         </h1>
                         <ol class="breadcrumb">

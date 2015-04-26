@@ -228,9 +228,8 @@ transition: all 0.2s;
                             <li class="active">
                                 <i class="fa fa-file"></i> Change Password
                             </li>
+                            <div class="pull-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['firstname']." ".$userrow['firstname']); ?> </b> [<?php echo $userrow['type']; ?>]</p></div> <br />
                         </ol>
-                        <div class="text-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['firstname']." ".$userrow['firstname']); ?> </b> [<?php echo $level_name; ?>]</p></div> <br />
-
                     </div>
 
 
