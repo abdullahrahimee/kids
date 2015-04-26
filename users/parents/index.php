@@ -92,10 +92,13 @@ $userrow = mysql_fetch_array($userselect);
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-book"></i> Courses <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Joined Courses</a>
+                                <a href="execute/course.php">Joined Courses</a>
                             </li>
                             <li>
-                                <a href="#">Other Courses</a>
+                                <a href="execute/mycourse.php">Other Courses</a>
+                            </li>
+                            <li>
+                                <a href="execute/assing.php">Kids' Assignments</a>
                             </li>
                         </ul>
                     </li>

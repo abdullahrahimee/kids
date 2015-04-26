@@ -142,6 +142,9 @@ $lastname=$run_user['lastname'];
                             <li>
                                 <a href="mycourse.php">Other Courses</a>
                             </li>
+                            <li>
+                                <a href="assign.php">Kids' Assignments</a>
+                            </li>
                         </ul>
                     </li>
 

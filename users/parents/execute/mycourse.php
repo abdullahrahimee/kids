@@ -124,6 +124,9 @@
                             <li>
                                 <a href="#">Other Courses</a>
                             </li>
+                            <li>
+                                <a href="assign.php">Kids' Assignments</a>
+                            </li>
                         </ul>
                     </li>
 
