@@ -57,15 +57,12 @@
 																	// id firstname lastname phone address email gender password, rooll	
 						//store the Records
 						if(isset($_GET['role']) && $_GET['role']=='teacher'){
-						mysql_query("INSERT INTO users VALUES('', '$username','$password','$email','2','a')");
-						mysql_query("INSERT INTO teachers(t_id, firstname, email, password) VALUES ('', '$username', '$email', '$password')");
+						mysql_query("INSERT INTO users(u_id, firstname, email, password,type) VALUES ('', '$username', '$email', '$password','teacher')");
 						// echo "<p>Succssfully Registered!</p>";
 						header('location:../login/form.php?reg=done');
 						}
 						else if(isset($_GET['role']) && $_GET['role']=='student'){ 
-						mysql_query("INSERT INTO users VALUES('','$username','$password','$email','3','a')");
-						mysql_query("INSERT INTO students(s_id, firstname, email, password) VALUES('', '$username', '$email', '$password')");
-						 
+						mysql_query("INSERT INTO users(u_id, firstname, email, password,type) VALUES('', '$username', '$email', '$password','student')");
 						// echo "<p>Succssfully Registered!</p>";
 						header('location: ../login/form.php?reg=done');
 						}

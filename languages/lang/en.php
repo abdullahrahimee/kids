@@ -225,7 +225,7 @@ TechKids team researches and evaluates recent developments in educational techno
     $index_register_0_h3="Register a new account";
     $index_register_1_h3="Error: Feild Empty!";
     $index_register_msg="Registeration Faild!, Try Again Later!!!";
-    $index_register_username="username";
+    $index_register_username="firstname";
     $index_register_email="Email";
     $index_register_0_msg="Password ";
     $index_register_confrim_password="Confirm Password ";
