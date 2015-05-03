@@ -10,19 +10,19 @@ include '../users/student/execute/connect.php';
 
 		
 
-		if($type=='a'){
-
-			mysql_query("Update `users` SET `type`='d' WHERE `id`='$u_id'");
-			header('location: user.php');
-			
-
-		}
-		else if($type=='d'){
-			mysql_query("Update `users` SET `type`='a' WHERE `id`='$u_id'");
-			header('location: user.php');
-			
-
-		}
+		// if($type=='a'){
+// 
+			// mysql_query("Update `users` SET `type`='d' WHERE `u_id`='$u_id'");
+			// header('location: user.php');
+// 			
+// 
+		// }
+		// else if($type=='d'){
+			// mysql_query("Update `users` SET `type`='a' WHERE `u_id`='$u_id'");
+			// header('location: user.php');
+// 			
+// 
+		// }
 
 		
 

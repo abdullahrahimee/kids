@@ -3,7 +3,7 @@ include 'auth.php';
  // echo$uid; 
 include '../users/student/execute/connect.php';
  
-  $query=mysql_query("SELECT * FROM admin");
+  $query=mysql_query("SELECT * FROM users where type='admin'");
  
  ?>
 

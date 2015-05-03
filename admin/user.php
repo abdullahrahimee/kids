@@ -206,11 +206,11 @@ include '../users/student/execute/connect.php';
                 <?php while($result=mysql_fetch_assoc($query)){ ?>
                     <tr> 
                       
-                      <td> <?php echo $result['id'] ?> </td>
-                      <td><?php echo $result['username'] ?></td>
+                      <td> <?php echo $result['u_id'] ?> </td>
+                      <td><?php echo $result['firstname'] ?></td>
                       <td><?php echo $result['email'] ?></td>
-                      <td><?php $level=mysql_fetch_array(mysql_query("SELECT * FROM user_level WHERE id=".$result['user_level'] ));
-                             echo $level['name']; ?>
+                      <td><?php $level=mysql_fetch_array(mysql_query("SELECT * FROM users WHERE u_id=".$result['user_level'] ));
+                             echo $level['type']; ?>
                       </td> 
                        
 
@@ -219,9 +219,9 @@ include '../users/student/execute/connect.php';
 
                     <td> <?php 
                         if($result['type'] == 'a'){ 
-                            echo "<a href='check.php?u_id=".$result['id']."&type=".$result['type']."'> <b class='btn btn-default' style='color:red'>  Disable </b> </a>"; //pass tow parameter
+                            echo "<a href='check.php?u_id=".$result['u_id']."&type=".$result['type']."'> <b class='btn btn-default' style='color:red'>  Disable </b> </a>"; //pass tow parameter
                         }
-                        else{echo "<a href='check.php?u_id=".$result['id']."&type=".$result['type']."'> <b class='btn btn-default' style='color:green;width:74px;'> Enable </b> </a>";
+                        else{echo "<a href='check.php?u_id=".$result['u_id']."&type=".$result['type']."'> <b class='btn btn-default' style='color:green;width:74px;'> Enable </b> </a>";
                         }
                     ?>
                      </td>
@@ -234,7 +234,7 @@ include '../users/student/execute/connect.php';
                     </td>
 
                         
-      <td> <a href="del_user.php?uid=<?php echo $result['id'];?>" class="btn btn-danger fa fa-remove" onclick="return confirm('do you realy want to delete this record?');"> </a></td>
+      <td> <a href="del_user.php?uid=<?php echo $result['u_id'];?>" class="btn btn-danger fa fa-remove" onclick="return confirm('do you realy want to delete this record?');"> </a></td>
 
 
 
