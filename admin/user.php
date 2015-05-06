@@ -193,6 +193,7 @@ include '../users/student/execute/connect.php';
                         <th><input type="text" class="form-control" placeholder="ID" disabled></th>
                         <th><input type="text" class="form-control" placeholder="UserName" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Email" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Type" disabled></th>
                         <th><input type="text" class="form-control" placeholder="User_Level" disabled></th>
                         <th> Activation </th>
                         <th> &nbsp;</th>
@@ -209,19 +210,18 @@ include '../users/student/execute/connect.php';
                       <td> <?php echo $result['u_id'] ?> </td>
                       <td><?php echo $result['firstname'] ?></td>
                       <td><?php echo $result['email'] ?></td>
-                      <td><?php $level=mysql_fetch_array(mysql_query("SELECT * FROM users WHERE u_id=".$result['user_level'] ));
-                             echo $level['type']; ?>
-                      </td> 
+                      <td><?php echo $result['type'] ?></td> 
+                      <td><?php echo $result['status'] ?></td>
                        
 
                        <!-- buttons -->
 
 
                     <td> <?php 
-                        if($result['type'] == 'a'){ 
-                            echo "<a href='check.php?u_id=".$result['u_id']."&type=".$result['type']."'> <b class='btn btn-default' style='color:red'>  Disable </b> </a>"; //pass tow parameter
+                        if($result['status'] == 'active'){ 
+                            echo "<a href='check.php?u_id=".$result['u_id']."&status=".$result['status']."'> <b class='btn btn-default' style='color:red'>  Disable </b> </a>"; //pass tow parameter
                         }
-                        else{echo "<a href='check.php?u_id=".$result['u_id']."&type=".$result['type']."'> <b class='btn btn-default' style='color:green;width:74px;'> Enable </b> </a>";
+                        else{echo "<a href='check.php?u_id=".$result['u_id']."&status=".$result['status']."'> <b class='btn btn-default' style='color:green;width:74px;'> Enable </b> </a>";
                         }
                     ?>
                      </td>

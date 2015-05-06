@@ -8,7 +8,7 @@ $row=mysql_num_rows(mysql_query("SELECT * FROM users WHERE email='".$_POST['emai
 $uid=mysql_fetch_array(mysql_query("SELECT * FROM users WHERE email='".$_POST['email']."' AND password='".md5($_POST['password'])."' AND type='admin'"));
 if($row==1){
     
-$_SESSION['auth']=$uid['id'];
+$_SESSION['auth']=$uid['u_id'];
 header("location:index.php");
 }
 
