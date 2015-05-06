@@ -1,5 +1,6 @@
 <?php 
-   include("languages/en.php");
+ session_start();
+ include("../language.php");
 ?>
 <html lang="en">
 <head>

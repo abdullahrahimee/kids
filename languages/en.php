@@ -5,6 +5,7 @@
     $index_1_msg= "TechKids Highlights";
     $index_2_msg="Technology education lab for children";
     $index_3_msg="We teach kids coding, designing, and making";
+    $index_h3_msg="TechKids inspires and empowers kids through educational technology, tools and methodologies. We stimulate mind, develop leadership, and critical thinking of your children. Our goal is to help your kids realize their potential and become exceptional individuals.";
     // slider content  
     $index_slider_msg="What We Teach?";
     $index_slider_content_msg="         We focus on
@@ -161,6 +162,9 @@ TechKids team researches and evaluates recent developments in educational techno
     $index_form_8_message="as a ";
     $index_form_9_message="Teacher";
     $index_form_10_message="Student";
+    $form_email="Email";
+    $form_password="Password";
+    $form_type_message="This value should be a valid email.";
 
     // methodology page 
 

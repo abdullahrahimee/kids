@@ -1,8 +1,10 @@
 <?php 	
-        include("../languages/language.php");
+        session_start();
+        include("../login/header.php");
+        //include("../language.php");
  	 	include '../users/student/execute/connect.php';
  		include '../users/student/execute/functions.php'; 
-        include("../login/header.php");
+        
 			// if(!loggedin()){ //if the user does not loggedin
 			// header('location: ../login/form.php?login=invalid');
 			// 	}

@@ -1,5 +1,6 @@
-<?php require 'header.php';	
-   include("languages/language.php");
+<?php
+session_start();
+ include('header.php');	
  ?>
 <br>
 
@@ -9,7 +10,7 @@
 <link rel="stylesheet" href="assets/css/slippry.css">
 				<script src="assets/js/jquery-ui.js" type="text/javascript"></script>
 				<script src="assets/js/scripts-f0e4e0c2.js" type="text/javascript"></script>
-			<div class="banner" id="move-top">
+			<div class="banner" id="move-top" dir="<?php echo $_SESSION['dir']?>">
 				<!----start-image-slider---->
 
 					<div data-scroll-reveal="enter bottom but wait 0.7s" class="img-slider" id="home">
@@ -47,7 +48,7 @@
 					<div class="clear"> </div>
 				</div>
 						<!---slider---->
-				
+				 
 				<script>
 					  jQuery('#jquery-demo').slippry({
 					  // general elements & wrapper
@@ -64,13 +65,13 @@
 					<div class="simple-text">
 						<div class="wrap">
 <h4><?= $index_h4_msg?></h4>
-								<p>TechKids inspires and empowers kids through educational technology, tools and methodologies. We stimulate mind, develop leadership, and critical thinking of your children. Our goal is to help your kids realize their potential and become exceptional individuals.</p>
+								<p><?= $index_h3_msg ?></p>
 					
 						</div>
 					</div>
 				<!-- start services -->	
 				
-			<div class="Recent-wroks">
+			<div class="Recent-wroks" dir="<?php echo $_SESSION['dir']?>">
 				<div class="wrap">
 				<div class="Recent-wrok">
 					<h5 class="heading"><?= $index_1_msg ?></h5>
@@ -83,7 +84,7 @@
      
 
       <!-- Wrapper for slides -->
-      <div class="carousel-inner">
+      <div class="carousel-inner" dir="<?php echo $_SESSION['dir']?>">
         <div class="item active">
           <img src="images/1a.png" alt="...">
           <div class="carousel-caption">
@@ -154,7 +155,7 @@
 			</div>
 			
 			<!-- start last_posts -->
-			<div class=" last_posts">
+			<div class=" last_posts" dir="<?php echo $_SESSION['dir'];?>">
 				<div class="wrap">
 					<h5 class="heading"><?= $index_cur_title_msg ?></h5>
 					<div class="container">

@@ -1,19 +1,22 @@
 <?php
+  session_start();
  if(!isset($_GET['lang']))
  {
-
- include("lang/en.php");
-
-}else{
+     $_SESSION['lang'] ="en"; 
+     include("languages/en.php");
+ }
+else{
 		if($_GET['lang']=='da')
 		{
-		     
-			include("lang/da.php");
+		    $_SESSION['lang']=='da'; 
+			include("languages/da.php");
 		}elseif($_GET['lang']=='en'){
-			include('lang/en.php');
+			$_SESSION['lang']='en';
+			include('languages/en.php');
 		}
 		elseif($_GET['lang']=='ps'){
-               include("lang/ps.php");
+			   $_SESSION['lang']='ps';
+               include("languages/ps.php");
 	}	
 	else
 	{

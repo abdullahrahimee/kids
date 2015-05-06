@@ -1,6 +1,6 @@
 <?php
-include("../../languages/language.php");
 session_start();
+include("../../language.php");
 ?>
 <!DOCTYPE >
 <html>

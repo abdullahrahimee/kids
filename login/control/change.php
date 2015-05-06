@@ -1,4 +1,5 @@
-<?php session_start();
+<?php
+ session_start();
 include '../../users/student/execute/connect.php';
 if(isset($_GET['email']) && isset($_GET['activate'])){
 $num = mysql_num_rows(mysql_query("SELECT * FROM forgot WHERE email='" . $_GET['email'] . "' AND activate='" . $_GET['activate'] . "'"));

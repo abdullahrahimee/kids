@@ -1,5 +1,6 @@
 	<?php 
-         include("languages/language.php");
+	//session_start();
+         include("language.php");
 	?>
 	<div class="footer">
 				<div class="wrap">

@@ -1,6 +1,7 @@
 <?php
-include("languages/language.php");
-include 'header.php';
+//session_start();
+include('header.php');
+ //include("languages/en.php");
 ?>
 
 			<div class="content_1">

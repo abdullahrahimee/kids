@@ -1,6 +1,7 @@
 <?php
+//session_start();
+include("../language.php");
 @$reg=$_GET['reg'];
-
  include '../users/student/execute/connect.php';
  include '../users/student/execute/functions.php'; 
 

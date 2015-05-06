@@ -1,5 +1,5 @@
 <?php
-include("language/en.php");
+//include("language.php");
 include 'header.php';
 ?>	
 

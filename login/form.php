@@ -1,6 +1,7 @@
 <?php 
-include("../languages/language.php");
+//session_start();
 	include 'header.php'; 
+	//include("../language.php");
 	@$action=$_GET['action'];
 	@$login=$_GET['login']; //passed from auth.php
 ?>
@@ -69,12 +70,12 @@ include("../languages/language.php");
 								<div class="top-margin">	
 
 								<div class="top-margin">
-									<label>Email</label>
-									<input type="email" name="email"class="form-control" data-parsley-type="email" data-parsley-type-message="This value should be a valid email." data-parsley-required="true" />
+									<label><?= $form_email ?></label>
+									<input type="email" name="email"class="form-control" data-parsley-type="email" data-parsley-type-message="<?= $form_type_message ?>" data-parsley-required="true" />
 								</div>
 
 								<div class="top-margin">
-									<label>Password</label>
+									<label><?= $form_password ?></label>
 									<input type="password" name="pass"  class="form-control" id="anotherfield" data-parsley-required="true" data-parsley-length="[6, 14]" />
 								</div>
 								&nbsp;
@@ -88,7 +89,7 @@ include("../languages/language.php");
 
 								<a href="control/forget.php" class="green"><?= $index_form_6_message ?></a> <br />
 								
-								<i class="text-primary"><?= $index_form_7_message ?></i><?= $index_form_8_message ?><i class="text-primary"><a href="../execute/register.php?role=teacher"><?= $index_form_9_message ?></a></i> or <i class="text-primary"><a href="../execute/register.php?role=student"><?= $index_form_10_message ?></a></i>
+								<i class="text-primary"><?= $index_form_7_message ?></i><?= $index_form_8_message ?><i class="text-primary"><a href="../execute/register.php?role=teacher&lang=<?=$_SESSION['lang']?>"><?= $index_form_9_message ?></a></i> or <i class="text-primary"><a href="../execute/register.php?role=student&lang=<?= $_SESSION['lang']?>"><?= $index_form_10_message ?></a></i>
 								 
 				</div>
 						

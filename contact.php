@@ -1,5 +1,7 @@
-<?php require 'header.php';
- 
+<?php 
+  //session_start();
+include('header.php');
+ //include("language.php");
 ?>
 <br><br><br>
 

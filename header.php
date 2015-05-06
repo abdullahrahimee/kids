@@ -1,5 +1,6 @@
 <?php 
-   include("languages/language.php");
+session_start();
+include("language.php");
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -11,13 +12,15 @@
         position: relative;
         top: 20px;
         color: #fff;
+        position: relative;
+        right: 30px;
 	}
 	ol li
 	{
 		display: inline;
 		float: left;
 		padding-right: 3px;
-	    
+	    margin-right: 20px;
 	}
 	ol li a{color: #fff;}
 </style>
@@ -72,7 +75,7 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
 
-<body class="home">
+<body class="home" dir="<?php echo $_SESSION['dir']?>">
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -84,7 +87,7 @@ ga('create', 'UA-30027142-1', '.com');
 <script async src='http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
 
 	<!-- Fixed navbar -->
-	<div class="navbar navbar-inverse navbar-fixed-top headroom" >
+	<div class="navbar navbar-inverse navbar-fixed-top headroom" dir="<?php echo  $_SESSION['dir']?>">
 		<div class="container">
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
@@ -98,20 +101,45 @@ ga('create', 'UA-30027142-1', '.com');
 		</div>
 			</div>
 			<div class="navbar-collapse collapse">
-			    <ol class="pull-left">
-			    <li><a href="index.php?lang=en">English|</a> </li>
-				<li><a href="index.php?lang=da">Dari|</a> </li>
-				<li><a href="index.php?lang=ps">Pahto</a> </li>
+		     
+			    <ol class="pull-right" style="">
+			     <?php
+                     if($_SESSION['lang']=='da')
+                     {
+                     	?>
+                     	 
+                     	<li><a href="index.php?lang=en&dir=ltr">English|</a> </li>
+                     	<li><a href="index.php?lang=ps&dir=rtl">Pahto|</a> </li>
+                     	<?php
+                     }
+                     elseif ($_SESSION['lang']=='ps') {
+                     	?>
+                      
+                     	 <li><a href="index.php?lang=da&dir=rtl">Dari|</a> </li>
+                     	 <li><a href="index.php?lang=en&dir=ltr">English|</a> </li>
+                     	 <?php
+                     }
+        
+                     elseif($_SESSION['lang']=='en')
+                     {
+                     	?>
+                     	 
+                     	 <li><a href="index.php?lang=ps&dir=rtl">Pahto|</a> </li>
+                     	 <li><a href="index.php?lang=da&dir=rtl">Dari|</a> </li>
+                     	<?php
+                  }
+	              ?>
 			    </ol>
-				<ul class="nav navbar-nav pull-right">
+              
+				<ul class="nav navbar-nav pull-right" style="padding-top:30px;">
 				<li><a href="index.php"><?= $index_header_1_msg ?></a></li>
-					<li><a href="about.php"><?= $index_header_2_msg ?></a></li>
-						<li><a href="curriculum.php"><?= $index_header_3_msg ?></a></li>
-						<li><a href="methodology.php"><?= $index_header_4_msg ?></a></li>
+					<li><a href="about.php?lang=<?php echo $_SESSION['lang'] ?>"><?= $index_header_2_msg ?></a></li>
+						<li><a href="curriculum.php?lang=<?php echo $_SESSION['lang']?>"><?= $index_header_3_msg ?></a></li>
+						<li><a href="methodology.php?lang=<?php echo $_SESSION['lang']?>"><?= $index_header_4_msg ?></a></li>
 						<!--<li><a href="resources.php">Resources</a></li>-->
 						<li><a href="gallery/examples/gallery.html"><?= $index_header_5_msg ?></a></li>
-						<li><a href="contact.php"><?= $index_header_6_msg ?></a></li>
-					<li><a  href="login/form.php">Log In</a></li>
+						<li><a href="contact.php?lang=<?php echo $_SESSION['lang'] ?>"><?= $index_header_6_msg ?></a></li>
+					<li><a href="login/form.php?lang=<?php echo  $_SESSION['lang'] ?>">Log In</a></li>
 
 				</ul>
 			</div><!--/.nav-collapse -->
