@@ -37,8 +37,7 @@ if($show!=''){
 
      <td><?php echo $row['name'] ?></td>
 
-      <td><?php $course_name=mysql_fetch_array(mysql_query("SELECT * FROM course_category WHERE id=".$row['category_id']));
-     echo $course_name['name']; ?></td>
+      <td><?php echo $row['catagory'] ?></td>
 
      <td><?php echo $row['des'] ?></td>
      <td><?php echo $row['fee'] ?></td>
@@ -67,15 +66,13 @@ else if(@$_GET['edit'] != ''){
     $result=mysql_fetch_array($course);
     
 
-     $course_cat=mysql_fetch_array(mysql_query("SELECT * FROM course_category WHERE id=".$result['category_id']));
-     $cat= $course_cat['name'];
 
     echo '<div class="col-md-7 col-md-offset-3">
     <label> Cours name:</label> 
     <input id="name" type="text" value="'.$result['name'].'" class="form-control"><br />
 
     <label> Cours Categorie:</label> 
-    <input id="cat" type="text" value="'.$cat.'" class="form-control"><br />
+    <input id="cat" type="text" value="'.$result['catagory'].'" class="form-control"><br />
 
     <label> Cours Description:</label>
     <input id="des" type="text" value="'.$result['des'].'" class="form-control"><br />
@@ -103,7 +100,7 @@ else if(@$_GET['edit'] != ''){
     @$category_id=$result['category_id'];
 
 if($_GET['name'] != '' && $_GET['cat'] != '' && $_GET['des'] != '' && $_GET['fee'] != '' && $_GET['start_date'] != '' && $_GET['end_date'] != '' && $_GET['start_time'] != '' && $_GET['end_time'] != ''){
-        if(mysql_query("UPDATE course SET name='".$_GET['name']."',des='". $_GET['des'] ."',fee=".$_GET['fee'].",start_date='".$_GET['start_date']."',end_date='".$_GET['end_date']."',start_time='".$_GET['start_time']."',end_time='".$_GET['end_time']."' WHERE c_id=".$_GET['id']) && mysql_query("UPDATE course_category SET name='".$_GET['cat']."' WHERE id=".$category_id)){
+        if(mysql_query("UPDATE course SET name='".$_GET['name']."',des='". $_GET['des'] ."',fee=".$_GET['fee'].",start_date='".$_GET['start_date']."',end_date='".$_GET['end_date']."',start_time='".$_GET['start_time']."',end_time='".$_GET['end_time']."',catagory='".$_GET['cat']."' WHERE c_id=".$_GET['id'])){
             echo "<p class='alert text-center alert-success'>You have <b> Successfully </b> Update! </p>";
             ?>
 
@@ -159,17 +156,17 @@ else if(@$_GET['insert'] != ''){
 
     <label> Cours Categorie:</label> ';
 echo '<select id="cat" class="form-control">';
-$sql=mysql_query("SELECT * FROM course_category");
+$sql=mysql_query("SELECT * FROM course");
    while ($row=mysql_fetch_array($sql)) {
-     echo   '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+     echo   '<option value="'.$row['id'].'">'.$row['catagory'].'</option>';
    }
 echo '</select>';
 
     echo '<label> Cours Teacher ID:</label>'; 
     echo '<select id="tea_id" class="form-control">';
-$sql=mysql_query("SELECT * FROM teachers");
+$sql=mysql_query("SELECT * FROM users WHERE type='teacher'");
    while ($row=mysql_fetch_array($sql)) {
-     echo   '<option value="'.$row['t_id'].'">'.$row['firstname'].'</option>';
+     echo   '<option value="'.$row['u_id'].'">'.$row['firstname'].'</option>';
    }
 echo '</select>';
 
@@ -179,7 +176,7 @@ echo '</select>';
 
 else if(@$_GET['add'] != ''){
 
-    if(mysql_query("INSERT INTO `techkids`.`course` (`c_id`, `name`, `des`, `fee`, `start_date`, `end_date`, `start_time`, `end_time`, `category_id`) VALUES (NULL,'".$_GET['name']."','".$_GET['des']."', '".$_GET['fee']."', '".$_GET['start_date']."', '".$_GET['end_date']."', '".$_GET['start_time']."', '".$_GET['end_time']."', '".$_GET['cat']."')")){
+    if(mysql_query("INSERT INTO `techkids`.`course` (`c_id`, `name`, `des`, `fee`, `start_date`, `end_date`, `start_time`, `end_time`, `category`) VALUES (NULL,'".$_GET['name']."','".$_GET['des']."', '".$_GET['fee']."', '".$_GET['start_date']."', '".$_GET['end_date']."', '".$_GET['start_time']."', '".$_GET['end_time']."', '".$_GET['cat']."')")){
         echo "<p class='alert text-center alert-success'>You have <b> Successfully </b> Insert A One Course! </p>";
         ?>
 <meta http-equiv="refresh" content="1">

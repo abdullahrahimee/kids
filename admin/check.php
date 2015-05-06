@@ -5,20 +5,20 @@ include '../users/student/execute/connect.php';
 
 
 		@$u_id=$_GET['u_id']; 
-		@$type=$_GET['type'];
+		@$type=$_GET['status'];
 		@$level=$_GET['level'];
 
 		
 
-		if($type=='a'){
+		if($type=='active'){
 
-			mysql_query("Update `users` SET `type`='d' WHERE `id`='$u_id'");
+			mysql_query("Update `users` SET `status`='none' WHERE `u_id`='$u_id'");
 			header('location: user.php');
 			
 
 		}
-		else if($type=='d'){
-			mysql_query("Update `users` SET `type`='a' WHERE `id`='$u_id'");
+		else if($type=='none'){
+			mysql_query("Update `users` SET `status`='active' WHERE `u_id`='$u_id'");
 			header('location: user.php');
 			
 

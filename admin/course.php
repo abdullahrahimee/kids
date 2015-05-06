@@ -213,8 +213,7 @@ include '../users/student/execute/connect.php';
      <!-- view the course categories -->
      <!-- <td><?php //echo $result['category_id'] ?></td> -->
 
-      <td><?php $course_name=mysql_fetch_array(mysql_query("SELECT * FROM course_category WHERE id=".$result['category_id']));
-     echo $course_name['name']; ?></td> 
+      <td><?php echo $result['catagory'] ?></td> 
 
       
 

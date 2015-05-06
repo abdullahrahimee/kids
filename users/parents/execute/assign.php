@@ -44,7 +44,17 @@ $profile=$row['profile'];
     width: 100%;
 }
 
-
+.custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    }
 
 .wizard-card .picture-container{
     position: relative;
@@ -147,7 +157,7 @@ transition: all 0.2s;
     <script src="../../../assets/js/parsley.js"></script>
 </head>
 
-<body>
+<body onload="all();">
 
     <div id="wrapper">
 
@@ -178,14 +188,14 @@ transition: all 0.2s;
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
+                    <li>
                         <a href="../index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
 
                     <li>
                         <a href="kid.php"><i class="fa fa-fw fa-users"></i> Kids</a>
                     </li>
-				    <li>
+				    <li class="active">
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-book"></i> Courses <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
@@ -218,7 +228,7 @@ transition: all 0.2s;
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Change Your Password 
+                            Assignments
                             <small>Here!</small>
                         </h1>
                         <ol class="breadcrumb">
@@ -226,152 +236,21 @@ transition: all 0.2s;
                                 <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-file"></i> Change Password
+                                <i class="fa fa-file"></i> Assignments
                             </li>
                             <div class="pull-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['firstname']." ".$userrow['firstname']); ?> </b> [<?php echo $userrow['type']; ?>]</p></div> <br />
                         </ol>
+
                     </div>
 
 
-                    <!--  start body -->
-<?php 
 
-// echo "user id: ".$uid ."<br />";
-
-// echo "student id: ".$sid."<br />";
-
-
-
-?>
-  <!-- New form -->
-  <div class="container col-md-10" style="align:center">
-   <form action="update_pass.php" method="POST" data-parsley-validate> 
-            <div class="col-md-8">
-
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title"><?php echo ucwords($firstname)." ".ucwords($lastname); ?></h3>
-            </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center"> 
-
-            <div class="card wizard-card ct-wizard-orange" id="wizard">
-                <div class="picture-container">
-                    <div class="picture">
-
-                         
-                    <img alt="User Pic"  src="<?php 
-
-                        if($profile == ''){echo "../../../images/default-avatar.png";}
-                        else{echo $profile;}
-
-
-                    ?>" class="img-responsive">
-                     </div>
-                    
-                </div>
-                    <h6>Profile Picture</h6>
-
-            </div>
-               
-                </div>
-                
-            
-                <div class=" col-md-9 col-lg-9 "> 
-                <?php    
-                    
-                // if(isset($_GET['cpass']) && $_GET['cpass'] != '' && $_GET['cpass']=='correct'){
-                //     echo '<div class="alert alert-success"><b> Success! </b> Recognize current password!</div>';
-
-                // }
-                
-                if(isset($_GET['cpass']) && $_GET['cpass'] != '' && $_GET['cpass']=='fail'){
-                echo '<div class="alert alert-danger"><b> Faild </b> Can`t recognize your current password!</div>';
-
-                }
-
-                if(isset($_GET['pass']) && $_GET['pass'] != '' && $_GET['pass']=='update_done'){
-                    echo '<div class="alert alert-success"><b> Success! </b>Successfully Update your password!</div>';
-
-                }
-
-                if(isset($_GET['pass']) && $_GET['pass'] != '' && $_GET['pass']=='update_faild'){
-                    echo '<div class="alert alert-danger"><b> Faild! </b>Cant  Update your password!</div>';
-
-                }
-
-
-
-
-                ?>
-
-                <div  id='mess'></div>
-                  <table class="table table-user-information">
-
-                    <tbody>
-                 
-                      <br />
-                        <input name="uid" type="hidden" value="<?php echo $uid; ?>">
-                         <input name="sid" type="hidden" value="<?php echo $sid; ?>">
-                         <input name="email" type="hidden" value="<?php echo $email; ?>">
-                      <tr>
-                        <td>Current Password:</td>
-                        <td>
-                            <input type="password" class="form-control border" name="cpass" placeholder="Current password" data-parsley-required="true" data-parsley-length="[6, 14]">
-                       
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>New Password:</td>
-                        <td>
-                            <input type="password" class="form-control border" name="pass" placeholder="New password" data-parsley-required="true" id="anotherfield" data-parsley-length="[6, 14]">
-                       
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>Confirm Password:</td>
-                        <td>
-                            <input type="password" class="form-control border" name="confpass" placeholder="Confirm Password" data-parsley-required="true" data-parsley-equalto="#anotherfield" 
-                                        data-parsley-required="true" data-parsley-equalto-message="Password Not match!">
-                       
-                        </td>
-                      </tr>
-
-                      
-                    </tbody>
-                  </table>
-                
-                </div>
-                
-              </div>
-            </div>
-                     <div class="panel-footer">
-                        <a href="../../../contact.php" data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="fa fa-envelope-o"></i></a>
-                        <span class="pull-right">
-
-                            <button type="submit" class="btn btn-sm btn-success" name="submit" value="submit">Submit</button>
-                 
-                       
-
-                        </span>
-                    </div>
-                <!-- </form> -->
-            
-          </div>               
-    </div>
-    </form>
-    </div>
-        <!-- End Form -->
-<!-- ENd body -->
 
                 </div>
 
                 <!-- /.row -->
 
-
+				<div class="row" id="assign"></div>
 
             </div>
             <!-- /.container-fluid -->
@@ -381,6 +260,33 @@ transition: all 0.2s;
 
     </div>
     <!-- /#wrapper -->
+    
+    <script>
+    	function all (){
+    		assign();
+    	}
+    </script>
+    <script>
+		function assign(){
+			var xmlhttp;
+			if(window.XMLHttpRequest){
+				xmlhttp=new XMLHttpRequest();
+			}else{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById("assign").innerHTML = xmlhttp.responseText;
+					
+				}
+			}
+			xmlhttp.open("GET", "../setting.php?assign=yes&id="+<?php echo $_SESSION['user_id']; ?>, true);
+        	xmlhttp.send();
+		}
+	</script>
+    
+    
+    
 <script src="../../student/assets/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->

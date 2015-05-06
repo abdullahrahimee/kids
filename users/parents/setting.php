@@ -172,6 +172,71 @@ elseif ($_GET['rej']!='') {
 	}else{
 		echo "<div class='alert alert-warning'>Failed to delete this request</div>";
 	}
+}elseif ($_GET['cou']!='') {
+			echo '<table class="table table-hover">
+                <thead>
+                    <tr class="filters" align="center">
+                         <th> <input type="text" class="form-control" placeholder="ID" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Course Name" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Categorie" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Description" disabled></th>
+                         <th><input type="text" class="form-control" placeholder="Fee" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Start Date" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="End Date" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Start Time" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="End Time" disabled></th>
+                        <th> + Join </th>
+ </tr>
+                   
+                </thead>
+                <tbody>';
+	$query=mysql_query("SELECT * FROM course WHERE c_id IN (SELECT c_id FROM stu_join WHERE u_id IN (SELECT s_id FROM st_pa WHERE p_id=".$_GET['id']." AND rel='yes' ))");
+	while($result=mysql_fetch_array($query)){
+echo '<tr>
+     <td>'. $result['c_id'].'</td>
+     <td>'. $result['name'].'</td>
+     
+     <td>'.$result['catagory'].'</td>
+
+     <td>'.$result['des'].' </td>
+     <td>'.$result['fee'] .'</td>
+     <td>'.$result['start_date'].'</td>
+     <td>'.$result['end_date'].'</td>
+     <td>'. $result['start_time'] .'</td>
+     <td>'.$result['end_time'].' </td>
+     <td></td>
+     </tr>
+    <input type="hidden" id="c_id" value="'.$result['c_id'].'">';
+	}
+echo '</tbody>
+            </table>';
+}elseif ($_GET['assign']!='') {
+	$query=mysql_query("SELECT * FROM assignment WHERE c_id IN (SELECT c_id FROM join_course WHERE u_id=".$_GET['id'].")");
+	echo "<table class='table table-striped custab'>";
+	echo "<thead>
+        <tr>
+            <th>ID</th>
+            <th>Subject</th>
+            <th>Description</th>
+            <th>File Name</th>
+            <th>Course Name</th>
+            <th>Download</th>
+        </tr>
+    </thead>";
+    $nu=1;
+	while ($count=mysql_fetch_array($query)) {
+		$cor=mysql_fetch_array(mysql_query("SELECT * FROM course WHERE c_id=".$count['c_id']));
+		echo "<tr>
+				<td>".$nu."</td>
+                <td>".$count['subject']."</td>
+                <td>".$count['des']."</td>
+                <td>".$count['file_name']."</td>
+                <td>".$cor['name']."</td>
+                <td><a href='".$count['path']."' class='btn btn-success'><i class='fa fa-download'></i></a></td>
+            </tr>";
+			$nu++;
+	}
+	echo "</table>";
 }else{
 	echo "noo";
 }

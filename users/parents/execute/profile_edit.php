@@ -190,22 +190,25 @@ transition: all 0.2s;
                     </li>
 
                     <li>
-                        <a href="execute/kid.php"><i class="fa fa-fw fa-users"></i> Kids</a>
+                        <a href="kid.php"><i class="fa fa-fw fa-users"></i> Kids</a>
                     </li>
 				    <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-book"></i> Courses <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="execute/join.php">Joined Courses</a>
+                                <a href="course.php">Joined Courses</a>
                             </li>
                             <li>
-                                <a href="execute/course.php">Other Courses</a>
+                                <a href="mycourse.php">Other Courses</a>
+                            </li>
+                            <li>
+                                <a href="assign.php">Kids' Assignments</a>
                             </li>
                         </ul>
                     </li>
 
                      <li class="active"> 
-                        <a href="execute/profile_edit.php"><i class="fa fa-user"></i> Profile</a>
+                        <a href="profile_edit.php"><i class="fa fa-user"></i> Profile</a>
                     </li>
                   
                   
