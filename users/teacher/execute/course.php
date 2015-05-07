@@ -3,19 +3,19 @@ include '../../student/execute/connect.php';
 include 'auth.php';
 
 // include '../../users/student/execute/functions.php';
-$my_id = $_SESSION['user_id']; 
-$user_query1=mysql_query("SELECT * FROM users WHERE id=$my_id");
-$run_user1 = mysql_fetch_array($user_query1);
+ $my_id = $_SESSION['user_id']; 
+$user_query1=mysql_query("SELECT * FROM users WHERE u_id=$my_id") or die(mysql_error());
+$run_user1 = mysql_fetch_array($user_query1) or die(mysql_error());
 
-$uname=$run_user1['username']; 
-$uid=$run_user1['id'];
+$uname=$run_user1['firstname']; 
+$uid=$run_user1['u_id'];
 $upass=$run_user1['password'];
 $uemail=$run_user1['email'];
-$user_level=$run_user1['user_level'];
+$user_level=$run_user1['type'];
 $query=mysql_query("SELECT * FROM course");
 
 
-$user_query=mysql_query("SELECT * FROM teachers WHERE firstname='".$uname."' AND email='".$uemail."'");
+$user_query=mysql_query("SELECT * FROM users WHERE firstname='".$uname."' AND email='".$uemail."'") or die(mysql_error());
 $run_user = mysql_fetch_array($user_query);
 $username=$run_user['firstname']; 
 $t_id=$run_user['t_id'];

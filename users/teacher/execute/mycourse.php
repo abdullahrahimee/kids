@@ -3,25 +3,25 @@ include '../../student/execute/connect.php';
 include 'auth.php';
 
 // include '../../users/student/execute/functions.php';
-$my_id = $_SESSION['user_id']; 
-$user_query1=mysql_query("SELECT * FROM users WHERE id=$my_id");
-$run_user1 = mysql_fetch_array($user_query1);
+ $my_id = $_SESSION['user_id']; 
+$user_query1=mysql_query("SELECT * FROM users WHERE u_id='$my_id'");
+$run_user1 = mysql_fetch_array($user_query1) or die(mysql_error());
 
-$uname=$run_user1['username']; 
-$uid=$run_user1['id'];
+$uname=$run_user1['firstname']; 
+$uid=$run_user1['u_id'];
 $upass=$run_user1['password'];
 $uemail=$run_user1['email'];
-$user_level=$run_user1['user_level'];
+$user_level=$run_user1['type'];
 
 
 
-$user_query=mysql_query("SELECT * FROM teachers WHERE firstname='".$uname."' AND email='".$uemail."'");
+$user_query=mysql_query("SELECT * FROM users WHERE type='teacher' AND email='".$uemail."'");
 $run_user = mysql_fetch_array($user_query);
 $username=$run_user['firstname']; 
-$t_id=$run_user['t_id'];
+$t_id=$run_user['u_id'];
 
 
-$user_query2=mysql_query("SELECT * FROM join_course WHERE t_id=$t_id");
+$user_query2=mysql_query("SELECT * FROM join_course WHERE u_id=$t_id");
 
 $co="0";
 while($run_user2= mysql_fetch_array($user_query2)){
@@ -60,7 +60,13 @@ $query=mysql_query("SELECT * FROM course WHERE c_id IN (".$co.")");
 
     <!-- Custom Fonts -->
     <link href="../../student/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+  <script type="text/javascript">
+     function assinment(id)
+     {
+        $("#assinment_modal").modal('show');
+         // $("#view_action_div").html("lodading....").load('assinment.php','&id='+id);
+     }
+  </script>
 </head>
 
 <body>
@@ -176,8 +182,8 @@ if(!isset($_SESSION['user_id'])){
                      <th>Start_Time</th>
                      <th>End_Time</th>
                       <th>Students</th>
-                      
                        <th>Material</th>
+                        <th>Assignment</th>
                    </thead>
     <tbody>
         <?php while($result=mysql_fetch_assoc($query)){ ?>
@@ -190,6 +196,7 @@ if(!isset($_SESSION['user_id'])){
      <td><?php echo $result['end_time'] ?></td>
     <td><p data-placement="top" data-toggle="tooltip" title="Student in this Class"><button onclick="show(<?php echo $result['c_id']; ?>)" class="btn"  class="btn btn-primary btn-sm" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="fa fa-eye fa-lg"></span></button></p></td>
      <td><p data-placement="top" data-toggle="tooltip" title="Upload Matarial"><button onclick="upload(<?php echo $result['c_id']; ?>)"  class="btn btn-danger btn-sm" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fa fa-upload fa-lg"></span></button></p></td>
+     <td><button class="btn btn-primary"  onclick="show(<?php echo $result['c_id']; ?>)" data-title="Edit" data-toggle="modal" data-target="#assinment">Assignment</button></td>
     </tr>
         
         <?php } ?>
@@ -301,9 +308,7 @@ if(!isset($_SESSION['user_id'])){
           <div class="panel panel-default">
             <div class="panel-heading"><strong>Upload Files</strong> <small>For Students</small></div>
            <div class="panel-body">
-                
-            
-                
+               
                  <!-- Standar Form -->
                       <h4>Select files from your computer</h4>
                       <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
@@ -353,6 +358,98 @@ if(!isset($_SESSION['user_id'])){
   </div>
       <!-- /.modal-dialog --> 
     </div>
+       <!-- start of Assigment model -->
+                
+<div class="modal fade" id="assinment" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog" style="width:800px" >
+    <div class="modal-content" >
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title custom_align" id="Heading">Student In This Class</h4>
+      </div>
+          <div class="modal-body">
+            <!-- modal Table -->
+                <div class="container">
+    <h3>You Can search or Filter</h3>
+    <hr>
+
+    <div class="row col-md-8">
+        <div class="panel panel-primary filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">Students <button class="btn btn-default btn-xs btn-filter pull-right"><span class="fa fa-filter"></span> Filter</button></h3>
+                
+                    
+               
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+            <!-- End of modal Table -->
+      </div>
+          <div class="modal-footer ">
+      </div>
+        </div>
+    <!-- /.modal-content --> 
+  </div>
+      <!-- /.modal-dialog --> 
+    </div>
+    
+    
+   
+             <!-- end of Assignment model -->
+               
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog" style="width:800px" >
+    <div class="modal-content" >
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title custom_align" id="Heading">Student In This Class</h4>
+      </div>
+          <div class="modal-body">
+            <!-- modal Table -->
+                <div class="container">
+    <h3>You Can search or Filter</h3>
+    <hr>
+
+    <div class="row col-md-8">
+        <div class="panel panel-primary filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">Students <button class="btn btn-default btn-xs btn-filter pull-right"><span class="fa fa-filter"></span> Filter</button></h3>
+                
+                    
+               
+            </div>
+            <table class="table">
+                <thead>
+                    <tr class="filters">
+                        <th><input type="text" class="form-control" placeholder="ID" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="First Name" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Email Adress" disabled></th>
+                    </tr>
+                </thead>
+                <tbody id="content">
+                   
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+            <!-- End of modal Table -->
+      </div>
+          <div class="modal-footer ">
+      </div>
+        </div>
+    <!-- /.modal-content --> 
+  </div>
+      <!-- /.modal-dialog --> 
+    </div>
+    
+    
+   
                 </div>
                 <!-- /.row -->
 

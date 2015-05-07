@@ -10,7 +10,7 @@ session_start();
 <link rel="stylesheet" href="assets/css/slippry.css">
 				<script src="assets/js/jquery-ui.js" type="text/javascript"></script>
 				<script src="assets/js/scripts-f0e4e0c2.js" type="text/javascript"></script>
-			<div class="banner" id="move-top" dir="<?php echo $_SESSION['dir']?>">
+			<div class="banner" id="move-top">
 				<!----start-image-slider---->
 
 					<div data-scroll-reveal="enter bottom but wait 0.7s" class="img-slider" id="home">

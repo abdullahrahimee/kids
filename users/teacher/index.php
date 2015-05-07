@@ -9,10 +9,10 @@ if(!isset($_SESSION['user_id']) || (trim($_SESSION['user_id']) == '')) {
 
 // include '../../users/student/execute/functions.php';
 $my_id = $_SESSION['user_id']; 
-$user_query=mysql_query("SELECT username, user_level FROM users WHERE id=$my_id");
+$user_query=mysql_query("SELECT * FROM users WHERE u_id=$my_id");
 $run_user = mysql_fetch_array($user_query);
-$username=$run_user['username']; 
-$user_level=$run_user['user_level'];
+$username=$run_user['firstname']." ".$run_user['lastname']; 
+$user_level=$run_user['type'];
 $query=mysql_query("SELECT * FROM course");
 
 
