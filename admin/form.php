@@ -3,13 +3,17 @@ session_start();
 include '../users/student/execute/connect.php';
 
 if(isset($_POST['submit'])){
-$row=mysql_num_rows(mysql_query("SELECT * FROM users WHERE email='".$_POST['email']."' AND password='".md5($_POST['password'])."' AND type='admin'"));
+$row=mysql_num_rows(mysql_query("SELECT * FROM users WHERE email='".$_POST['email']."' AND password='".md5($_POST['password'])."' "));
 
-$uid=mysql_fetch_array(mysql_query("SELECT * FROM users WHERE email='".$_POST['email']."' AND password='".md5($_POST['password'])."' AND type='admin'"));
+$uid=mysql_fetch_array(mysql_query("SELECT * FROM users WHERE email='".$_POST['email']."' AND password='".md5($_POST['password'])."'"));
 if($row==1){
-    
+    if($uid['type']=='admin'){
 $_SESSION['auth']=$uid['u_id'];
 header("location:index.php");
+	}elseif ($uid['type']=='super') {
+		$_SESSION['auth']=$uid['u_id'];
+		header("location:super/super.php");
+	}
 }
 
              } 
