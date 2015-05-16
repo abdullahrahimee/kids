@@ -1,25 +1,25 @@
 <?php 
-    include '../../student/execute/connect.php';
-    include 'auth.php';
+   include '../../student/execute/connect.php';
+   include 'auth.php';
     // include '../../student/execute/functions.php';
 
-        $selectuser = mysql_query("SELECT * FROM users WHERE id = '".$_SESSION['user_id']."'");
+        $selectuser = mysql_query("SELECT * FROM users WHERE u_id = '".$_SESSION['user_id']."'");
         $userrow = mysql_fetch_array($selectuser);
-        $user_level=$userrow['user_level'];
+        $user_level=$userrow['type'];
 
-        $sql=mysql_query("select * from teachers where email = '".$userrow['email']."'");
+        $sql=mysql_query("select * from users where email = '".$userrow['email']."'");
         $row=mysql_fetch_array($sql);
         
-        $query_level = mysql_query("SELECT name FROM user_level where id='$user_level'");
-        $run_level=mysql_fetch_array($query_level);
-        $level_name=$run_level['name']; 
-        
+        $query_level = mysql_query("SELECT firstname FROM users where type='$user_level'");
+        $run_level=mysql_fetch_array($query_level) or die(mysql_error());
+        $level_name=$run_level['firstname']; 
+    
 
 
 //Read and Store teachers informations
 
-$tea_id=$row['t_id'];
-$user_id=$userrow['id'];
+$tea_id=$row['u_id'];
+$user_id=$userrow['u_id'];
 
 $firstname=$row['firstname'];  
 $lastname=$row['lastname'];
@@ -29,8 +29,8 @@ $email=$row['email'];
 $password=$row['password'];
 $gender=$row['gender'];
 $province=$row['province'];
-$birth_date=$row['birth_date'];
-$profile=$row['profile'];
+$birth_date=$row['b_date'];
+ $profile=$row['profile'];
 
 
 ?>
@@ -182,6 +182,7 @@ transition: all 0.2s;
                 <ul class="nav navbar-nav side-nav">
                     <li>
                         <a href="../index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+
                     </li>
 
                      <li>
@@ -208,7 +209,7 @@ transition: all 0.2s;
                     <div class="col-lg-12">
 
                         <h1 class="page-header">
-                             <?php echo ucwords($userrow['username']); ?>
+                             <?php echo ucwords($userrow['firstname']); ?>
                             <small>Profile</small>
                            
                         </h1>
@@ -223,7 +224,7 @@ transition: all 0.2s;
                             </li>
                         </ol>
 
-                        <div class="text-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['username']); ?> </b> [<?php echo $level_name; ?>]</p></div>
+                        <div class="text-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['firstname']); ?> </b> [<?php echo $lastname; ?>]</p></div>
                     </div>
 
 <!--  //start All the text for body -->
@@ -560,7 +561,7 @@ transition: all 0.2s;
                     <img alt="User Pic"  src="<?php 
 
                         if($profile == ''){echo "../../../images/default-avatar.png";}
-                        else{echo $profile;}
+                        else{echo "". $profile;}
 
 
                     ?>" class="img-responsive">

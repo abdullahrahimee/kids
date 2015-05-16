@@ -13,7 +13,7 @@ function loggedin(){
 
 if(loggedin()){ 
 $my_id = $_SESSION['user_id']; 
-$user_query=mysql_query("SELECT * FROM users WHERE id='$my_id'");
+$user_query=mysql_query("SELECT * FROM users WHERE u_id='$my_id'");
 $run_user = mysql_fetch_array($user_query);
 $username=$run_user['firstname']." ".$run_user['lastname']; 
 $user_level=$run_user['type'];

@@ -21,7 +21,7 @@ include("../language.php");
 												echo "<div class='alert alert-danger'><?= $index_login_msg_2 ?></div>";
 											}
 											else{   
-													$check_login = mysql_query("select * from users where email='$email' AND password = '$password'");
+													$check_login = mysql_query("select * from users where email='$email' AND password = '$password'")  or die(mysql_error());
 
 													if(mysql_num_rows($check_login) == 1){ 
 

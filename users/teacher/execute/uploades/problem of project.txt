@@ -1,0 +1,10 @@
+note :
+
+1. in system design  
+   a. use class diagram 
+signvio ? 
+
+yawl setup download and use it for schema?
+
+vpmn ?
+

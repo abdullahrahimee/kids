@@ -67,6 +67,7 @@ $query=mysql_query("SELECT * FROM course WHERE c_id IN (".$co.")");
          // $("#view_action_div").html("lodading....").load('assinment.php','&id='+id);
      }
   </script>
+  <script type="text/javascript" src="../../../assets/js/validation.js"></script>
 </head>
 
 <body>
@@ -196,7 +197,7 @@ if(!isset($_SESSION['user_id'])){
      <td><?php echo $result['end_time'] ?></td>
     <td><p data-placement="top" data-toggle="tooltip" title="Student in this Class"><button onclick="show(<?php echo $result['c_id']; ?>)" class="btn"  class="btn btn-primary btn-sm" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="fa fa-eye fa-lg"></span></button></p></td>
      <td><p data-placement="top" data-toggle="tooltip" title="Upload Matarial"><button onclick="upload(<?php echo $result['c_id']; ?>)"  class="btn btn-danger btn-sm" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fa fa-upload fa-lg"></span></button></p></td>
-     <td><button class="btn btn-primary"  onclick="show(<?php echo $result['c_id']; ?>)" data-title="Edit" data-toggle="modal" data-target="#assinment">Assignment</button></td>
+     <td><button class="btn btn-primary"  onclick="assign(<?php echo $result['c_id']; ?>)" data-title="Edit" data-toggle="modal" data-target="#assinment">Assignment</button></td>
     </tr>
         
         <?php } ?>
@@ -360,31 +361,18 @@ if(!isset($_SESSION['user_id'])){
     </div>
        <!-- start of Assigment model -->
                 
-<div class="modal fade" id="assinment" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+<div class="modal fade" id="assinment" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true" id="demo">
       <div class="modal-dialog" style="width:800px" >
     <div class="modal-content" >
           <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove" aria-hidden="true"></span></button>
-        <h4 class="modal-title custom_align" id="Heading">Student In This Class</h4>
+        <h4 class="modal-title custom_align" id="Heading">Add Asignment in here</h4>
       </div>
           <div class="modal-body">
             <!-- modal Table -->
-                <div class="container">
-    <h3>You Can search or Filter</h3>
-    <hr>
-
-    <div class="row col-md-8">
-        <div class="panel panel-primary filterable">
-            <div class="panel-heading">
-                <h3 class="panel-title">Students <button class="btn btn-default btn-xs btn-filter pull-right"><span class="fa fa-filter"></span> Filter</button></h3>
-                
-                    
-               
-            </div>
-            
-        </div>
-    </div>
-</div>
+             <div id="ass"></div>
+            <!-- end of table -->
+ 
 
             <!-- End of modal Table -->
       </div>
@@ -482,7 +470,23 @@ if(!isset($_SESSION['user_id'])){
 //     });
 // }
 // </script>
-
+<script>
+    function assign(id){
+      var xmlhttp;
+      if(window.XMLHttpRequest){
+        xmlhttp=new XMLHttpRequest();
+      }else{
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      xmlhttp.onreadystatechange=function(){
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+         document.getElementById("ass").innerHTML = xmlhttp.responseText;
+        }
+      }
+      xmlhttp.open("GET", "setting.php?id="+id, true);
+          xmlhttp.send();
+    }
+  </script>
 <script type="text/javascript">
         function show(id){
             var xmlhttp=new XMLHttpRequest();
@@ -636,6 +640,10 @@ jQuery(document).ready(function(){
 
 }(jQuery);
 </script>
-
+  <script src="jquery-1.8.3.js"></script>
+  <script src="jquery.validarium.js"></script>
+ <script type="text/javascript">
+              $('form#demo').validarium();
+             </script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+twitter api
+
+search for twiter api?
+
+1	create twitter application 
+2	twitter application managment
+3 	RESOURCE URL 
+
+4 twitter exchang api is aproject in gethub founde it and download and with this u can use twiter servie in php
+
+5 make a file in htdocs and bring the downlaod fiile of twiter api
+
+include the file 
+
+copys seetting section 
+crete an application in apps.twitter.com
+
+create access token
+
+with json_decode( , ); tod decode 
+
+<?php
+ini_set("")
+
+
+dev.twitter.com/rest/reference/get/statuses/
+
+?>
+how can we access a twiits from twitter in our application

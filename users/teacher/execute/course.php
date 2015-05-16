@@ -18,7 +18,7 @@ $query=mysql_query("SELECT * FROM course");
 $user_query=mysql_query("SELECT * FROM users WHERE firstname='".$uname."' AND email='".$uemail."'") or die(mysql_error());
 $run_user = mysql_fetch_array($user_query);
 $username=$run_user['firstname']; 
-$t_id=$run_user['t_id'];
+$t_id=$run_user['u_id'];
 
 
 
@@ -187,7 +187,7 @@ if(!isset($_SESSION['user_id'])){
      <td><?php echo $result['start_time'] ?></td>
      <td><?php echo $result['end_time'] ?></td>
      <td><p data-placement="top" data-toggle="tooltip" title="Upload Matarial"><?php
-     $que=mysql_query("SELECT * FROM join_course WHERE c_id=".$result['c_id']." AND t_id=".$t_id);
+     $que=mysql_query("SELECT * FROM join_course WHERE c_id=".$result['c_id']." AND u_id=".$t_id) or die(mysql_error());
      $num=mysql_num_rows($que);
 if ($num!=1) {
   echo '<button onclick="join('.$result['c_id'].')"  class="btn btn-success btn-sm" style="width:75px"><span>  <b> + Join </b></span></button>';

@@ -7,16 +7,16 @@
         session_destroy();
         }
 
-        $selectuser = mysql_query("SELECT * FROM users WHERE id = '".$_SESSION['user_id']."'");
+        $selectuser = mysql_query("SELECT * FROM users WHERE u_id = '".$_SESSION['user_id']."'");
         $userrow = mysql_fetch_array($selectuser);
-        $users_id=$userrow['id']; //id no of users in users table
-        $uname=$userrow['username'];
+        $users_id=$userrow['u_id']; //id no of users in users table
+        $uname=$userrow['firstname'];
         $uemail=$userrow['email'];
 
-        $user_query=mysql_query("SELECT * FROM students WHERE firstname='".$uname."' AND email='".$uemail."'");
+        $user_query=mysql_query("SELECT * FROM users WHERE firstname='".$uname."' AND email='".$uemail."'");
         $run_user = mysql_fetch_array($user_query);
         $username=$run_user['firstname']; 
-        $s_id=$run_user['s_id'];
+        $s_id=$run_user['u_id'];
 
 
       
@@ -110,7 +110,7 @@ $lastname=$run_user['lastname'];
             <ul class="nav navbar-right top-nav">
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userrow['username']; ?> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userrow['firstname']." ".$userrow['lastname']; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="profile_edit.php"><i class="fa fa-fw fa-user"></i> Profile</a>

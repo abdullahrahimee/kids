@@ -205,7 +205,7 @@
             <table class="table">
                 <thead>
                      <tr class="filters" align="center">
-                         <th> <input type="text" class="form-control" placeholder="ID" disabled></th>
+                         <th> <input type="text" class="form-control" placeholder="#" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Course Name" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Categorie" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Description" disabled></th>
@@ -219,7 +219,7 @@
                 <tbody>
                    
     <?php
-    $num++;
+    $num=1;
     $query=mysql_query("SELECT * FROM course");
      while($result=mysql_fetch_assoc($query)){ ?>
             <tr>

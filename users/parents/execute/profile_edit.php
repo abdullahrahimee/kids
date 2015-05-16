@@ -171,7 +171,7 @@ transition: all 0.2s;
             <ul class="nav navbar-right top-nav">
                
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo @$userrow['firstname']." ".$userrow['firstname']; ?> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo @$userrow['firstname']." ".$userrow['lastname']; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                        
                       
@@ -285,7 +285,7 @@ transition: all 0.2s;
         // echo $file_path;
         move_uploaded_file($file_temp, $file_path);
 
-        mysql_query("UPDATE `students` SET `profile` = '" .mysql_real_escape_string($file_path) . "' WHERE `s_id` = " . $stu_id); //int: prvent sql injunction //$stu_id should be int
+        mysql_query("UPDATE `users` SET `profile` = '" .mysql_real_escape_string($file_path) . "' WHERE `u_id` = " . $stu_id); //int: prvent sql injunction //$stu_id should be int
         }
 
         if(isset($_FILES['profile']) === true){

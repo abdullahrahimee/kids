@@ -1,14 +1,14 @@
 <?php 
 $link = mysql_connect('localhost','root','root');
 	$db= mysql_select_db('newkids');
-if($_GET['kid']!=''){
-	$count=mysql_num_rows(mysql_query("SELECT * FROM st_pa WHERE p_id=".$_GET['id']));
+if(isset($_GET['kid'])){
+	$count=mysql_num_rows(mysql_query("SELECT * FROM st_pa WHERE p_id=".$_GET['id']." AND rel='yes'"));
 	if($count<1){
 		echo "0";
 	}else{
 		echo $count;
 	}
-}elseif ($_GET['course']!='') {
+}elseif (isset($_GET['course'])) {
 $st="";
 $query=mysql_query("SELECT * FROM st_pa WHERE p_id=".$_GET['id']);
 while($pa=mysql_fetch_array($query)){
@@ -22,7 +22,7 @@ if($co<1){
 		echo $co;
 	}
 
-}elseif ($_GET['ass']!='') {
+}elseif (isset($_GET['ass'])) {
 	$st="";
 $query=mysql_query("SELECT * FROM st_pa WHERE p_id=".$_GET['id']);
 while($pa=mysql_fetch_array($query)){
@@ -41,7 +41,7 @@ if($ass<1){
 	}else{
 		echo $ass;
 	}
-}elseif ($_GET['com']!='') {
+}elseif (isset($_GET['com'])) {
 $st="";
 $query=mysql_query("SELECT * FROM st_pa WHERE p_id=".$_GET['id']);
 while($pa=mysql_fetch_array($query)){
@@ -55,7 +55,7 @@ if($co<1){
 		echo $co;
 	}
 
-}elseif ($_GET['ac_kid']!="") {
+}elseif (isset($_GET['ac_kid'])) {
 	$sql=mysql_query("SELECT * FROM users WHERE u_id IN (SELECT s_id FROM st_pa WHERE p_id=".$_GET['id']." AND rel='yes')");
 	echo "<div class='page-header'><h1>Accepted Kids</h1></div>";
 	echo "<table class='table table-striped custab'>";
@@ -84,7 +84,7 @@ if($co<1){
 			$nu++;
 	}
 	echo "</table>";
-}elseif ($_GET['no_kid']!="") {
+}elseif (isset($_GET['no_kid'])) {
 	$sql=mysql_query("SELECT * FROM users WHERE u_id IN (SELECT s_id FROM st_pa WHERE p_id=".$_GET['id']." AND rel='no')");
 	echo "<div class='page-header'><h1>Requested Kids</h1></div>";
 	echo "<table class='table table-striped custab'>";
@@ -113,20 +113,20 @@ if($co<1){
 			$nu++;
 	}
 	echo "</table>";
-}elseif ($_GET['acc']!='') {
+}elseif (isset($_GET['acc'])) {
 	if(mysql_query("UPDATE st_pa SET rel='yes' WHERE s_id=".$_GET['id'])){
 		echo "<div class='alert alert-success'>You have successefully accepted this kid</div>";
 	}else{
 		echo "<div class='alert alert-warning'>Failed to accept this kid</div>";
 	}
 }
-elseif ($_GET['rej']!='') {
+elseif (isset($_GET['rej'])) {
 	if(mysql_query("UPDATE st_pa SET rel='no' WHERE s_id=".$_GET['id'])){
 		echo "<div class='alert alert-danger'>You have successefully rejected this kid</div>";
 	}else{
 		echo "<div class='alert alert-success'>Failed to rejected this kid</div>";
 	}
-}elseif ($_GET['show_kid']!='') {
+}elseif (isset($_GET['show_kid'])) {
 	$sql = mysql_query("SELECT * FROM users WHERE u_id=" . $_GET['id']);
 	while ($row = mysql_fetch_array($sql)) {
 		echo '<div class="row">
@@ -166,13 +166,13 @@ elseif ($_GET['rej']!='') {
 								<input type="button" data-dismiss="modal" onclick="update_temp(' . $row['id'] . ',' . "'" . "pub_news" . "'" . ',' . "'" . $row['author'] . "'" . ');" value="Update" class="btn btn-primary ">&nbsp;<input data-dismiss="modal" type="button" value="Close" class="btn btn-danger ">
 							</div>';
 	}
-}elseif ($_GET['del_kid']!='') {
+}elseif (isset($_GET['del_kid'])) {
 	if(mysql_query("DELETE FROM st_pa WHERE s_id=" . $_GET['id'])){
 	echo "<div class='alert alert-success'>You have successefully delete this request</div>";
 	}else{
 		echo "<div class='alert alert-warning'>Failed to delete this request</div>";
 	}
-}elseif ($_GET['cou']!='') {
+}elseif (isset($_GET['cou'])) {
 			echo '<table class="table table-hover">
                 <thead>
                     <tr class="filters" align="center">
