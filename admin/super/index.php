@@ -117,7 +117,7 @@ include '../users/student/execute/connect.php';
                             <!-- /input-group -->
                         </li>
                         <li class="active">
-                            <a href="super.php"><i class="fa fa-dashboard fa-fw"></i> Super</a>
+                            <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Super</a>
                         </li>
                         <li>
                             <a href="approve.php"><i class="fa fa-check fa-fw"></i> Aprroval</a>
