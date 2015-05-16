@@ -12,7 +12,7 @@ $_SESSION['auth']=$uid['u_id'];
 header("location:index.php");
 	}elseif ($uid['type']=='super') {
 		$_SESSION['auth']=$uid['u_id'];
-		header("location:super/super.php");
+		header("location:super/");
 	}
 }
 
