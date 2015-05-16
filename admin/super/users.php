@@ -122,18 +122,12 @@ include '../users/student/execute/connect.php';
                         <li>
                             <a href="approve.php"><i class="fa fa-check fa-fw"></i> Aprroval</a>
                         </li>
-                        
-
                         <li class="active">
                             <a href="users.php"><i class="fa fa-users fa-fw"></i> Users</a>
                         </li>
-
                         <li>
                             <a href=""><i class="fa fa-table fa-fw"></i> Course</a>
                         </li>
-                        
-                       
-                       
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
