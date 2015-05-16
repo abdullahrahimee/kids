@@ -370,7 +370,9 @@ if(!isset($_SESSION['user_id'])){
       </div>
           <div class="modal-body">
             <!-- modal Table -->
+            <form id="demo" method="post" action="assinment.php"  enctype="multipart/form-data" >
              <div id="ass"></div>
+            </form>
             <!-- end of table -->
  
 
