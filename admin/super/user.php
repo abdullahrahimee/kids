@@ -2,10 +2,12 @@
 
 include 'auth.php';
  // echo$uid; 
-include '../users/student/execute/connect.php';
+include '../../users/student/execute/connect.php';
  
-  $query=mysql_query("SELECT * FROM users where type!='super'");
-
+  $q_st=mysql_query("SELECT * FROM users WHERE type!='super' AND type='student'");
+  $q_te=mysql_query("SELECT * FROM users WHERE type!='super' AND type='teacher'");
+  $q_ad=mysql_query("SELECT * FROM users WHERE type!='super' AND type='admin'");
+  $q_pa=mysql_query("SELECT * FROM users WHERE type!='super' AND type='parent'");
    if(isset($_SESSION['del-done'])){
              echo $_SESSION['del-done'];
              $_SESSION['del-done']='';
@@ -39,13 +41,13 @@ include '../users/student/execute/connect.php';
     <title>TechKids | Admin</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="assets/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../assets/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css" >
+    <link rel="stylesheet" type="text/css" href="../assets/font-awesome/css/font-awesome.min.css" >
 
 
     <style type="text/css">
@@ -182,7 +184,7 @@ include '../users/student/execute/connect.php';
     <div class="row">
         <div class="panel panel-primary filterable">
             <div class="panel-heading">
-                <h3 class="panel-title">Users</h3>
+                <h3 class="panel-title">Students</h3>
                 <div class="pull-right">
                     <button class="btn btn-default btn-xs btn-filter"><span class="fa fa-filter"></span> Filter</button>
                 </div>
@@ -191,22 +193,25 @@ include '../users/student/execute/connect.php';
                 <thead>
                     <tr class="filters">
                         <th><input type="text" class="form-control" placeholder="ID" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="First Name" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Last Name" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="UserName" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Email" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Type" disabled></th>
                         <th> Activation </th>
+                        <th> &nbsp;</th>
+                        
+                        <th> Delete </th>
 
                     </tr>
                 </thead>
                 <tbody>
-
-                <?php while($result=mysql_fetch_assoc($query)){ ?>
+				
+                <?php
+                $count=1;
+				 while($result=mysql_fetch_assoc($q_st)){ ?>
                     <tr> 
                       
-                      <td> <?php echo $result['u_id'] ?> </td>
+                      <td> <?php echo $count; $count++; ?> </td>
                       <td><?php echo $result['firstname'] ?></td>
-                      <td><?php echo $result['lastname'] ?></td>
                       <td><?php echo $result['email'] ?></td>
                       <td><?php echo $result['type'] ?></td> 
                        
@@ -223,8 +228,15 @@ include '../users/student/execute/connect.php';
                     ?>
                      </td>
 
+                     
+
+                    <td>
+                            
+
+                    </td>
+
                         
-      
+      <td> <a href="del_user.php?uid=<?php echo $result['u_id'];?>" class="btn btn-danger fa fa-remove" onclick="return confirm('do you realy want to delete this record?');"> </a></td>
 
 
 
@@ -232,10 +244,207 @@ include '../users/student/execute/connect.php';
                     <?php } ?>
                 </tbody>
             </table>
+            
         </div>
     </div>
+    <div class="row">
+        <div class="panel panel-primary filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">Teachers</h3>
+                <div class="pull-right">
+                    <button class="btn btn-default btn-xs btn-filter"><span class="fa fa-filter"></span> Filter</button>
+                </div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr class="filters">
+                        <th><input type="text" class="form-control" placeholder="ID" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="UserName" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Email" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Type" disabled></th>
+                        <th> Activation </th>
+                        <th> &nbsp;</th>
+                        
+                        <th> Delete </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                <?php
+                $count=1;
+                 while($result=mysql_fetch_assoc($q_te)){ ?>
+                    <tr> 
+                      
+                      <td> <?php echo $count; $count++; ?></td>
+                      <td><?php echo $result['firstname'] ?></td>
+                      <td><?php echo $result['email'] ?></td>
+                      <td><?php echo $result['type'] ?></td> 
+                       
+
+                       <!-- buttons -->
 
 
+                    <td> <?php 
+                        if($result['status'] == 'active'){ 
+                            echo "<a href='check.php?u_id=".$result['u_id']."&status=".$result['status']."'> <b class='btn btn-default' style='color:red'>  Disable </b> </a>"; //pass tow parameter
+                        }
+                        else{echo "<a href='check.php?u_id=".$result['u_id']."&status=".$result['status']."'> <b class='btn btn-default' style='color:green;width:74px;'> Enable </b> </a>";
+                        }
+                    ?>
+                     </td>
+
+                     
+
+                    <td>
+                            
+
+                    </td>
+
+                        
+      <td> <a href="del_user.php?uid=<?php echo $result['u_id'];?>" class="btn btn-danger fa fa-remove" onclick="return confirm('do you realy want to delete this record?');"> </a></td>
+
+
+
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+	<div class="row">
+        <div class="panel panel-primary filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">Admins</h3>
+                <div class="pull-right">
+                    <button class="btn btn-default btn-xs btn-filter"><span class="fa fa-filter"></span> Filter</button>
+                </div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr class="filters">
+                        <th><input type="text" class="form-control" placeholder="ID" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="UserName" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Email" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Type" disabled></th>
+                        <th> Activation </th>
+                        <th> &nbsp;</th>
+                        
+                        <th> Delete </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                <?php
+                $count=1;
+                 while($result=mysql_fetch_assoc($q_ad)){ ?>
+                    <tr> 
+                      
+                      <td> <?php echo $count; $count++; ?> </td>
+                      <td><?php echo $result['firstname'] ?></td>
+                      <td><?php echo $result['email'] ?></td>
+                      <td><?php echo $result['type'] ?></td> 
+                       
+
+                       <!-- buttons -->
+
+
+                    <td> <?php 
+                        if($result['status'] == 'active'){ 
+                            echo "<a href='check.php?u_id=".$result['u_id']."&status=".$result['status']."'> <b class='btn btn-default' style='color:red'>  Disable </b> </a>"; //pass tow parameter
+                        }
+                        else{echo "<a href='check.php?u_id=".$result['u_id']."&status=".$result['status']."'> <b class='btn btn-default' style='color:green;width:74px;'> Enable </b> </a>";
+                        }
+                    ?>
+                     </td>
+
+                     
+
+                    <td>
+                            
+
+                    </td>
+
+                        
+      <td> <a href="del_user.php?uid=<?php echo $result['u_id'];?>" class="btn btn-danger fa fa-remove" onclick="return confirm('do you realy want to delete this record?');"> </a></td>
+
+
+
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+	<div class="row">
+        <div class="panel panel-primary filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">Parents</h3>
+                <div class="pull-right">
+                    <button class="btn btn-default btn-xs btn-filter"><span class="fa fa-filter"></span> Filter</button>
+                </div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr class="filters">
+                        <th><input type="text" class="form-control" placeholder="ID" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="UserName" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Email" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Type" disabled></th>
+                        <th> Activation </th>
+                        <th> &nbsp;</th>
+                        
+                        <th> Delete </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                <?php
+                $count=1;
+                 while($result=mysql_fetch_assoc($q_pa)){ ?>
+                    <tr> 
+                      
+                      <td> <?php echo $count; $count++; ?> </td>
+                      <td><?php echo $result['firstname'] ?></td>
+                      <td><?php echo $result['email'] ?></td>
+                      <td><?php echo $result['type'] ?></td> 
+                       
+
+                       <!-- buttons -->
+
+
+                    <td> <?php 
+                        if($result['status'] == 'active'){ 
+                            echo "<a href='check.php?u_id=".$result['u_id']."&status=".$result['status']."'> <b class='btn btn-default' style='color:red'>  Disable </b> </a>"; //pass tow parameter
+                        }
+                        else{echo "<a href='check.php?u_id=".$result['u_id']."&status=".$result['status']."'> <b class='btn btn-default' style='color:green;width:74px;'> Enable </b> </a>";
+                        }
+                    ?>
+                     </td>
+
+                     
+
+                    <td>
+                            
+
+                    </td>
+
+                        
+      <td> <a href="del_user.php?uid=<?php echo $result['u_id'];?>" class="btn btn-danger fa fa-remove" onclick="return confirm('do you realy want to delete this record?');"> </a></td>
+
+
+
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
 
     <!-- end body -->
 
@@ -250,10 +459,10 @@ include '../users/student/execute/connect.php';
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="../assets/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         /*
 Please consider that the JS part isn't production ready at all, I just code it to show the concept of merging filters and titles together !
