@@ -13,17 +13,17 @@ function loggedin(){
 
 if(loggedin()){ 
 $my_id = $_SESSION['user_id']; 
-$user_query=mysql_query("SELECT username, user_level FROM users WHERE id='$my_id'");
+$user_query=mysql_query("SELECT firstname, type FROM users WHERE u_id='$my_id'");
 $run_user = mysql_fetch_array($user_query);
-$username=$run_user['username']; 
-$user_level=$run_user['user_level'];
+$username=$run_user['firstname']; 
+$user_level=$run_user['type'];
 
 
 //get/show user Level
 
-$query_level = mysql_query("SELECT name FROM user_level where id='$user_level'");
+$query_level = mysql_query("SELECT firstname FROM users where u_id='$user_level'") or die(mysql_error());
 $run_level=mysql_fetch_array($query_level);
-$level_name=$run_level['name']; 
+$level_name=$run_level['firstname']; 
 
 } 
 

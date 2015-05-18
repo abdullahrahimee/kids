@@ -18,18 +18,10 @@
         $username=$run_user['firstname']; 
         $s_id=$run_user['u_id'];
 
-        // $query=mysql_query("SELECT * FROM course");
+        $query=mysql_query("SELECT * FROM assignment");
 
 
-        
-$user_query2=mysql_query("SELECT * FROM stu_join WHERE u_id=$s_id") or die(mysql_error());
-$co="";
-while($run_user2= mysql_fetch_array($user_query2)){
-$co.=$run_user2['c_id'].",";
-}
-$co.=substr($co,0, strlen($co)-1);
-
-$query=mysql_query("SELECT * FROM course WHERE c_id IN (".$co.")");      
+      
 
 
 //Read and Store students informations
@@ -57,7 +49,7 @@ $lastname=$run_user['lastname'];
 
     
 
-    <title>TechKids | Joined Course</title>
+    <title>TechKids | Course</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
@@ -123,7 +115,7 @@ $lastname=$run_user['lastname'];
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userrow['firstname']; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#..//execute/profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href="profile_edit.php"><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
                        
                         <li class="divider"></li>
@@ -151,10 +143,10 @@ $lastname=$run_user['lastname'];
                     <li>
                         <a href="mycourse.php"><i class="fa fa-book"></i> Joined Course</a>
                     </li>
-                     <li>
+                       <li>
                         <a href="assinment.php"><i class="fa fa-book"></i> Assignment</a>
                     </li>
-                    
+                  
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -176,7 +168,7 @@ $lastname=$run_user['lastname'];
                                 <i class="fa fa-dashboard"></i>  <a href="../index.php">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-file"></i> Courses
+                                <i class="fa fa-file"></i> Assignments
                             </li>
                         </ol>
 
@@ -192,85 +184,48 @@ $lastname=$run_user['lastname'];
 
 
 ?>
-<div class="modal fade" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Download Materials</h4>
-      </div>
-      <div class="modal-body" style="height:80px">
-            
-      
-      <div id="mess"> </div>
-      </div>
-
-      <br /><br /><br /><br />
-      <div class="modal-footer">
-    
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
-
-
-
                 <!-- /.row -->
 <!-- Start The Main Body -->
                     <div class="col-md-12">
-    <h3>Please Download Your Course Materials Here!</h3>
+    <h3>You Can See Your Assignment Here!</h3>
     <hr>
     <div class="row">
         <div class="panel panel-primary filterable">
             <div class="panel-heading">
-                <h3 class="panel-title">Your Course</h3>
+                <h3 class="panel-title">See Assignments</h3>
                 <div class="pull-right">
                     <button class="btn btn-default btn-xs btn-filter"><span class="fa fa-filter"></span> Filter</button>
                 </div>
             </div>
             
-            <table class="table">
+            <div id="mess"> </div>
+            <table class="table table-hover">
                 <thead>
-                     <tr class="filters" align="center">
+                    <tr class="filters" align="center">
                          <th> <input type="text" class="form-control" placeholder="ID" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Course Name" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Categorie" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="File Name" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Description" disabled></th>
-                         <th><input type="text" class="form-control" placeholder="Fee" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Start Date" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="End Date" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Start Time" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="End Time" disabled></th>
-                        <th> Download </th>
- </tr>
+                        <th><input type="text" class="form-control" placeholder="Description" disabled></th>
+                        <th><a href="<?php echo $result['path']?>">Download</a></th>
+
+                </tr>
                 </thead>
                 <tbody>
                    
     <?php while($result=mysql_fetch_assoc($query)){ ?>
             <tr>
-     <td><?php echo $result['c_id'] ?></td>
-     <td><?php echo $result['name'] ?></td>
+     <td><?php echo $result['a_id'] ?></td>
+     <td><?php echo $result['file_name'] ?></td>
 
-     <td><?php $course_name=mysql_fetch_array(mysql_query("SELECT * FROM join_course WHERE c_id=".$result['c_id']));
+     
+     <td><?php $course_name=mysql_fetch_array(mysql_query("SELECT * FROM course WHERE c_id=".$result['c_id']));
      echo $course_name['name']; ?></td>
 
      <td><?php echo $result['des'] ?></td>
-     <td><?php echo $result['fee'] ?></td>
-     <td><?php echo $result['start_date'] ?></td>
-     <td><?php echo $result['end_date'] ?></td>
-     <td><?php echo $result['start_time'] ?></td>
-     <td><?php echo $result['end_time'] ?></td>
+     <td><button onclick="download('.$result['a_id'].')" class="btn btn-success">Download</button></td>
+      
         
-<td><p><?php
-     $que=mysql_query("SELECT * FROM materials WHERE course_id=".$result['c_id']."");
-  
-
-  echo '<button onclick="download('.$result['c_id'].')"  class="btn btn-success btn-sm fa fa-download" style="width:75px" data-toggle="modal" data-target="#myModal"></button>';
-
-     ?></p></td>
-
+ 
         </tr>
              <input type="hidden" id="c_id" value="<?php echo $result['c_id']; ?>">
         <?php } ?>
@@ -279,10 +234,9 @@ $lastname=$run_user['lastname'];
                 </tbody>
             </table>
 
-             <!-- Start- ajax for download materials -->
+             <!-- Start- ajax for join course -->
         <script type="text/javascript">
-        function download(c_id){
-
+        function join(c_id){
           var s_id=<?php echo $s_id; ?>;
 
             var xmlhttp=new XMLHttpRequest();
@@ -292,24 +246,55 @@ $lastname=$run_user['lastname'];
                 }
             }
            
-            xmlhttp.open("GET","download_material.php?download=yes&s_id="+s_id+"&c_id="+c_id,true);
+
+            xmlhttp.open("GET","stu_join.php?join=yes&s_id="+s_id+"&c_id="+c_id,true);
               xmlhttp.send();
         }
         </script>
 
-            
-    <!-- End - ajax for download materials-->
+             <script type="text/javascript">
+        function unjoin(c_id){
+          var s_id=<?php echo $s_id; ?>;
+
+            var xmlhttp=new XMLHttpRequest();
+            xmlhttp.onreadystatechange=function(){
+                if(xmlhttp.readyState==4 && xmlhttp.status==200){
+                    document.getElementById('mess').innerHTML=xmlhttp.responseText;
+                }
+            }
+
+
+             //<!-- Start- ajax for download materials -->
+        <script type="text/javascript">
+        function download(a_id){
+
+          var s_id=<?php echo $u_id; ?>;
+
+            var xmlhttp=new XMLHttpRequest();
+            xmlhttp.onreadystatechange=function(){
+                if(xmlhttp.readyState==4 && xmlhttp.status==200){
+                    document.getElementById('mess').innerHTML=xmlhttp.responseText;
+                }
+            }
+           
+
+            xmlhttp.open("GET","stu_join.php?unjoin=yes&s_id="+s_id+"&c_id="+c_id,true);
+              xmlhttp.send();
+        }
+        </script>
+    <!-- End - ajax for join course -->
 
         </div>
     </div>
 </div>
-  <!-- jQuery -->
+    <!-- jQuery -->
     <script src="../assets/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../assets/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript">
+
+     <script type="text/javascript">
 
                     /*
 Please consider that the JS part isn't production ready at all, I just code it to show the concept of merging filters and titles together !
@@ -381,7 +366,6 @@ $(document).ready(function(){
     </div>
     <!-- /#wrapper -->
 
-  
 
 </body>
 

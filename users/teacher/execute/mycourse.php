@@ -60,6 +60,7 @@ $query=mysql_query("SELECT * FROM course WHERE c_id IN (".$co.")");
 
     <!-- Custom Fonts -->
     <link href="../../student/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/parsley.css">
   <script type="text/javascript">
      function assinment(id)
      {
@@ -67,7 +68,7 @@ $query=mysql_query("SELECT * FROM course WHERE c_id IN (".$co.")");
          // $("#view_action_div").html("lodading....").load('assinment.php','&id='+id);
      }
   </script>
-  <script type="text/javascript" src="../../../assets/js/validation.js"></script>
+  <!-- // <script type="text/javascript" src="../../../assets/js/validation.js"></script> -->
 </head>
 
 <body>
@@ -370,9 +371,9 @@ if(!isset($_SESSION['user_id'])){
       </div>
           <div class="modal-body">
             <!-- modal Table -->
-            <form id="demo" method="post" action="assinment.php"  enctype="multipart/form-data" >
+            
              <div id="ass"></div>
-            </form>
+            
             <!-- end of table -->
  
 
@@ -643,9 +644,15 @@ jQuery(document).ready(function(){
 }(jQuery);
 </script>
   <script src="jquery-1.8.3.js"></script>
-  <script src="jquery.validarium.js"></script>
- <script type="text/javascript">
+  <!-- // <script src="jquery.validarjium.js"></script> -->
+<!--  <script type="text/javascript">
               $('form#demo').validarium();
-             </script>
+             </script> -->
+
+             <!-- // <script src="jquery-1.8.3.js"></script> -->
+    <script src="../../../assets/js/parsley.js" type="text/javascript">
+    </script>
+
+          
 </body>
 </html>
