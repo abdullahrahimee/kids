@@ -22,10 +22,10 @@
 
 
         
-$user_query2=mysql_query("SELECT * FROM stu_join WHERE u_id=$s_id") or die(mysql_error());
+$user_query2=mysql_query("SELECT * FROM stu_join WHERE u_id=$s_id");
 $co="";
-while($run_user2= mysql_fetch_array($user_query2)){
-$co.=$run_user2['c_id'].",";
+while($run_user2=mysql_fetch_array($user_query2)){
+ $co.=$run_user2['c_id'].",";
 }
 $co.=substr($co,0, strlen($co)-1);
 
@@ -248,13 +248,15 @@ $lastname=$run_user['lastname'];
                 </thead>
                 <tbody>
                    
-    <?php while($result=mysql_fetch_assoc($query)){ ?>
+    <?php while($result=mysql_fetch_array($query))
+    {
+     ?>
             <tr>
      <td><?php echo $result['c_id'] ?></td>
      <td><?php echo $result['name'] ?></td>
 
      <td><?php $course_name=mysql_fetch_array(mysql_query("SELECT * FROM join_course WHERE c_id=".$result['c_id']));
-     echo $course_name['name']; ?></td>
+     echo $result['name']; ?></td>
 
      <td><?php echo $result['des'] ?></td>
      <td><?php echo $result['fee'] ?></td>

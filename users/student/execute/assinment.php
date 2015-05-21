@@ -20,10 +20,6 @@
 
         $query=mysql_query("SELECT * FROM assignment");
 
-
-      
-
-
 //Read and Store students informations
 
 $firstname=$run_user['firstname'];  
@@ -206,13 +202,13 @@ $lastname=$run_user['lastname'];
                         <th><input type="text" class="form-control" placeholder="File Name" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Description" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Description" disabled></th>
-                        <th><a href="<?php echo $result['path']?>">Download</a></th>
+                        <th>Download</th>
 
                 </tr>
                 </thead>
                 <tbody>
                    
-    <?php while($result=mysql_fetch_assoc($query)){ ?>
+    <?php while($result=mysql_fetch_array($query)){ ?>
             <tr>
      <td><?php echo $result['a_id'] ?></td>
      <td><?php echo $result['file_name'] ?></td>
@@ -222,7 +218,7 @@ $lastname=$run_user['lastname'];
      echo $course_name['name']; ?></td>
 
      <td><?php echo $result['des'] ?></td>
-     <td><button onclick="download('.$result['a_id'].')" class="btn btn-success">Download</button></td>
+     <td><button class="btn btn-success"><a href="<?php echo $result['path']?>">Download</a></button></td>
       
         
  
