@@ -110,7 +110,7 @@ include '../../users/student/execute/connect.php';
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li> -->
-                        <li><a href="form.php?logout=out"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="../form.php?logout=out"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -134,18 +134,20 @@ include '../../users/student/execute/connect.php';
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Super</a>
+                        </li>
+                        <li class="active">
+                            <a href="approve.php"><i class="fa fa-check fa-fw"></i> Aprroval</a>
                         </li>
                         
 
                         <li>
-                            <a href="user.php"><i class="fa fa-edit fa-fw"></i> Users</a>
+                            <a href="user.php"><i class="fa fa-users fa-fw"></i> Users</a>
                         </li>
 
                         <li>
-                            <a href="course.php"><i class="fa fa-table fa-fw"></i> Course</a>
+                            <a href=""><i class="fa fa-table fa-fw"></i> Course</a>
                         </li>
-                        
                        
                        
                     </ul>

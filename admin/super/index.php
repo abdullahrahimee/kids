@@ -125,7 +125,7 @@ include '../../users/student/execute/connect.php';
                         
 
                         <li>
-                            <a href="users.php"><i class="fa fa-users fa-fw"></i> Users</a>
+                            <a href="user.php"><i class="fa fa-users fa-fw"></i> Users</a>
                         </li>
 
                         <li>
