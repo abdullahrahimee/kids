@@ -18,11 +18,7 @@
         $username=$run_user['firstname']; 
         $s_id=$run_user['u_id'];
 
-        $query=mysql_query("SELECT * FROM course");
-
-
-      
-
+        $query=mysql_query("SELECT * FROM assignment");
 
 //Read and Store students informations
 
@@ -143,9 +139,10 @@ $lastname=$run_user['lastname'];
                     <li>
                         <a href="mycourse.php"><i class="fa fa-book"></i> Joined Course</a>
                     </li>
-                     <li>
+                       <li>
                         <a href="assinment.php"><i class="fa fa-book"></i> Assignment</a>
                     </li>
+                  
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -167,7 +164,7 @@ $lastname=$run_user['lastname'];
                                 <i class="fa fa-dashboard"></i>  <a href="../index.php">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-file"></i> Courses
+                                <i class="fa fa-file"></i> Assignments
                             </li>
                         </ol>
 
@@ -186,61 +183,45 @@ $lastname=$run_user['lastname'];
                 <!-- /.row -->
 <!-- Start The Main Body -->
                     <div class="col-md-12">
-    <h3>You Can Join Your Course Here!</h3>
+    <h3>You Can See Your Assignment Here!</h3>
     <hr>
     <div class="row">
         <div class="panel panel-primary filterable">
             <div class="panel-heading">
-                <h3 class="panel-title">Join Course</h3>
+                <h3 class="panel-title">See Assignments</h3>
                 <div class="pull-right">
                     <button class="btn btn-default btn-xs btn-filter"><span class="fa fa-filter"></span> Filter</button>
                 </div>
             </div>
-
+            
             <div id="mess"> </div>
             <table class="table table-hover">
                 <thead>
                     <tr class="filters" align="center">
                          <th> <input type="text" class="form-control" placeholder="ID" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Course Name" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Categorie" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="File Name" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Description" disabled></th>
-                         <th><input type="text" class="form-control" placeholder="Fee" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Start Date" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="End Date" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Start Time" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="End Time" disabled></th>
-                        <th> + Join </th>
- </tr>
-                   
+                        <th><input type="text" class="form-control" placeholder="Description" disabled></th>
+                        <th>Download</th>
+
+                </tr>
                 </thead>
                 <tbody>
                    
-    <?php while($result=mysql_fetch_assoc($query)){ ?>
+    <?php while($result=mysql_fetch_array($query)){ ?>
             <tr>
-     <td><?php echo $result['c_id'] ?></td>
-     <td><?php echo $result['name'] ?></td>
+     <td><?php echo $result['a_id'] ?></td>
+     <td><?php echo $result['file_name'] ?></td>
+
      
      <td><?php $course_name=mysql_fetch_array(mysql_query("SELECT * FROM course WHERE c_id=".$result['c_id']));
      echo $course_name['name']; ?></td>
 
      <td><?php echo $result['des'] ?></td>
-     <td><?php echo $result['fee'] ?></td>
-     <td><?php echo $result['start_date'] ?></td>
-     <td><?php echo $result['end_date'] ?></td>
-     <td><?php echo $result['start_time'] ?></td>
-     <td><?php echo $result['end_time'] ?></td>
+     <td><button class="btn btn-success"><a href="<?php echo $result['path']?>">Download</a></button></td>
+      
         
-<td><p><?php
-     $que=mysql_query("SELECT * FROM stu_join WHERE c_id=".$result['c_id']." AND s_id=".$s_id);
-     @$num=mysql_num_rows($que);
-if ($num!=1) {
-  echo '<button onclick="join('.$result['c_id'].')"  class="btn btn-success btn-sm" style="width:75px"><span>  <b> + Join </b></span></button>';
-}else{
-  echo '<button onclick="unjoin('.$result['c_id'].')"  class="btn btn-danger btn-sm"><span>  <b> + Un Join </b></span></button>';
-}
-     ?></p></td>
-
+ 
         </tr>
              <input type="hidden" id="c_id" value="<?php echo $result['c_id']; ?>">
         <?php } ?>
@@ -270,6 +251,20 @@ if ($num!=1) {
              <script type="text/javascript">
         function unjoin(c_id){
           var s_id=<?php echo $s_id; ?>;
+
+            var xmlhttp=new XMLHttpRequest();
+            xmlhttp.onreadystatechange=function(){
+                if(xmlhttp.readyState==4 && xmlhttp.status==200){
+                    document.getElementById('mess').innerHTML=xmlhttp.responseText;
+                }
+            }
+
+
+             //<!-- Start- ajax for download materials -->
+        <script type="text/javascript">
+        function download(a_id){
+
+          var s_id=<?php echo $u_id; ?>;
 
             var xmlhttp=new XMLHttpRequest();
             xmlhttp.onreadystatechange=function(){

@@ -6,7 +6,7 @@
      	echo $subject=$_POST['subject'];
      	echo $file=$_FILES['file']['name'];
      	echo $desc =$_POST['area'];
-     	$folder="uploades/";
+     	$folder="../../uploades/";
      	$path=$folder.$file;
      
      if(move_uploaded_file($_FILES['file']['tmp_name'],$path))

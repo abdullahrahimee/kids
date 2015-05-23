@@ -4,7 +4,7 @@ include 'execute/connect.php';
 include 'execute/functions.php';
 include 'execute/auth.php';
 
-mysql_connect('localhost', 'root', '123');
+mysql_connect('localhost', 'root', 'root');
 mysql_select_db('techkids');
 
 //echo $_SESSION['user_id']; //show the user which currently login
