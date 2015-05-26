@@ -166,7 +166,7 @@ transition: all 0.2s;
             <ul class="nav navbar-right top-nav">
                
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo @$userrow['username']; ?> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo @$userrow['firstname']." ".$userrow['lastname']; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         
                         
@@ -224,7 +224,7 @@ transition: all 0.2s;
                             </li>
                         </ol>
 
-                        <div class="text-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['firstname']); ?> </b> [<?php echo $lastname; ?>]</p></div>
+                        <div class="text-right"> <p> You are logged in as <b> <?php echo ucwords($userrow['firstname']); ?> </b> [<?php echo $userrow['type']; ?>]</p></div>
                     </div>
 
 <!--  //start All the text for body -->

@@ -1,4 +1,4 @@
-<?php
+d <?php
       include('../../../conf/conn.inc');
      if(isset($_POST['assinment']))
      {
