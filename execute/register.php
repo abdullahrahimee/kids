@@ -49,22 +49,23 @@
 		@$role=$_GET['role'];
 		if(isset($_POST['submit'])){ 
 			$username=$_POST['username']; 
+			$lastname=$_POST['lastname'];
 			$password=md5($_POST['pass']); 
 			$email=$_POST['email'];
 
-				if(empty($username) || empty($password) || empty($email)){ 
+				if(empty($username) || empty($password) || empty($email) || empty($lastname)){ 
 					echo "<p style='color:red'><?= $index_register_1_h3 ?></p>"; 
 				}
 				else{ 	
 																	// id firstname lastname phone address email gender password, rooll	
 						//store the Records
 						if(isset($_GET['role']) && $_GET['role']=='teacher'){
-						mysql_query("INSERT INTO users(u_id, firstname, email, password,type) VALUES ('', '$username', '$email', '$password','teacher')");
+						mysql_query("INSERT INTO users(u_id, firstname,lastname, email, password,type,status) VALUES ('', '$username','$lastname', '$email', '$password','teacher','none')");
 						// echo "<p>Succssfully Registered!</p>";
 						header('location:../login/form.php?reg=done');
 						}
 						else if(isset($_GET['role']) && $_GET['role']=='student'){ 
-						mysql_query("INSERT INTO users(u_id, firstname, email, password,type) VALUES('', '$username', '$email', '$password','student')");
+						mysql_query("INSERT INTO users(u_id, firstname,lastname, email, password,type,status) VALUES('', '$username','$lastname', '$email', '$password','student','none')");
 						// echo "<p>Succssfully Registered!</p>";
 						header('location: ../login/form.php?reg=done');
 						}
@@ -78,6 +79,10 @@
 								<div class="top-margin">
 									<label><?= $index_register_username ?></label>
 									<input type="text" class="form-control" name="username" data-parsley-required="true" />
+								</div>
+									<div class="top-margin">
+									<label>Lastname</label>
+									<input type="text" name="lastname" class="form-control" data-parsley-required="true" />
 								</div>
 								
 								<div class="top-margin">

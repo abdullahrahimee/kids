@@ -60,7 +60,10 @@
 	<link rel="stylesheet" href="../../assets/css/style1.css" type="text/css" media="screen">
 	<script type="text/javascript" src="../../assets/js/jquery.js"></script>
     <script type="text/javascript" src="../../assets/js/touchTouch.jquery.js"></script> 
-  
+  <!-- link for gallery show -->
+  <link rel="stylesheet" type="text/css" href="../../assets/css/tooplate_style.css">
+  <link rel="stylesheet" type="text/css" href="../../assets/css/jquery.lightbox-0.5.css">
+  <script type="text/javascript" src="../../assets/js/jquery.lightbox-0.5.js"></script>
 </head>
 <body class="home">
 <script>
@@ -113,20 +116,22 @@ ga('create', 'UA-30027142-1', '.com');
         <div class="col-xs-6 col-sm-4 col-md-3">            
             <div class="thumbnail">
                 <div class="caption">
-                     
-                    <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
-                     
+                     <h4>Thumbnail Headline</h4>
+                    <p>short thumbnail description</p>
+                    <p class="lightbox"><a href="album.php" class="label label-danger">View Image</a>
+                     <a href="" class="label label-default">Download</a></p>
                 </div>
-                <img src="../../assets/img/page3-img1.jpg" alt="...">
+                <img src=". class="lightbox"./. g/page3-img1.jpg" alt="...">
             </div>
         </div>
       
         <div class="col-xs-6 col-sm-4 col-md-3">            
             <div class="thumbnail">
                 <div class="caption">
-                    
-                    <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
-                     
+                    <h4>Thumbnail Headline</h4>
+                    <p>short thumbnail description</p>
+                    <p><a href="" class="label label-danger">View Image</a>
+                    <a href="" class="label label-default">Download</a></p>
                 </div>
                 <img src="../../assets/img/page3-img2.jpg" alt="...">
             </div>
@@ -135,9 +140,10 @@ ga('create', 'UA-30027142-1', '.com');
         <div class="col-xs-6 col-sm-4 col-md-3">            
             <div class="thumbnail">
                 <div class="caption">
-                   
-                    <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
-                     
+                    <h4>Thumbnail Headline</h4>
+                    <p>short thumbnail description</p>
+                    <p><a href="" class="label label-danger">View Image</a>
+                    <a href="" class="label label-default">Download</a></p>
                 </div>
                 <img src="../../assets/img/page3-img8.jpg" alt="...">
             </div>
@@ -146,9 +152,10 @@ ga('create', 'UA-30027142-1', '.com');
         <div class="col-xs-6 col-sm-4 col-md-3">            
             <div class="thumbnail">
                 <div class="caption">
-                     
-                    <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
-                     
+                    <h4>Thumbnail Headline</h4>
+                    <p>short thumbnail description</p>
+                    <p><a href="" class="label label-danger">View Image</a>
+                    <a href="" class="label label-default">Download</a></p>
                 </div>
                 <img src="../../assets/img/page3-img7.jpg" alt="...">
             </div>  
@@ -157,9 +164,10 @@ ga('create', 'UA-30027142-1', '.com');
          <div class="col-xs-6 col-sm-4 col-md-3">            
             <div class="thumbnail">
                 <div class="caption">
-                   
-                    <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
-                  
+                    <h4>Thumbnail Headline</h4>
+                    <p>short thumbnail description</p>
+                    <p><a href="" class="label label-danger">View Image</a>
+                    <a href="http://lorempixel.com/400/300/sports/3/" class="label label-default">Download</a></p>
                 </div>
                 <img src="../../assets/img/page3-img6.jpg" alt="...">
             </div>  
@@ -167,9 +175,10 @@ ga('create', 'UA-30027142-1', '.com');
             <div class="col-xs-6 col-sm-4 col-md-3">            
             <div class="thumbnail">
                 <div class="caption">
-                     
-                    <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
-                     
+                    <h4>Thumbnail Headline</h4>
+                    <p>short thumbnail description</p>
+                    <p><a href="" class="label label-danger">View Image</a>
+                    <a href="" class="label label-default">Download</a></p>
                 </div>
                 <img src="../../assets/img/page3-img5.jpg" alt="...">
             </div>  
@@ -177,9 +186,10 @@ ga('create', 'UA-30027142-1', '.com');
             <div class="col-xs-6 col-sm-4 col-md-3">            
             <div class="thumbnail">
                 <div class="caption">
-                     
-                    <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
-                     
+                    <h4>Thumbnail Headline</h4>
+                    <p>short thumbnail description</p>
+                    <p><a href="" class="label label-danger">View Image</a>
+                    <a href="" class="label label-default">Download</a></p>
                 </div>
                 <img src="../../assets/img/page3-img4.jpg" alt="...">
             </div>  
@@ -187,9 +197,10 @@ ga('create', 'UA-30027142-1', '.com');
             <div class="col-xs-6 col-sm-4 col-md-3">            
             <div class="thumbnail">
                 <div class="caption">
-                    
-                    <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
-                    
+                    <h4>Thumbnail Headline</h4>
+                    <p>short thumbnail description</p>
+                    <p><a href="" class="label label-danger">View Image</a>
+                    <a href="" class="label label-default">Download</a></p>
                 </div>
                 <img src="../../assets/img/page3-img3.jpg" alt="...">
             </div>  

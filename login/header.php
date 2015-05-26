@@ -62,10 +62,10 @@ ga('create', 'UA-30027142-1', '.com');
 				<ul class="nav navbar-nav pull-right">
 				<li><a href="../index.php"><?= $index_header_1_msg ?></a></li>
 					<li><a href="../about.php"><?= $index_header_2_msg ?></a></li>
-						<li><a href="../curriculum.php"><?= $index_header_2_msg ?></a></li>
-						<li><a href="../methodology.php"><?= $index_header_2_msg ?></a></li>
-						<li><a href="../gallery/examples/gallery.html"><?= $index_header_2_msg ?></a></li>
-						<li><a href="../contact.php"><?= $index_header_2_msg ?></a></li>
+						<li><a href="../curriculum.php"><?= $index_header_3_msg ?></a></li>
+						<li><a href="../methodology.php"><?= $index_header_4_msg ?></a></li>
+						<li><a href="../gallery/examples/gallery.html"><?= $index_header_5_msg ?></a></li>
+						<li><a href="../contact.php"><?= $index_header_6_msg ?></a></li>
 			
 				</ul>
 			</div><!--/.nav-collapse -->
