@@ -180,7 +180,7 @@ TechKids team researches and evaluates recent developments in educational techno
 
     $index_login_msg=" da  Successfully Registerd!";
     $index_login_msg_1=" da registeration Faild!";
-    $index_login_msg_2=" da Error: Feild Empty!";
+    $index_login_msg_2=" da Your account has not been activated yet!";
 
     //chang.php page 
 

@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'execute/auth.php';
 include '../student/execute/connect.php';
 
 if(!isset($_SESSION['user_id']) || (trim($_SESSION['user_id']) == '')) {
