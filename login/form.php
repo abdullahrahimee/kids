@@ -89,7 +89,7 @@
 
 								<a href="control/forget.php" class="green"><?= $index_form_6_message ?></a> <br />
 								
-								<i class="text-primary"><?= $index_form_7_message ?></i><?= $index_form_8_message ?><i class="text-primary"><a href="../execute/register.php?role=teacher&lang=<?=$_SESSION['lang']?>"><?= $index_form_9_message ?></a></i> or <i class="text-primary"><a href="../execute/register.php?role=student&lang=<?= $_SESSION['lang']?>"><?= $index_form_10_message ?></a></i>
+								<i class="text-primary"><?= $index_form_7_message ?></i><?= $index_form_8_message ?><i class="text-primary"><a href="../execute/register.php?role=teacher&lang=<?=$_SESSION['lang']?>"><?= $index_form_9_message ?></a></i>, <i class="text-primary"><a href="../execute/register.php?role=student&lang=<?= $_SESSION['lang']?>"><?= $index_form_10_message ?></a></i> or <i class="text-primary"><a href="../execute/register.php?role=parent&lang=<?= $_SESSION['lang']?>"><?= $index_form_11_message ?></a></i>
 								 
 				</div>
 						

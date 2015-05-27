@@ -162,6 +162,7 @@ TechKids team researches and evaluates recent developments in educational techno
     $index_form_8_message=" da as a ";
     $index_form_9_message=" da Teacher";
     $index_form_10_message=" da Student";
+	$index_form_11_message=" da Parent";
       $form_email="da Email";
     $form_password="da Password";
     $form_type_message="da This value should be a valid email.";

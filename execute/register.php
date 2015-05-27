@@ -69,6 +69,11 @@
 						// echo "<p>Succssfully Registered!</p>";
 						header('location: ../login/form.php?reg=done');
 						}
+						else if(isset($_GET['role']) && $_GET['role']=='parent'){ 
+						mysql_query("INSERT INTO users(u_id, firstname,lastname, email, password,type,status) VALUES('', '$username','$lastname', '$email', '$password','parent','none')");
+						// echo "<p>Succssfully Registered!</p>";
+						header('location: ../login/form.php?reg=done');
+						}
 
 						else { echo "<p style='color:red'> <?= $index_register_msg ?></p>"; 
 								header('location: ../login/form.php?reg=fail');
