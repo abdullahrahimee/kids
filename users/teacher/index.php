@@ -1,11 +1,7 @@
 <?php
 session_start();
+include 'execute/auth.php';
 include '../student/execute/connect.php';
-
-if(!isset($_SESSION['user_id']) || (trim($_SESSION['user_id']) == '')) {
-        header('location: ../../login/form.php?login=invalid');
-        session_destroy();
-    }
 
 // include '../../users/student/execute/functions.php';
 $my_id = $_SESSION['user_id']; 

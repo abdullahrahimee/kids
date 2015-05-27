@@ -162,6 +162,7 @@ TechKids team researches and evaluates recent developments in educational techno
     $index_form_8_message=" da as a ";
     $index_form_9_message=" da Teacher";
     $index_form_10_message=" da Student";
+	$index_form_11_message=" da Parent";
       $form_email="da Email";
     $form_password="da Password";
     $form_type_message="da This value should be a valid email.";
@@ -180,7 +181,7 @@ TechKids team researches and evaluates recent developments in educational techno
 
     $index_login_msg=" da  Successfully Registerd!";
     $index_login_msg_1=" da registeration Faild!";
-    $index_login_msg_2=" da Error: Feild Empty!";
+    $index_login_msg_2=" da Your account has not been activated yet!";
 
     //chang.php page 
 

@@ -8,10 +8,12 @@ $row=mysql_num_rows(mysql_query("SELECT * FROM users WHERE email='".$_POST['emai
 $uid=mysql_fetch_array(mysql_query("SELECT * FROM users WHERE email='".$_POST['email']."' AND password='".md5($_POST['password'])."'"));
 if($row==1){
     if($uid['type']=='admin'){
-$_SESSION['auth']=$uid['u_id'];
+$_SESSION['auth']='admin';
+		$_SESSION['id']=$uid['u_id'];
 header("location:index.php");
 	}elseif ($uid['type']=='super') {
-		$_SESSION['auth']=$uid['u_id'];
+		$_SESSION['id']=$uid['u_id'];
+		$_SESSION['auth']='super';
 		header("location:super/");
 	}
 }
