@@ -24,7 +24,7 @@ $images_sequence = array();
   $name = $_POST['name'];
   $date = $_POST['date'];
   
-  if(mysql_query("INSERT INTO `newkids`.`gallery` (`id`, `name`, `images`, `date`) VALUES (NULL, '$name', '$sample_picture','2015-05-20');"))
+  if(mysql_query("INSERT INTO `newkids`.`gallery` (`id`, `name`, `images`, `date`) VALUES (NULL, '$name', '$sample_picture','$date');"))
   {
      $message = "Successfuly posted";
      $data=array(1, $message);
