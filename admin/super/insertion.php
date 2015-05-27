@@ -16,7 +16,7 @@ $images_sequence = array();
         }
     }
   }
-  $sample_picture = "";
+  $sample_picture =0;
   for($i=0;$i<count($images_sequence);$i++)
   {
       $sample_picture .= $images_sequence[$i];
@@ -24,7 +24,7 @@ $images_sequence = array();
   $name = $_POST['name'];
   $date = $_POST['date'];
   
-  if(mysql_query("INSERT INTO `newkids`.`gallery` (`id`, `name`, `images`, `date`) VALUES (NULL, '$name', '$sample_picture','2015-05-20');"))
+  if(mysql_query("INSERT INTO `newkids`.`gallery` (`name`, `images`, `date`) VALUES ('$name', '$sample_picture','2015-05-20');"))
   {
      $message = "Successfuly posted";
      $data=array(1, $message);

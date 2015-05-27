@@ -137,7 +137,7 @@ ga('create', 'UA-30027142-1', '.com');
 						<li><a href="curriculum.php?lang=<?php echo $_SESSION['lang']?>"><?= $index_header_3_msg ?></a></li>
 						<li><a href="methodology.php?lang=<?php echo $_SESSION['lang']?>"><?= $index_header_4_msg ?></a></li>
 						<!--<li><a href="resources.php">Resources</a></li>-->
-						<li><a href="gallery/examples/gallery.html"><?= $index_header_5_msg ?></a></li>
+						<li><a href="gallery/examples/gallery.php"><?= $index_header_5_msg ?></a></li>
 						<li><a href="contact.php?lang=<?php echo $_SESSION['lang'] ?>"><?= $index_header_6_msg ?></a></li>
 					<li><a href="login/form.php?lang=<?php echo  $_SESSION['lang'] ?>">Log In</a></li>
 

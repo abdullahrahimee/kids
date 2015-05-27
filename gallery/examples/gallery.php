@@ -105,101 +105,32 @@ ga('create', 'UA-30027142-1', '.com');
 	<!-- /.navbar -->
  
   <!-- start of gallery-->
+
         <div>
        
 <div class="container" style="margin-top:50px;">
   Image & Gallery<hr>
-    <div class="row">
-        <div class="col-xs-6 col-sm-4 col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                     
-                    <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
-                     
-                </div>
-                <img src="../../assets/img/page3-img1.jpg" alt="...">
-            </div>
-        </div>
-      
-        <div class="col-xs-6 col-sm-4 col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                    
-                    <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
-                     
-                </div>
-                <img src="../../assets/img/page3-img2.jpg" alt="...">
-            </div>
-        </div>
 
+    <div class="row">
+        <?php 
+    include("../../conf/conn.inc");
+    $query=mysql_query("select * from gallery");
+    while($row=mysql_fetch_array($query))
+    {
+  ?>
         <div class="col-xs-6 col-sm-4 col-md-3">            
             <div class="thumbnail">
                 <div class="caption">
-                   
+                     
                     <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
                      
                 </div>
-                <img src="../../assets/img/page3-img8.jpg" alt="...">
+                <img src="<?php echo $row['images']?>" alt="...">
             </div>
         </div>
-
-        <div class="col-xs-6 col-sm-4 col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                     
-                    <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
-                     
-                </div>
-                <img src="../../assets/img/page3-img7.jpg" alt="...">
-            </div>  
-        </div> 
- 
-         <div class="col-xs-6 col-sm-4 col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                   
-                    <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
-                  
-                </div>
-                <img src="../../assets/img/page3-img6.jpg" alt="...">
-            </div>  
-        </div>
-            <div class="col-xs-6 col-sm-4 col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                     
-                    <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
-                     
-                </div>
-                <img src="../../assets/img/page3-img5.jpg" alt="...">
-            </div>  
-        </div>
-            <div class="col-xs-6 col-sm-4 col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                     
-                    <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
-                     
-                </div>
-                <img src="../../assets/img/page3-img4.jpg" alt="...">
-            </div>  
-        </div>
-            <div class="col-xs-6 col-sm-4 col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                    
-                    <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
-                    
-                </div>
-                <img src="../../assets/img/page3-img3.jpg" alt="...">
-            </div>  
-        </div> 
+         <?php } ?>
     </div>
-    <div class="row">
-        <div class="col-xs-12 text-center">
-             <a href="http://bootsnipp.com/snippets/featured/thumbnail-caption-hover-effect">Techkids Gallery</a> by <a href="http://techkids">Kids</a>
-        </div>
-    </div>
+  
   
 </div><!-- /.container -->
 
