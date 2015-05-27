@@ -152,8 +152,8 @@ TechKids team researches and evaluates recent developments in educational techno
     $index_form_4_tilte=" Password Reset Successful.";
     $index_form_5_title="A new
                         password has been sent to your email.";
-    $index_from_1_message=" Your account is deactivated by the site Admin! ";
-    $index_form_2message=" Wrong combination of Password or Email ";
+    $index_from_1_message="Your account is deactivated by the site Admin!";
+    $index_form_2_message="worng";
     $index_form_3_message="Please Try Again!";
     $index_form_4_message="Please Login First! ";
     $index_form_5_message="Login ";

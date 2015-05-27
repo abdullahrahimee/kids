@@ -20,8 +20,8 @@
 	position:absolute;
 	top:0px;
 	left:0px;
-	width: 960px;
-	height: 280px
+	width: 400px;
+	height: 160px;
 }
 /* If an image is wrapped in a link */
 .nivoSlider a.nivo-imageLink {
@@ -55,7 +55,7 @@
 	z-index:89;
 }
 .nivo-caption p {
-	padding:5px;
+	padding: 0 5px;
 	margin:0;
 }
 /* Direction nav styles (e.g. Next & Prev) */

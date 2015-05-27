@@ -56,14 +56,7 @@
 <script type="text/javascript" src="../html5gallery/html5gallery.js"></script>
 <!-- gallery link -->
     
-	<link rel="stylesheet" href="../../assets/css/responsive.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../../assets/css/style1.css" type="text/css" media="screen">
-	<script type="text/javascript" src="../../assets/js/jquery.js"></script>
-    <script type="text/javascript" src="../../assets/js/touchTouch.jquery.js"></script> 
-  <!-- link for gallery show -->
-  <link rel="stylesheet" type="text/css" href="../../assets/css/tooplate_style.css">
-  <link rel="stylesheet" type="text/css" href="../../assets/css/jquery.lightbox-0.5.css">
-  <script type="text/javascript" src="../../assets/js/jquery.lightbox-0.5.js"></script>
+  
 </head>
 <body class="home">
 <script>
@@ -108,113 +101,80 @@ ga('create', 'UA-30027142-1', '.com');
 	<!-- /.navbar -->
  
   <!-- start of gallery-->
-        <div>
-       
-<div class="container" style="margin-top:50px;">
-  Image & Gallery<hr>
-    <div class="row">
-        <div class="col-xs-6 col-sm-4 col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                     <h4>Thumbnail Headline</h4>
-                    <p>short thumbnail description</p>
-                    <p class="lightbox"><a href="album.php" class="label label-danger">View Image</a>
-                     <a href="" class="label label-default">Download</a></p>
-                </div>
-                <img src=". class="lightbox"./. g/page3-img1.jpg" alt="...">
-            </div>
-        </div>
+ <div id="tooplate_main">
+        <h2 class="text-center">Image and Gallery</h2>
+        <div id="gallery">
+				<ul>
+				<div class="col-md-3">
+				<li>
+                		 
+	                	<a href="../../assets/img/slide-1.jpg" title="Sed egestas, lacus quis tempus pharetra.">
+                		<img src="../../assets/img/slide-1.jpg" alt="Image 01" />
+						</a>
+					</li>
+				</div>
+                	<div class="col-md-3">
+				<li>
+                        
+                        <a href="../../assets/img/slide-2.jpg" title="Nunc sit amet eros vitae nibh mattis dapibus.">
+                        <img src="../../assets/img/slide-2.jpg" alt="Image 02" />
+                        </a>
+			  		</li>
+				</div>
+                	<div class="col-md-3">
+				<li>
+						 
+                		<a href="../../assets/img/slide-3.jpg" title="Curabitur quis sem eget velit cursus semper.">
+                		<img src="../../assets/img/slide-3.jpg" alt="Image 03" />
+						</a>
+					</li>
+				</div>
+					<div class="col-md-3">
+				<li class="fouth">
+                         
+                        <a href="../../assets/img/slide-4.jpg" title="Mauris convallis dignissim tellus id facilisis.">
+                        <img src="../../assets/img/slide-4.jpg" alt="Image 04" />
+						</a>
+                    </li>
+				</div>
+                    <div class="col-md-3">
+				<li>
+                         
+                        <a href="../../assets/img/slide-5.jpg" title="Fusce rhoncus ipsum ut diam semper tempor.">
+                        <img src="../../assets/img/slide-5.jpg" alt="Image 05" />
+                        </a>
+                    </li>
+				</div>
+                    <div class="col-md-3">
+				<li>
+                         
+                        <a href="../../assets/img/slide-3.jpg" title="Curabitur venenatis aliquam neque vitae sollicitudin.">
+                        <img src="../../assets/img/slide-3.jpg" alt="Image 06" />
+                        </a>
+                    </li>
+				</div>
+                   <div class="col-md-3">
+				 <li>
+                        
+                        <a href="../../assets/img/slide-4.jpg" title="Nam vitae nibh eu lectus pellentesque sagittis.">
+                        <img src="../../assets/img/slide-4.jpg" alt="Image 07" />
+                    </a>
+                    </li>
+				</div>                    
+                   <div class="col-md-3">
+				 <li class="fouth">
+                         
+                        <a href="../../assets/img/slide-1.jpg" title="Cras nec lectus libero, in aliquet lacus.">
+                        <img src="../../assets/img/slide-1.jpg" alt="Image 08" />
+                        </a>
+                    </li>   
+				</div>
+                              
+                </ul>
       
-        <div class="col-xs-6 col-sm-4 col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                    <h4>Thumbnail Headline</h4>
-                    <p>short thumbnail description</p>
-                    <p><a href="" class="label label-danger">View Image</a>
-                    <a href="" class="label label-default">Download</a></p>
-                </div>
-                <img src="../../assets/img/page3-img2.jpg" alt="...">
-            </div>
+            <div class="cleaner"></div>
         </div>
-
-        <div class="col-xs-6 col-sm-4 col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                    <h4>Thumbnail Headline</h4>
-                    <p>short thumbnail description</p>
-                    <p><a href="" class="label label-danger">View Image</a>
-                    <a href="" class="label label-default">Download</a></p>
-                </div>
-                <img src="../../assets/img/page3-img8.jpg" alt="...">
-            </div>
-        </div>
-
-        <div class="col-xs-6 col-sm-4 col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                    <h4>Thumbnail Headline</h4>
-                    <p>short thumbnail description</p>
-                    <p><a href="" class="label label-danger">View Image</a>
-                    <a href="" class="label label-default">Download</a></p>
-                </div>
-                <img src="../../assets/img/page3-img7.jpg" alt="...">
-            </div>  
-        </div> 
- 
-         <div class="col-xs-6 col-sm-4 col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                    <h4>Thumbnail Headline</h4>
-                    <p>short thumbnail description</p>
-                    <p><a href="" class="label label-danger">View Image</a>
-                    <a href="http://lorempixel.com/400/300/sports/3/" class="label label-default">Download</a></p>
-                </div>
-                <img src="../../assets/img/page3-img6.jpg" alt="...">
-            </div>  
-        </div>
-            <div class="col-xs-6 col-sm-4 col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                    <h4>Thumbnail Headline</h4>
-                    <p>short thumbnail description</p>
-                    <p><a href="" class="label label-danger">View Image</a>
-                    <a href="" class="label label-default">Download</a></p>
-                </div>
-                <img src="../../assets/img/page3-img5.jpg" alt="...">
-            </div>  
-        </div>
-            <div class="col-xs-6 col-sm-4 col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                    <h4>Thumbnail Headline</h4>
-                    <p>short thumbnail description</p>
-                    <p><a href="" class="label label-danger">View Image</a>
-                    <a href="" class="label label-default">Download</a></p>
-                </div>
-                <img src="../../assets/img/page3-img4.jpg" alt="...">
-            </div>  
-        </div>
-            <div class="col-xs-6 col-sm-4 col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                    <h4>Thumbnail Headline</h4>
-                    <p>short thumbnail description</p>
-                    <p><a href="" class="label label-danger">View Image</a>
-                    <a href="" class="label label-default">Download</a></p>
-                </div>
-                <img src="../../assets/img/page3-img3.jpg" alt="...">
-            </div>  
-        </div> 
-    </div>
-    <div class="row">
-        <div class="col-xs-12 text-center">
-             <a href="http://bootsnipp.com/snippets/featured/thumbnail-caption-hover-effect">Techkids Gallery</a> by <a href="http://techkids">Kids</a>
-        </div>
-    </div>
-  
-</div><!-- /.container -->
-
-        </div>
+ </div>
   <!--end of gallery-->
 </div></div></div></div></div>
  
@@ -271,5 +231,19 @@ ga('create', 'UA-30027142-1', '.com');
    	$("#btn").fadeIn()
    });
  });
+</script>
+<!-- gallery start-->
+<link href="../../assets/css/tooplate_style.css" rel="stylesheet" type="text/css" />    
+<!-- Arquivos utilizados pelo jQuery lightBox plugin -->
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="../../assets/js/jquery.lightbox-0.5.js"></script>
+<link rel="stylesheet" type="text/css" href="../../assets/css/jquery.lightbox-0.5.css" media="screen" />
+<!-- / fim dos arquivos utilizados pelo jQuery lightBox plugin -->
+
+<!-- Ativando o jQuery lightBox plugin -->
+<script type="text/javascript">
+$(function() {
+    $('#gallery a').lightBox();
+});
 </script>
 </html>

@@ -52,7 +52,7 @@
 								echo "<div class='alert alert-danger'><?= $index_form_1_message ?></div>";}
 
 								if(isset($_GET['login']) && $_GET['login']=='fail'){
-								echo "<div class='alert alert-danger'><?= $index_form_2_message ?><br /><?= $index_form_3_message ?></div>";}
+								echo "<div class='alert alert-danger'><?php echo $index_form_2_message ?><br /><?= $index_form_3_message ?></div>";}
 
 								if(isset($_GET['login']) && $_GET['login']=='invalid'){
 								echo "<p style='color:red'> Access Denied <br /> <?= $index_form_4_message ?></p>";}
