@@ -137,7 +137,7 @@ include '../../users/student/execute/connect.php';
                             <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Super</a>
                         </li>
                         <li class="active">
-                            <a href="approve.php"><i class="fa fa-check fa-fw"></i> Aprroval</a>
+                            <a href="gallery.php"><i class="fa fa-image fa-fw"></i> Gallery</a>
                         </li>
                         
 

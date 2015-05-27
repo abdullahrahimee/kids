@@ -113,7 +113,7 @@ include '../../users/student/execute/connect.php';
                             <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Super</a>
                         </li>
                         <li class="active">
-                            <a href="approve.php"><i class="fa fa-check fa-fw"></i> Aprroval</a>
+                            <a href="gallery.php"><i class="fa fa-image fa-fw"></i> Gallery</a>
                         </li>
                         <li>
                             <a href="user.php"><i class="fa fa-users fa-fw"></i> Users</a>
@@ -140,12 +140,45 @@ include '../../users/student/execute/connect.php';
               
                 <!-- /.col-lg-8 -->
                 <div class="col-lg-11">
+                	<div class="col-md-12 panel panel-default">
+  <div class="col-md-12 custom">
+    <form class = "form_custom" id="equipment_form" action="insertion.php" method="POST" enctype="multipart/form-data">
+      	<fieldset>
+			<div class="form-group">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                	<label for="date" class="control-label">Album Name:</label>
+                    <input type="text" class="form-control" name="name" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                    	<label for="status" class="control-label">Date:</label>
+                        <input type="text" type="text" data-provide="datepicker" class="form-control datepicker" name="date">
+                </div>
+            </div>
 
+            <div class="form-group">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                    <div class="col-sm-6 form-group pull-left" id="FileUploadContainer">
+                        <label for="width" class="control-label">Pictures:</label>
+                        <input type="file" class="form-control" id="file" name="pic[]"><a href="javascript:;" onclick ="AddFileUpload()">+ Add More</a>
+                    </div>&nbsp;
+                </div>
+            </div>
 
-    <!--  start body -->
-
-               
-       <!-- end body -->
+            <div class="form-group row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                    <input type="submit" class="btn btn-primary pull-right preview-add-button" value="Submit">
+                </div>
+            </div>
+	   </fieldset>
+	</form>   
+</div>         
+</div> <!-- / panel preview -->
 
 
  
@@ -158,12 +191,37 @@ include '../../users/student/execute/connect.php';
     <!-- /#wrapper -->
 
     <!-- jQuery -->
+    <script>
+    var counter = 0;
+    	function AddFileUpload()
+    {
+         var div = document.createElement('DIV');
+         div.innerHTML = '<input id="file' + counter + '" name = "image[]" type="file" class="form-control" />' +
+                         '<a id="Button' + counter + '" ' +
+                         ' onclick = "RemoveFileUpload(this)" />-Remove</a>';
+         document.getElementById("FileUploadContainer").appendChild(div);
+         counter++;
+    }
+    </script>
+    <script>
+    
+    	function RemoveFileUpload(div)
+    {
+         document.getElementById("FileUploadContainer").removeChild(div.parentNode);
+    }
+    </script>
     <script src="../assets/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../assets/js/bootstrap.min.js"></script>
-
-
+	<script src="../assets/js/bootstrap-datetimepicker.min.js"></script>
+	<script>
+		$(function () {
+            $('.datepicker').datetimepicker({
+                daysOfWeekDisabled: [0, 6]
+            });
+    });
+	</script>
 </body>
 
 </html>
