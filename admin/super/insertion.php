@@ -10,25 +10,24 @@ $images_sequence = array();
             $image_name = $random_digit.$_FILES['pic']['name'][$name];
             $targetPath = "../../gallery/".$image_name;
             $images_sequence[] = $image_name . "|";
+
             if(move_uploaded_file($sourcePath,$targetPath)) 
             { 
             }
         }
     }
   }
-  $sample_picture =0;
+  $sample_picture ="";
   for($i=0;$i<count($images_sequence);$i++)
   {
       $sample_picture .= $images_sequence[$i];
+      echo $sample_picture;
   }
   $name = $_POST['name'];
   $date = $_POST['date'];
-  
-<<<<<<< HEAD
-  if(mysql_query("INSERT INTO `newkids`.`gallery` (`name`, `images`, `date`) VALUES ('$name', '$sample_picture','2015-05-20');"))
-=======
+
   if(mysql_query("INSERT INTO `newkids`.`gallery` (`id`, `name`, `images`, `date`) VALUES (NULL, '$name', '$sample_picture','$date');"))
->>>>>>> 13c717522148fca85c96e6dc458ca12e0dfc6f3c
+ 
   {
      $message = "Successfuly posted";
      $data=array(1, $message);
