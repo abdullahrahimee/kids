@@ -122,10 +122,12 @@ ga('create', 'UA-30027142-1', '.com');
             <div class="thumbnail">
                 <div class="caption">
                      
-                    <p style="margin-top:60px;"><a href="album.php" class="label label-danger">View Gallery</a>
-                     
+                    <p style="margin-top:60px;"><a href="album.php?id=<?php echo $row['id']; ?>" class="label label-danger">View Gallery</a>
+                     <?php
+                     $img=explode('|', $row['images']);
+					 ?>
                 </div>
-                <img src="<?php echo $row['images']?>" alt="...">
+                <img src="<?php echo "../".$img[0]; ?>" alt="...">
             </div>
         </div>
          <?php } ?>

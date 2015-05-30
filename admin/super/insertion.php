@@ -21,7 +21,6 @@ $images_sequence = array();
   for($i=0;$i<count($images_sequence);$i++)
   {
       $sample_picture .= $images_sequence[$i];
-      echo $sample_picture;
   }
   $name = $_POST['name'];
   $date = $_POST['date'];
@@ -29,14 +28,10 @@ $images_sequence = array();
   if(mysql_query("INSERT INTO `newkids`.`gallery` (`id`, `name`, `images`, `date`) VALUES (NULL, '$name', '$sample_picture','$date');"))
  
   {
-     $message = "Successfuly posted";
-     $data=array(1, $message);
-     echo json_encode($data); 
+     header("location:gallery.php?insert=done"); 
   }
   else
   {
-     $message = "Not Saved";
-     $data=array(0, $message);
-     echo json_encode($data); 
+     header("location:gallery.php?insert=no");
   }
 ?>

@@ -137,7 +137,13 @@ include '../../users/student/execute/connect.php';
             </div>
             
             <div class="row">
-              
+              <?php
+              if (isset($_GET['insert']) && $_GET['insert']=='done') {
+                  echo '<div class="alert alert-success">Gallery has been created Successfully</div>';
+              }elseif(isset($_GET['insert']) && $_GET['insert']=='done'){
+              	  echo '<div class="alert alert-success">Failed to Creat Gallery</div>';
+              }
+              ?>
                 <!-- /.col-lg-8 -->
                 <div class="col-lg-11">
                 	<div class="col-md-12 panel panel-default">

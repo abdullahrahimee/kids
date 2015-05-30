@@ -105,102 +105,27 @@ ga('create', 'UA-30027142-1', '.com');
         <h2 class="text-center">Image and Gallery</h2>
         <div id="gallery">
 				<ul>
-				<div class="col-md-3">
-				<li>
-                		 
-	                	<a href="../../assets/img/slide-1.jpg" title="Sed egestas, lacus quis tempus pharetra.">
-                		<img src="../../assets/img/slide-1.jpg" alt="Image 01" />
+					<?php
+					include("../../conf/conn.inc");
+    				$query=mysql_query("select * from gallery WHERE id=".$_GET['id']);
+					$row=mysql_fetch_array($query);
+					$img=explode('|', $row['images']);
+					for ($i=0; $i < count($img)-1; $i++) { 
+						?>
+						<div class="col-md-3">
+							<li>
+								<?php
+								$im=$img[$i];
+								?>
+	                	<a href='../<?php echo $im; ?>' title="Sed egestas, lacus quis tempus pharetra.">
+                		<img src='../<?php echo $im; ?>' alt="Image 01" />
 						</a>
 					</li>
 				</div>
-                	<div class="col-md-3">
-				<li>
-                        
-                        <a href="../../assets/img/slide-2.jpg" title="Nunc sit amet eros vitae nibh mattis dapibus.">
-                        <img src="../../assets/img/slide-2.jpg" alt="Image 02" />
-                        </a>
-			  		</li>
-				</div>
-                	<div class="col-md-3">
-				<li>
-						 
-                		<a href="../../assets/img/slide-3.jpg" title="Curabitur quis sem eget velit cursus semper.">
-                		<img src="../../assets/img/slide-3.jpg" alt="Image 03" />
-						</a>
-					</li>
-				</div>
-					<div class="col-md-3">
-				<li class="fouth">
-                         
-                        <a href="../../assets/img/slide-4.jpg" title="Mauris convallis dignissim tellus id facilisis.">
-                        <img src="../../assets/img/slide-4.jpg" alt="Image 04" />
-						</a>
-                    </li>
-				</div>
-                    <div class="col-md-3">
-				<li>
-                         
-                        <a href="../../assets/img/slide-5.jpg" title="Fusce rhoncus ipsum ut diam semper tempor.">
-                        <img src="../../assets/img/slide-5.jpg" alt="Image 05" />
-                        </a>
-                    </li>
-				</div>
-                    <div class="col-md-3">
-				<li>
-                         
-                        <a href="../../assets/img/slide-3.jpg" title="Curabitur venenatis aliquam neque vitae sollicitudin.">
-                        <img src="../../assets/img/slide-3.jpg" alt="Image 06" />
-                        </a>
-                    </li>
-				</div>
-                   <div class="col-md-3">
-				 <li>
-                        
-                        <a href="../../assets/img/slide-4.jpg" title="Nam vitae nibh eu lectus pellentesque sagittis.">
-                        <img src="../../assets/img/slide-4.jpg" alt="Image 07" />
-                    </a>
-                    </li>
-				</div>                    
-                   <div class="col-md-3">
-				 <li class="fouth">
-                         
-                        <a href="../../assets/img/slide-1.jpg" title="Cras nec lectus libero, in aliquet lacus.">
-                        <img src="../../assets/img/slide-1.jpg" alt="Image 08" />
-                        </a>
-                    </li>   
-				</div>
-				     <div class="col-md-3">
-				 <li class="fouth">
-                         
-                        <a href="../../assets/img/slide-1.jpg" title="Cras nec lectus libero, in aliquet lacus.">
-                        <img src="../../assets/img/slide-1.jpg" alt="Image 08" />
-                        </a>
-                    </li>   
-				</div>
-				     <div class="col-md-3">
-				 <li class="fouth">
-                         
-                        <a href="../../assets/img/slide-1.jpg" title="Cras nec lectus libero, in aliquet lacus.">
-                        <img src="../../assets/img/slide-1.jpg" alt="Image 08" />
-                        </a>
-                    </li>   
-				</div>
-				     <div class="col-md-3">
-				 <li class="fouth">
-                         
-                        <a href="../../assets/img/slide-1.jpg" title="Cras nec lectus libero, in aliquet lacus.">
-                        <img src="../../assets/img/slide-1.jpg" alt="Image 08" />
-                        </a>
-                    </li>   
-				</div>
-				     <div class="col-md-3">
-				 <li class="fouth">
-                         
-                        <a href="../../assets/img/slide-1.jpg" title="Cras nec lectus libero, in aliquet lacus.">
-                        <img src="../../assets/img/slide-1.jpg" alt="Image 08" />
-                        </a>
-                    </li>   
-				</div>
+				<?php
+					}
+					?>
+				
                               
                 </ul>
       
