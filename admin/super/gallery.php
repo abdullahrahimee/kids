@@ -145,23 +145,23 @@ include '../../users/student/execute/connect.php';
     <form class = "form_custom" id="equipment_form" action="insertion.php" method="POST" enctype="multipart/form-data">
       	<fieldset>
 			<div class="form-group">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-9">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-10">
                 	<label for="date" class="control-label">Album Name:</label>
                     <input type="text" class="form-control" name="name" />
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-9">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-10">
                     	<label for="status" class="control-label">Date:</label>
                         <input type="text" type="text" data-provide="datepicker" class="form-control datepicker" name="date">
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-9">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-12">
                     <div class="col-sm-6 form-group pull-left" id="FileUploadContainer">
                         <label for="width" class="control-label">Pictures:</label>
                         <input type="file" class="form-control" id="file" name="pic[]"><a href="javascript:;" onclick ="AddFileUpload()">+ Add More</a>
@@ -170,8 +170,8 @@ include '../../users/student/execute/connect.php';
             </div>
 
             <div class="form-group row">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-9">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-10">
                     <input type="submit" class="btn btn-primary pull-right preview-add-button" value="Submit">
                 </div>
             </div>

@@ -169,6 +169,38 @@ ga('create', 'UA-30027142-1', '.com');
                         </a>
                     </li>   
 				</div>
+				     <div class="col-md-3">
+				 <li class="fouth">
+                         
+                        <a href="../../assets/img/slide-1.jpg" title="Cras nec lectus libero, in aliquet lacus.">
+                        <img src="../../assets/img/slide-1.jpg" alt="Image 08" />
+                        </a>
+                    </li>   
+				</div>
+				     <div class="col-md-3">
+				 <li class="fouth">
+                         
+                        <a href="../../assets/img/slide-1.jpg" title="Cras nec lectus libero, in aliquet lacus.">
+                        <img src="../../assets/img/slide-1.jpg" alt="Image 08" />
+                        </a>
+                    </li>   
+				</div>
+				     <div class="col-md-3">
+				 <li class="fouth">
+                         
+                        <a href="../../assets/img/slide-1.jpg" title="Cras nec lectus libero, in aliquet lacus.">
+                        <img src="../../assets/img/slide-1.jpg" alt="Image 08" />
+                        </a>
+                    </li>   
+				</div>
+				     <div class="col-md-3">
+				 <li class="fouth">
+                         
+                        <a href="../../assets/img/slide-1.jpg" title="Cras nec lectus libero, in aliquet lacus.">
+                        <img src="../../assets/img/slide-1.jpg" alt="Image 08" />
+                        </a>
+                    </li>   
+				</div>
                               
                 </ul>
       

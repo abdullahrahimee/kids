@@ -4,9 +4,9 @@ include 'auth.php';
 include '../../users/student/execute/connect.php';
 
 
-		@$u_id=$_GET['u_id']; 
-		@$type=$_GET['status'];
-		@$level=$_GET['level'];
+		echo @$u_id=$_GET['u_id']; 
+		echo @$type=$_GET['status'];
+		echo @$level=$_GET['level'];
 
 		
 
