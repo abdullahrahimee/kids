@@ -196,7 +196,7 @@ include '../../users/student/execute/connect.php';
     	function AddFileUpload()
     {
          var div = document.createElement('DIV');
-         div.innerHTML = '<input id="file' + counter + '" name = "image[]" type="file" class="form-control" />' +
+         div.innerHTML = '<input id="file' + counter + '" name = "pic[]" type="file" class="form-control" />' +
                          '<a id="Button' + counter + '" ' +
                          ' onclick = "RemoveFileUpload(this)" />-Remove</a>';
          document.getElementById("FileUploadContainer").appendChild(div);
@@ -223,5 +223,4 @@ include '../../users/student/execute/connect.php';
     });
 	</script>
 </body>
-
 </html>
