@@ -1,11 +1,14 @@
 <?php
 session_start();
- include('header.php');	
+include('header.php');	
  ?>
 <br>
-
-
-
+<!-- Copy to the head section of your webpage -->
+<script type="text/javascript" src="slider/js/jquery.js"></script>
+<script type="text/javascript" src="slider/js/mhslideshow.js"></script>
+<script type="text/javascript" src="slider/js/initblinds.js"></script>
+<link rel="stylesheet" href="slider/js/mhslideshow.css" type="text/css" />
+<!-- End of head section codes -->
 <!---start-banner---->
 <link rel="stylesheet" href="assets/css/slippry.css">
 				<script src="assets/js/jquery-ui.js" type="text/javascript"></script>
@@ -60,7 +63,9 @@ session_start();
 					  transition: 'fade'
 					});
 				</script>
-				<!---scrooling-script--->
+				<!--scrooling-script--->
+
+				<h1>slider </h1>
 					<!----//End-image-slider---->
 					<div class="simple-text">
 						<div class="wrap">
@@ -70,78 +75,7 @@ session_start();
 						</div>
 					</div>
 				<!-- start services -->	
-				
-			<div class="Recent-wroks" dir="<?php echo $_SESSION['dir']?>">
-				<div class="wrap">
-				<div class="Recent-wrok">
-					<h5 class="heading"><?= $index_1_msg ?></h5>
-					<!----start-img-cursual---->
-
-  <div class="container1" align="center">
-
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-     
-
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner" dir="<?php echo $_SESSION['dir']?>">
-        <div class="item active">
-          <img src="images/1a.png" alt="...">
-          <div class="carousel-caption">
-            <h2><?= $index_slider_msg ?></h2>
-		      <?= $index_slider_content_msg ?>				
-          </div>
-        </div>
-        <div class="item">
-          <img src="images/2a.png" alt="...">
-          <div class="carousel-caption">
-            <h2><?= $index_slider_title_2_msg ?></h2>
-
-		      <?= $index_slider_content_2_msg ?>
-
-          </div>
-        </div>
-        <div class="item">
-          <img src="images/3a.png" alt="...">
-          <div class="carousel-caption">
-            <h2><?= $index_slider_title_3_msg ?></h2>
-			<?= $index_slider_content_3_msg ?>
-          </div>
-        </div>
-		<div class="item">
-          <img src="images/4a.png" alt="...">
-          <div class="carousel-caption">
-            <h2><?= $index_slider_title_4_msg ?></h2>
-			<?= $index_slider_content_4_msg ?>
-          </div>
-        </div>
-		<div class="item">
-          <img src="images/5a.png" alt="...">
-          <div class="carousel-caption">
-            <h2><?= $index_slider_title_5_msg ?></h2>
-			  <?= $index_slider_content_5_msg ?>
-          </div>
-        </div>
-		
-		<div class="item">
-          <img src="images/6a.png" alt="...">
-          <div class="carousel-caption">
-            <h2><?= $index_slider_title_6_msg ?></h2>
-		     <?= $index_slider_content_6_msg ?>
-          </div>
-        </div>
-      </div>
-
-      <!-- Controls -->
-      <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-      </a>
-      <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-      </a>
-    </div>
-
-  </div>
+                     
 					<!----//End-img-cursual---->
 				</div>
 				 <script type="text/javascript" src="assets/js/nivo-lightbox.min.js"></script>
@@ -246,9 +180,10 @@ session_start();
 			<br>
 			<div class="clear"> </div>
 			<div class="testimonial"><!-- start last_posts -->
-				<div class="wrap">
+				<div class="wrap" dir="ltr">
 					
 					<div class="test-grids">
+
 
 						<div class="test-desc">
 							<div><h5 class="heading"><?= $index_tech_title_msg ?></h5></div>

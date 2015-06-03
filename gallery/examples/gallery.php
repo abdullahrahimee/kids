@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
+<?php session_start();?>
 <head>
 <title>TechKids</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -62,7 +62,8 @@
     <script type="text/javascript" src="../../assets/js/touchTouch.jquery.js"></script> 
   
 </head>
-<body class="home">
+<body class="home" dir="<?php echo $_SESSION['dir']?>">
+<?php echo "../../". $_SESSION['dir']?>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

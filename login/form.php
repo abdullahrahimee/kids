@@ -24,7 +24,7 @@
     <script src="../assets/js/parsley.js"></script>
 </head>
 
-<body>
+<body dir="<?php echo $_SESSION['dir']?>">
 
 	<br /><br /><br />
 
@@ -79,8 +79,8 @@
 									<input type="password" name="pass"  class="form-control" id="anotherfield" data-parsley-required="true" data-parsley-length="[6, 14]" />
 								</div>
 								&nbsp;
-								<div class="col-md-offset-6">
-									<button type="submit" class="btn btn-action pull-right" name="submit"><?= $index_form_5_message ?></button>										
+								<div class="col-md-offset-4" dir="ltr">
+									<button type="submit" class="btn btn-action" name="submit"><?= $index_form_5_message ?></button>										
 								</div> </div> <br />
 
 

@@ -11,14 +11,7 @@
     $index_slider_content_msg="         We focus on
                                 Teaching children
                                 Practical topics such as
-                                Coding, Designing & Making.";
-    $index_slider_title_2_msg="How We Teach?";
-    $index_slider_content_2_msg="   Focusing on STEM curricula and
-                                a play & learn approach,
-                                we foster collaboration and communication,
-                                develops creativity, leadership and critical thinking.";
-    $index_slider_title_3_msg="TechKids Program";
-    $index_slider_content_3_msg="
+                                Coding, Designing & Making.
                                     Includes pre-school,
                                     primary school, and after school
                                     classes for children aged 3-13.";   

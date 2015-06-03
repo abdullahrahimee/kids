@@ -296,7 +296,6 @@ body {
 	color: #6F6F6F;
 	text-transform: uppercase;
 	margin: 1% 0% 2% 0%;
-	text-align: left;
 	font-weight: 600;
 }
 .Recent-wrok h6{
@@ -867,11 +866,16 @@ textarea
 	width: 65%;
 }
 .about h3 {
-	border-bottom: 1px solid  #BC008D;
+	
 	padding: 0.3em 0em;
 	margin-bottom: 1em;
 	color: #BC008D;
 	font-weight: 400;
+}
+.line{
+	border-bottom: 1px solid  #BC008D;
+	height: 2px;
+	width: 100%;
 }
 .about p {
 	color: #969696;

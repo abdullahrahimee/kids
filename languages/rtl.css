@@ -1,0 +1,37 @@
+index_st
+{
+	float: right;
+}
+#one
+{
+	float: right;
+
+}
+#team
+{
+	float: right;
+	border-bottom: 1px solid  #BC008D;
+	position: relative;
+	top: -20px;
+	}
+#team_d
+{
+	float: right;
+	clear: both;
+}
+#team_l
+{
+	float: right;
+}
+#title_s
+{
+	float: right;
+}
+#btn_l
+{
+	float: left;
+}
+#forgetpage
+{
+	float: left;
+}

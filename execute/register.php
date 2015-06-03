@@ -21,7 +21,7 @@
     <script src="../assets/js/parsley.js"></script>
 </head>
 
-<body>
+<body dir="<?php echo $_SESSION['dir']?>">
 	<br /><br /><br />
 <!-- end -->
 	<!-- container -->

@@ -27,7 +27,7 @@ include("../../language.php");
 }
 	</style>
 	</head>
-		<body>
+		<body id="forgetpage" dir="rtl">
 <div class="container">
 
 <div class="row" style="margin-top:20px">
